@@ -11,6 +11,8 @@ window.THREE = THREE;
   let isInteracting = false, autoRotate = true;
   let currentSpinSpeed = 0.28, targetSpinSpeed = 0.28;
   let statusBadge = null, isVisible = true;
+  let isModelLoaded = false, isModelLoading = false;
+  let bharatGroupRef = null, tempMeshRef = null, tempGeoRef = null, tempMatRef = null;
   const clock = new THREE.Clock();
   const vehicleData = {};
 
@@ -56,20 +58,22 @@ window.THREE = THREE;
     const H = container.offsetHeight || Math.round(window.innerHeight * 0.82);
     const canvas = document.getElementById('immersive-canvas');
 
+    const isMobile = window.innerWidth <= 768 || ('ontouchstart' in window);
+
     // 1. WebGL Renderer
     renderer = new THREE.WebGLRenderer({
       canvas: canvas,
-      antialias: true,
+      antialias: !isMobile,
       powerPreference: 'high-performance'
     });
     renderer.setSize(W, H);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile ? 1.25 : 1.6));
     renderer.setClearColor(0xdce1ea, 1);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.05;
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFShadowMap;
+    renderer.shadowMap.type = isMobile ? THREE.BasicShadowMap : THREE.PCFShadowMap;
 
     // 2. Scene
     scene = new THREE.Scene();
@@ -119,7 +123,9 @@ window.THREE = THREE;
     const dirKey = new THREE.DirectionalLight(0xfffbf2, 1.55);
     dirKey.position.set(6, 18, 7);
     dirKey.castShadow = true;
-    dirKey.shadow.mapSize.set(1024, 1024);
+    const isMobile = window.innerWidth <= 768;
+    const shadowRes = isMobile ? 512 : 1024;
+    dirKey.shadow.mapSize.set(shadowRes, shadowRes);
     dirKey.shadow.camera.near = 2;
     dirKey.shadow.camera.far = 30;
     dirKey.shadow.camera.left = -9;
@@ -254,13 +260,17 @@ window.THREE = THREE;
     turntableGroup.add(bharatGroup);
     vehicleData['bharat-mobility'] = bharatGroup;
     vehicleData['01'] = bharatGroup;
+    bharatGroupRef = bharatGroup;
 
-    // Temporary placeholder wireframe
+    // Temporary placeholder procedural buck
     const tempGeo = new THREE.BoxGeometry(7.2, 2.5, 3.4);
     const tempMat = new THREE.MeshStandardMaterial({ color: 0xd97757, wireframe: true });
     const tempMesh = new THREE.Mesh(tempGeo, tempMat);
     tempMesh.position.y = 1.35;
     bharatGroup.add(tempMesh);
+    tempMeshRef = tempMesh;
+    tempGeoRef = tempGeo;
+    tempMatRef = tempMat;
 
     // Invisible hit proxy for instant 0ms raycasting
     const bharatProxy = new THREE.Mesh(
@@ -271,17 +281,30 @@ window.THREE = THREE;
     bharatProxy.userData.vehicleId = 'bharat-mobility';
     turntableGroup.add(bharatProxy);
     hitProxies.push(bharatProxy);
+  }
 
-    // Central GLB Loader
+  /* =========================================================================
+     LAZY / ON-DEMAND 3D MODEL STREAMING (Optimized for Mobile Bandwidth & Battery)
+     ========================================================================= */
+  function loadBharatModel() {
+    if (isModelLoaded || isModelLoading || !bharatGroupRef) return;
+    isModelLoading = true;
+    updateStatus('Streaming 3D Studio Model...');
+
     const loader = new GLTFLoader();
     const modelUrl = 'assets/Project_1/3D Models/Detailed Sharp V2 · Highest 3D model.glb';
 
     loader.load(
       modelUrl,
       (gltf) => {
-        bharatGroup.remove(tempMesh);
-        tempGeo.dispose();
-        tempMat.dispose();
+        isModelLoaded = true;
+        isModelLoading = false;
+
+        if (tempMeshRef && bharatGroupRef.children.includes(tempMeshRef)) {
+          bharatGroupRef.remove(tempMeshRef);
+          if (tempGeoRef) tempGeoRef.dispose();
+          if (tempMatRef) tempMatRef.dispose();
+        }
 
         const model = gltf.scene;
         const box = new THREE.Box3().setFromObject(model);
@@ -308,7 +331,7 @@ window.THREE = THREE;
           }
         });
 
-        bharatGroup.add(model);
+        bharatGroupRef.add(model);
         updateStatus('Bharat Mobility 3D Ready', true);
       },
       (xhr) => {
@@ -321,9 +344,10 @@ window.THREE = THREE;
         }
       },
       (err) => {
+        isModelLoading = false;
         console.warn('[ImmersiveGarage] GLB fallback:', err);
         updateStatus('3D Model Ready (Studio View)', true);
-        tempMat.wireframe = false;
+        if (tempMatRef) tempMatRef.wireframe = false;
       }
     );
 
@@ -345,6 +369,12 @@ window.THREE = THREE;
     controls.minPolarAngle = 0.35; // Stops clipping into ceiling fixtures
     controls.maxPolarAngle = Math.PI / 2 - 0.06; // Stops dipping into floor
     controls.target.set(0, 1.2, 0);
+
+    // Mobile touch gestures: single-finger horizontal/vertical orbit, two-finger pinch-to-zoom
+    controls.touches = {
+      ONE: THREE.TOUCH.ROTATE,
+      TWO: THREE.TOUCH.DOLLY_PAN
+    };
 
     controls.addEventListener('start', () => {
       isInteracting = true;
@@ -466,6 +496,9 @@ window.THREE = THREE;
   }
 
   function focusVehicle(id) {
+    if (!isModelLoaded && !isModelLoading) {
+      loadBharatModel();
+    }
     const targetGroup = vehicleData[id];
     if (!targetGroup) return;
 
@@ -572,7 +605,10 @@ window.THREE = THREE;
   function setupVisibilityObserver(container) {
     const observer = new IntersectionObserver((entries) => {
       isVisible = entries[0].isIntersecting;
-    }, { threshold: 0.05 });
+      if (entries[0].isIntersecting && !isModelLoaded && !isModelLoading) {
+        loadBharatModel();
+      }
+    }, { rootMargin: '350px', threshold: 0.01 });
     observer.observe(container);
   }
 

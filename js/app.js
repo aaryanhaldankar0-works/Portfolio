@@ -12,9 +12,51 @@ class PortfolioApp {
   init() {
     this.applyTheme(this.theme);
     this.bindNavigation();
+    this.bindMobileMenu();
     this.bindModal();
     this.bindThemeToggle();
     this.bindContactForm();
+  }
+
+  /* Mobile Navigation Menu */
+  bindMobileMenu() {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menuDrawer = document.getElementById('mobile-nav-menu');
+    if (!menuBtn || !menuDrawer) return;
+
+    const toggleMenu = (open) => {
+      const isOpen = open !== undefined ? open : !menuDrawer.classList.contains('active');
+      menuBtn.classList.toggle('active', isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuDrawer.classList.toggle('active', isOpen);
+      menuDrawer.setAttribute('aria-hidden', String(!isOpen));
+    };
+
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    // Close when clicking any nav link
+    menuDrawer.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        toggleMenu(false);
+      });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (menuDrawer.classList.contains('active') && !menuDrawer.contains(e.target) && !menuBtn.contains(e.target)) {
+        toggleMenu(false);
+      }
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menuDrawer.classList.contains('active')) {
+        toggleMenu(false);
+      }
+    });
   }
 
   /* Theme Management */

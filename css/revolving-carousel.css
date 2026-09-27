@@ -783,3 +783,42 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+@media (max-width: 480px) {
+  .carousel-scene {
+    height: 350px;
+    perspective: 950px;
+  }
+
+  .carousel-drum,
+  .carousel-card {
+    width: 250px;
+    height: 330px;
+  }
+
+  .carousel-card__img {
+    height: 155px;
+  }
+
+  .carousel-card__title {
+    font-size: 1.05rem;
+  }
+
+  .carousel-card__sub {
+    font-size: 0.75rem;
+  }
+
+  .carousel-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .detail-specs {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .detail-step {
+    padding: 1.15rem;
+  }
+}

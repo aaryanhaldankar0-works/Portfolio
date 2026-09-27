@@ -10,6 +10,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
   const plinthObjects = {};
   const hitProxies = [];
   const spotlights = {};
+  const pendingGltfLoads = [];
+  let workshopModelsLoaded = false, workshopModelsLoading = false;
   let currentStageKey = 'rendering';
 
   // Shared CMF Materials Palette
@@ -98,20 +100,22 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
     const H = container.offsetHeight || 580;
     const canvas = document.getElementById('workshop-canvas');
 
+    const isMobile = window.innerWidth <= 768 || ('ontouchstart' in window);
+
     // 1. WebGL Renderer
     renderer = new THREE.WebGLRenderer({
       canvas: canvas,
-      antialias: true,
+      antialias: !isMobile,
       powerPreference: 'high-performance'
     });
     renderer.setSize(W, H);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile ? 1.25 : 1.6));
     renderer.setClearColor(0x181a20, 1);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.08;
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFShadowMap;
+    renderer.shadowMap.type = isMobile ? THREE.BasicShadowMap : THREE.PCFShadowMap;
 
     // 2. Scene & Subtle Studio Fog
     scene = new THREE.Scene();
@@ -329,9 +333,18 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
       };
       plinthObjects[p.id] = pObj;
 
-      // Load custom .glb model
-      tryLoadCustomGLB(p, modelAnchor, buckGroup, pObj);
+      // Queue custom .glb model for lazy streaming on viewport approach
+      pendingGltfLoads.push(() => {
+        tryLoadCustomGLB(p, modelAnchor, buckGroup, pObj);
+      });
     });
+  }
+
+  function loadWorkshopModels() {
+    if (workshopModelsLoaded || workshopModelsLoading) return;
+    workshopModelsLoading = true;
+    pendingGltfLoads.forEach(task => task());
+    workshopModelsLoaded = true;
   }
 
   // Sculpted architectural concept buck for placeholder display
@@ -471,6 +484,12 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
     controls.minPolarAngle = 0.35;
     controls.maxPolarAngle = Math.PI / 2 - 0.06;
     controls.target.set(0, 2.0, -2.2);
+
+    // Mobile touch gestures: single-finger horizontal/vertical orbit, two-finger pinch-to-zoom
+    controls.touches = {
+      ONE: THREE.TOUCH.ROTATE,
+      TWO: THREE.TOUCH.DOLLY_PAN
+    };
   }
 
   /* =========================================================================
@@ -575,6 +594,9 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
   }
 
   function focusProduct(productId) {
+    if (!workshopModelsLoaded) {
+      loadWorkshopModels();
+    }
     const pObj = plinthObjects[productId];
     if (!pObj) return;
 
@@ -810,7 +832,10 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
   function setupVisibilityObserver(container) {
     const observer = new IntersectionObserver((entries) => {
       isVisible = entries[0].isIntersecting;
-    }, { threshold: 0.05 });
+      if (entries[0].isIntersecting && !workshopModelsLoaded) {
+        loadWorkshopModels();
+      }
+    }, { rootMargin: '350px', threshold: 0.01 });
     observer.observe(container);
   }
 
