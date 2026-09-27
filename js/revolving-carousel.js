@@ -468,11 +468,8 @@ class RevolvingCarousel {
     if (prevBtn) prevBtn.addEventListener('click', () => this.prev());
     if (nextBtn) nextBtn.addEventListener('click', () => this.next());
 
-    // Mouse wheel (on viewport only)
     const viewport = document.getElementById('carousel-viewport');
     if (viewport) {
-      viewport.addEventListener('wheel', (e) => this.onWheel(e), { passive: false });
-
       // Mouse drag
       viewport.addEventListener('mousedown', (e) => this.onDragStart(e));
       window.addEventListener('mousemove', (e) => this.onDragMove(e));
@@ -486,46 +483,18 @@ class RevolvingCarousel {
 
     // Keyboard arrows
     document.addEventListener('keydown', (e) => {
-      // Only respond if the carousel is somewhat in view
       const viewport = document.getElementById('carousel-viewport');
       if (!viewport) return;
       const rect = viewport.getBoundingClientRect();
       const inView = rect.top < window.innerHeight && rect.bottom > 0;
       if (!inView) return;
 
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        e.preventDefault();
+      if (e.key === 'ArrowRight') {
         this.next();
-      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        e.preventDefault();
+      } else if (e.key === 'ArrowLeft') {
         this.prev();
       }
     });
-  }
-
-  /* ---- Scroll Wheel ---- */
-  onWheel(e) {
-    // Only hijack horizontal-ish scrolling or vertical scrolling over the carousel
-    if (this.scrollCooldown) return;
-
-    const absX = Math.abs(e.deltaX);
-    const absY = Math.abs(e.deltaY);
-
-    if (absY > absX && absY > 80) {
-      e.preventDefault();
-      if (e.deltaY > 0) this.next(); else this.prev();
-    } else if (absX > 20) {
-      e.preventDefault();
-      if (e.deltaX > 0) this.next(); else this.prev();
-    } else if (absY > 20) {
-      e.preventDefault();
-      if (e.deltaY > 0) this.next(); else this.prev();
-    } else {
-      return;
-    }
-
-    this.scrollCooldown = true;
-    setTimeout(() => { this.scrollCooldown = false; }, 450);
   }
 
   /* ---- Drag (Mouse & Touch) ---- */

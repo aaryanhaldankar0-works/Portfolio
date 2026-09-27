@@ -2,21 +2,27 @@
    THE IMMERSIVE VIRTUAL GARAGE - STYLING
    =========================================================================== */
 
-/* Full-screen canvas container */
+/* Section wrapper */
 .immersive-garage {
   position: relative;
   width: 100%;
-  height: 82vh; /* generous height for studio view */
-  background: #f0f3f6; /* architectural private garage tone */
+  padding: 5rem 0 3rem;
+  background: #0f1115;
   overflow: hidden;
-  border-bottom: 1px solid var(--border-subtle, rgba(0, 0, 0, 0.08));
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
-
 
 .immersive-container {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 78vh;
+  min-height: 520px;
+  max-height: 850px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
 #immersive-canvas {
@@ -30,32 +36,164 @@
 .info-panel {
   position: absolute;
   top: 0;
-  right: -340px; /* hidden off‑screen */
-  width: 320px;
-  max-width: 90%;
+  right: -420px; /* hidden off‑screen */
+  width: 380px;
+  max-width: 92%;
   height: 100%;
-  background: rgba(20, 22, 26, 0.93);
-  color: #e0e0e0;
-  backdrop-filter: blur(8px);
-  padding: 1.5rem;
-  box-shadow: -4px 0 12px rgba(0,0,0,0.4);
-  transition: right 0.35s ease;
+  background: rgba(14, 17, 23, 0.78);
+  color: #e5e7eb;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 2rem 1.75rem;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   overflow-y: auto;
-  z-index: 10;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 .info-panel.visible {
   right: 0;
 }
 
-.info-panel h3 {
-  margin-top: 0;
-  color: var(--accent-primary, #00f2fe);
+/* Minimal Translucent UI Typography & Cards */
+.minimal-panel-tag {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.68rem;
+  color: var(--accent-clay, #d97757);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
 }
 
-.info-panel .specs {
-  margin-top: 1rem;
-  font-size: 0.9rem;
+.minimal-panel-title {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #f9fafb;
+  margin: 0 0 0.35rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.minimal-panel-sub {
+  color: #9ca3af;
+  font-size: 0.84rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.minimal-specs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.minimal-spec-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  padding: 0.95rem 1.1rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+}
+
+.minimal-spec-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.minimal-spec-key {
+  display: block;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #9ca3af;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.minimal-spec-val {
+  display: block;
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: #f3f4f6;
+  line-height: 1.35;
+}
+
+.minimal-spec-sub {
+  display: block;
+  font-size: 0.78rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+/* In-Detail Research PDF Button */
+.btn-pdf-case-study {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.95rem 1.25rem;
+  background: linear-gradient(135deg, rgba(217, 119, 87, 0.28) 0%, rgba(217, 119, 87, 0.12) 100%);
+  border: 1px solid rgba(217, 119, 87, 0.45);
+  border-radius: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(217, 119, 87, 0.15);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 0.25rem;
+}
+
+.btn-pdf-case-study:hover {
+  background: linear-gradient(135deg, rgba(217, 119, 87, 0.45) 0%, rgba(217, 119, 87, 0.25) 100%);
+  border-color: rgba(217, 119, 87, 0.8);
+  box-shadow: 0 6px 25px rgba(217, 119, 87, 0.35);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.btn-pdf-case-study svg {
+  flex-shrink: 0;
+}
+
+.minimal-panel-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.72rem;
+  color: #9ca3af;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.status-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseStatus 2s infinite ease-in-out;
+}
+
+@keyframes pulseStatus {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
 }
 
 /* Mobile tweaks – keep canvas responsive */

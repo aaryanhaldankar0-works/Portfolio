@@ -640,72 +640,56 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
     const panel = document.getElementById('product-info-panel');
     if (!panel) return;
 
-    // Fetch data from PORTFOLIO_DATA.workshop or fallbacks
-    const rawData = (typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.workshop)
-      ? PORTFOLIO_DATA.workshop.find(p => p.id === productId)
-      : null;
-
-    const data = rawData || getDefaultProductData(productId);
-
-    // Render Panel HTML
     panel.innerHTML = `
       <button class="panel-close-btn" id="panel-close-btn" title="Close Panel">&times;</button>
       
       <div>
-        <div class="panel-category">${data.category}</div>
-        <h3 class="panel-title">${data.title}</h3>
+        <div class="minimal-panel-tag">HARDWARE &amp; DISASTER RESILIENCE</div>
+        <h3 class="minimal-panel-title">EBS Tech</h3>
+        <p class="minimal-panel-sub">Emergency Communication System · Low-Tech Solution for High-Stakes Environments</p>
       </div>
 
-      ${data.heroImage ? `
-        <div style="margin: 0.85rem 0; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
-          <img src="${data.heroImage}" alt="${data.title}" style="width: 100%; height: 160px; object-fit: cover; display: block;" />
+      <div class="minimal-specs-list">
+        <div class="minimal-spec-card">
+          <span class="minimal-spec-key">DIMENSIONS &amp; PACKAGING</span>
+          <span class="minimal-spec-val">Handheld: 210 × 120 × 55 mm</span>
+          <span class="minimal-spec-sub">Staff Mount Height: 1,150 mm Telescopic Aluminium Staff</span>
         </div>
-      ` : ''}
 
-      <!-- CMF Matrix Callout -->
-      <div class="cmf-matrix-box">
-        <div class="cmf-matrix-title">
-          <span>✦ CMF Materials & Texture Matrix</span>
+        <div class="minimal-spec-card">
+          <span class="minimal-spec-key">EMERGENCY POWER</span>
+          <span class="minimal-spec-val">Manual Kinetic Hand-Crank Dynamo</span>
+          <span class="minimal-spec-sub">Infinite manual power generation during complete electrical grid failure</span>
         </div>
-        <div class="cmf-tags-grid">
-          ${getCMFTags(productId).map(t => `<span class="cmf-tag-pill">${t}</span>`).join('')}
+
+        <div class="minimal-spec-card">
+          <span class="minimal-spec-key">OFF-GRID CAPABILITY</span>
+          <span class="minimal-spec-val">Can Be Used Without Internet</span>
+          <span class="minimal-spec-sub">100% autonomous operation with no dependency on cellular or web infrastructure</span>
+        </div>
+
+        <div class="minimal-spec-card">
+          <span class="minimal-spec-key">CONNECTIVITY</span>
+          <span class="minimal-spec-val">Long-Range LoRaWAN Mesh Network</span>
+          <span class="minimal-spec-sub">Authenticated two-way emergency alert broadcast across challenging terrain</span>
         </div>
       </div>
 
-      <!-- Case Study 3-Pillar Sections -->
-      ${data.sections ? `
-        <div class="panel-sections-box" style="margin-top: 1rem;">
-          <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #f97316; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;">✦ Case Study Architecture (3 Key Pillars)</div>
-          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-            ${data.sections.map((sec, idx) => `
-              <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 0.85rem;">
-                <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #9ca3af; text-transform: uppercase; margin-bottom: 0.2rem;">0${idx + 1} · ${sec.phase}</div>
-                <h5 style="font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; color: #f3f4f6; margin: 0 0 0.35rem 0;">${sec.title}</h5>
-                <p style="font-size: 0.82rem; color: #9ca3af; line-height: 1.5; margin: 0;">${sec.desc}</p>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      ` : ''}
+      <a href="assets/Project_2/Case%20Study/Ebs%20info.pdf" target="_blank" rel="noopener noreferrer" class="btn-pdf-case-study">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        <span>View In-Detail Research &amp; Case Study (PDF)</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+      </a>
 
-      <!-- 3-Stage Design Process Switcher -->
-      ${data.stages ? `
-        <div>
-          <div class="panel-stages-nav" id="panel-stages-nav">
-            <button class="panel-stage-btn ${currentStageKey === 'ideation' ? 'active' : ''}" data-stage="ideation">01 Ideation</button>
-            <button class="panel-stage-btn ${currentStageKey === 'rendering' ? 'active' : ''}" data-stage="rendering">02 CAD/CMF</button>
-            <button class="panel-stage-btn ${currentStageKey === 'prototyping' ? 'active' : ''}" data-stage="prototyping">03 Prototyping</button>
-          </div>
-          <div id="stage-card-mount" style="margin-top: 0.85rem;">
-            ${buildStageCardHTML(data.stages[currentStageKey])}
-          </div>
-        </div>
-      ` : ''}
-
-      <!-- Custom 3D Model Notice -->
-      <div class="glb-upload-notice">
-        <strong>✦ Import Your 3D Model:</strong><br>
-        Place your exported <code>${productId}.glb</code> file into <code>assets/workshop/</code> or <code>assets/Project_2/</code> to automatically replace the concept plinth silhouette with your live 3D mesh.
+      <div class="minimal-panel-status">
+        <span class="status-pulse-dot" style="background:#f97316;box-shadow:0 0 8px #f97316;"></span>
+        <span>Interactive 3D Product Inspection Active</span>
       </div>
     `;
 
@@ -717,22 +701,6 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
       closeBtn.addEventListener('click', () => {
         panel.classList.remove('visible');
         resetToGallery();
-      });
-    }
-
-    // Bind Stage Tabs
-    const stagesNav = panel.querySelector('#panel-stages-nav');
-    if (stagesNav && data.stages) {
-      stagesNav.querySelectorAll('.panel-stage-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          currentStageKey = btn.dataset.stage;
-          stagesNav.querySelectorAll('.panel-stage-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          const mount = panel.querySelector('#stage-card-mount');
-          if (mount) {
-            mount.innerHTML = buildStageCardHTML(data.stages[currentStageKey]);
-          }
-        });
       });
     }
   }

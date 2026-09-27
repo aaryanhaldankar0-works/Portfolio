@@ -66,29 +66,13 @@ class VirtualGarage {
 
     // Update Specs Table
     const specsContainer = document.getElementById('specs-table');
-    if (specsContainer) {
-      specsContainer.innerHTML = `
+    if (specsContainer && data.specs) {
+      specsContainer.innerHTML = Object.entries(data.specs).map(([k, v], i) => `
         <div class="spec-row">
-          <span class="spec-label">Aerodynamic Drag ($C_d$)</span>
-          <span class="spec-value highlight-spec">${data.specs.dragCoefficient}</span>
+          <span class="spec-label">${k}</span>
+          <span class="spec-value ${i === 0 ? 'highlight-spec' : ''}">${v}</span>
         </div>
-        <div class="spec-row">
-          <span class="spec-label">Powertrain Package</span>
-          <span class="spec-value">${data.specs.powertrain}</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-label">Chassis Construction</span>
-          <span class="spec-value">${data.specs.chassis}</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-label">Wheelbase & Ergonomics</span>
-          <span class="spec-value">${data.specs.wheelbase || data.specs.capacity}</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-label">Aero Balance / Inclusivity</span>
-          <span class="spec-value">${data.specs.downforceBalance || data.specs.accessibility}</span>
-        </div>
-      `;
+      `).join('');
     }
 
     // Render Thought Process Step-by-Step Storytelling
@@ -98,31 +82,38 @@ class VirtualGarage {
   renderProcessSteps(data) {
     const container = document.getElementById('process-steps-list');
     if (!container) return;
-    if (!data || !data.thoughtProcess || !Array.isArray(data.thoughtProcess)) {
+    const steps = (data && (data.sections || data.thoughtProcess)) || null;
+    if (!steps || !Array.isArray(steps)) {
       container.innerHTML = '';
       return;
     }
 
     let html = '';
-    data.thoughtProcess.forEach((step) => {
-      const tagsHtml = step.pills.map(p => `<span class="step-tag-item">${p}</span>`).join('');
+    steps.forEach((step, idx) => {
+      const stepNum = step.step || `0${idx + 1}`;
+      const tagsHtml = step.pills
+        ? step.pills.map(p => `<span class="step-tag-item">${p}</span>`).join('')
+        : '';
       html += `
         <div class="process-step-item">
-          <div class="step-number-col">${step.step}</div>
+          <div class="step-number-col">${stepNum}</div>
           <div class="step-info-col">
-            <span class="step-phase-badge">${step.phase}</span>
+            <span class="step-phase-badge">${step.phase || ''}</span>
             <h4>${step.title}</h4>
             <p>${step.desc}</p>
-            <div class="step-tags-wrap">
-              ${tagsHtml}
+            ${tagsHtml ? `<div class="step-tags-wrap">${tagsHtml}</div>` : ''}
+          </div>
+          ${step.image ? `
+            <div class="step-visual-col">
+              <img src="${step.image}" alt="${step.title}" loading="lazy" />
             </div>
-          </div>
-          <div class="step-visual-col">
-            <img src="${step.image}" alt="${step.title}" loading="lazy" />
-          </div>
+          ` : ''}
         </div>
       `;
     });
+
+    container.innerHTML = html;
+  }
 
     container.innerHTML = html;
   }

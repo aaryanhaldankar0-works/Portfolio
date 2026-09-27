@@ -159,12 +159,12 @@
   width: 440px;
   max-width: 95%;
   height: 100%;
-  background: rgba(18, 21, 28, 0.95);
+  background: rgba(14, 17, 23, 0.78);
   color: #e5e7eb;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border-left: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.55);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
   transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   overflow-y: auto;
   z-index: 20;
@@ -201,6 +201,129 @@
   background: rgba(255, 255, 255, 0.2);
   color: #fff;
   transform: scale(1.08);
+}
+
+/* Minimal Translucent UI Typography & Cards */
+.minimal-panel-tag {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.68rem;
+  color: #f97316;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.minimal-panel-title {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #f9fafb;
+  margin: 0 0 0.35rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.minimal-panel-sub {
+  color: #9ca3af;
+  font-size: 0.84rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.minimal-specs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.minimal-spec-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  padding: 0.95rem 1.1rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+}
+
+.minimal-spec-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.minimal-spec-key {
+  display: block;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #9ca3af;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.minimal-spec-val {
+  display: block;
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: #f3f4f6;
+  line-height: 1.35;
+}
+
+.minimal-spec-sub {
+  display: block;
+  font-size: 0.78rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+/* In-Detail Research PDF Button */
+.btn-pdf-case-study {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.95rem 1.25rem;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.28) 0%, rgba(249, 115, 22, 0.12) 100%);
+  border: 1px solid rgba(249, 115, 22, 0.45);
+  border-radius: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.15);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 0.25rem;
+}
+
+.btn-pdf-case-study:hover {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.45) 0%, rgba(249, 115, 22, 0.25) 100%);
+  border-color: rgba(249, 115, 22, 0.8);
+  box-shadow: 0 6px 25px rgba(249, 115, 22, 0.35);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.btn-pdf-case-study svg {
+  flex-shrink: 0;
+}
+
+.minimal-panel-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.72rem;
+  color: #9ca3af;
+  margin-top: auto;
+  padding-top: 0.5rem;
 }
 
 .panel-category {

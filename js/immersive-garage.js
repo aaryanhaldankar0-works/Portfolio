@@ -512,28 +512,50 @@ window.THREE = THREE;
     const panel = document.getElementById('vehicle-info-panel');
     if (!panel) return;
 
-    const data = (typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.garage)
-      ? (PORTFOLIO_DATA.garage[id] || PORTFOLIO_DATA.garage['bharat-mobility'])
-      : null;
-
-    let specsHtml = '';
-    if (data && data.specs) {
-      Object.entries(data.specs).forEach(([k, v]) => {
-        specsHtml += `<div class="spec-row"><span class="spec-label">${k.toUpperCase()}</span><span class="spec-value">${v}</span></div>`;
-      });
-    }
-
     panel.innerHTML = `
-      <button id="close-panel" style="float:right;background:none;border:none;color:#e0e0e0;font-size:1.4rem;cursor:pointer;line-height:1;">&times;</button>
-      ${data ? `
-        <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#d97757;letter-spacing:0.08em;margin-bottom:0.4rem;text-transform:uppercase;">${data.category}</div>
-        <h3 style="margin:0 0 0.4rem;font-size:1.35rem;color:#f3f4f6;">${data.title}</h3>
-        <p style="color:#9ca3af;font-size:0.86rem;margin:0 0 1rem;line-height:1.5;">${data.tagline}</p>
-        ${data.heroImage ? `<img src="${data.heroImage}" alt="${data.title}" style="width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.1);margin-bottom:1rem;display:block;" loading="lazy" />` : ''}
-      ` : ''}
-      <div class="specs" style="display:flex;flex-direction:column;gap:0.75rem;">${specsHtml}</div>
-      <div style="margin-top:1.25rem;padding:0.75rem;background:rgba(217,119,87,0.1);border:1px solid rgba(217,119,87,0.25);border-radius:6px;font-size:0.78rem;color:#d97757;font-family:'JetBrains Mono',monospace;">
-        ✓ Interactive 360° Studio Inspection Active
+      <button class="panel-close-btn" id="close-panel" title="Close Panel">&times;</button>
+      
+      <div>
+        <div class="minimal-panel-tag">TRANSPORTATION DESIGN · SHARED MOBILITY</div>
+        <h3 class="minimal-panel-title">Bharat Mobility</h3>
+        <p class="minimal-panel-sub">Autonomous Last-Mile Transit Pod for Tier 2 &amp; 3 Indian Corridors</p>
+      </div>
+
+      <div class="minimal-specs-list">
+        <div class="minimal-spec-card">
+          <span class="minimal-spec-key">DIMENSIONS &amp; FOOTPRINT</span>
+          <span class="minimal-spec-val">3,600 L × 1,380 W × 1,700 H mm</span>
+          <span class="minimal-spec-sub">Wheelbase: 2,350 mm Low-Floor EV Stance</span>
+        </div>
+
+        <div class="minimal-spec-card">
+          <span class="minimal-spec-key">POWERTRAIN PACKAGE</span>
+          <span class="minimal-spec-val">Electric 48V Skateboard Architecture</span>
+          <span class="minimal-spec-sub">Flat-bed EV chassis with underfloor battery integration</span>
+        </div>
+
+        <div class="minimal-spec-card">
+          <span class="minimal-spec-key">SEATING CONFIGURATION</span>
+          <span class="minimal-spec-val">6-Seater &amp; 4-Seater Modular Options</span>
+          <span class="minimal-spec-sub">Forward-facing seating with 1.3m central walk-through aisle</span>
+        </div>
+      </div>
+
+      <a href="assets/Project_1/Case Study/Bharat_mobility_info.pdf" target="_blank" rel="noopener noreferrer" class="btn-pdf-case-study">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        <span>View Research &amp; In-Detail Case Study (PDF)</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+      </a>
+
+      <div class="minimal-panel-status">
+        <span class="status-pulse-dot"></span>
+        <span>Interactive 360° Studio Inspection Active</span>
       </div>
     `;
 

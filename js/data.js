@@ -8,18 +8,41 @@ const PORTFOLIO_DATA = {
     'bharat-mobility': {
       id: 'bharat-mobility',
       title: 'Bharat Mobility',
-      tagline: 'Autonomous Last-Mile Passenger Mobility System',
+      tagline: 'Autonomous Last-Mile Transit Pod for Tier 2 & 3 Indian Corridors',
       category: 'Transportation Design / Shared Mobility',
       accentColor: '#d97757',
-      heroImage: '',
+      heroImage: 'assets/Project_1/Renders/Render_1.png',
       modelUrl: 'assets/Project_1/3D Models/Detailed Sharp V2 · Highest 3D model.glb',
       specs: {
-        'Powertrain': 'Electric 48V Powertrain',
-        'Capacity': '6 PAX Ergonomic Layout',
-        'Range': '25 KM Optimized Last-Mile Range',
-        'Speed': '30 KM/H Safe Urban Speed',
-        'Drive': 'Level 4 Autonomous Sensor Suite'
-      }
+        'Dimensions': '3,600 L × 1,380 W × 1,700 H mm',
+        'Wheelbase': '2,350 mm Low-Floor EV Stance',
+        'Capacity': '6 PAX Forward-Facing (1.3m Aisle)',
+        'Platform': 'Steel Spaceframe + EV Skateboard',
+        'Body Structure': 'Swappable Thermoplastic Panels',
+        'Drive System': 'Level 4 Autonomous Sensor Suite'
+      },
+      sectionsTitle: 'Case Study & Engineering Architecture',
+      sectionsSubtitle: 'A production-focused autonomous micro-transit ecosystem engineered for high-density Indian urban centers.',
+      sections: [
+        {
+          title: 'Urban Bottlenecks & Mobility Void',
+          phase: 'Phase 01 · Terrain & Infrastructure Research',
+          desc: 'Severe street encroachments, steep mountain corridors, and extreme traffic bottlenecks in Dehradun caused public transit share to collapse from eleven percent down to barely one percent today.',
+          image: ''
+        },
+        {
+          title: 'Modular Spaceframe & Platform Architecture',
+          phase: 'Phase 02 · Engineering Constraints',
+          desc: 'Engineered around an accessible flat skateboard chassis paired with an ultra-rigid steel tubular spaceframe and swappable thermoplastic outer body panels ensuring uninterrupted continuous fleet operation throughout demanding transit cycles.',
+          image: ''
+        },
+        {
+          title: 'Spatial Packaging & Connected Ecosystem',
+          phase: 'Phase 03 · Ergonomics & Deployment',
+          desc: 'Six forward-facing ergonomic seats completely eliminate passenger motion sickness while a tall roofline, wide door aperture, and flat aisle enable rapid roll-in roll-out micro-mobility across university campuses and hospitals.',
+          image: 'assets/Project_1/Renders/Render_1.png'
+        }
+      ]
     },
     '01': null, // populated below as alias to bharat-mobility
   },
