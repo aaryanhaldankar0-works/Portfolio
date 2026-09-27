@@ -656,6 +656,12 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
         <h3 class="panel-title">${data.title}</h3>
       </div>
 
+      ${data.heroImage ? `
+        <div style="margin: 0.85rem 0; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+          <img src="${data.heroImage}" alt="${data.title}" style="width: 100%; height: 160px; object-fit: cover; display: block;" />
+        </div>
+      ` : ''}
+
       <!-- CMF Matrix Callout -->
       <div class="cmf-matrix-box">
         <div class="cmf-matrix-title">
@@ -665,6 +671,22 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
           ${getCMFTags(productId).map(t => `<span class="cmf-tag-pill">${t}</span>`).join('')}
         </div>
       </div>
+
+      <!-- Case Study 3-Pillar Sections -->
+      ${data.sections ? `
+        <div class="panel-sections-box" style="margin-top: 1rem;">
+          <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #f97316; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;">✦ Case Study Architecture (3 Key Pillars)</div>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            ${data.sections.map((sec, idx) => `
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 0.85rem;">
+                <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #9ca3af; text-transform: uppercase; margin-bottom: 0.2rem;">0${idx + 1} · ${sec.phase}</div>
+                <h5 style="font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; color: #f3f4f6; margin: 0 0 0.35rem 0;">${sec.title}</h5>
+                <p style="font-size: 0.82rem; color: #9ca3af; line-height: 1.5; margin: 0;">${sec.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
 
       <!-- 3-Stage Design Process Switcher -->
       ${data.stages ? `
@@ -752,12 +774,12 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
       ];
     } else if (productId === 'ebs-tech') {
       return [
-        'Class-A Segmented Surfacing',
-        'Ceramic Gloss White Unibody',
-        'Satin Basalt Lower Cladding',
-        'Smart Electrochromic Glazing',
-        'Aerodynamic Disc Wheel Covers',
-        'Flush 360° LIDAR & Radar Pods'
+        'Impact-Resistant Polymer Chassis',
+        'Anodized Aluminium Staff Coupler',
+        'High-Contrast Emergency LCD',
+        'Textured Santoprene Handgrip',
+        'Kinetic Dynamo Hand-Crank',
+        'LoRaWAN Whip Antenna Array'
       ];
     } else if (productId === 'aura-air-node') {
       return [

@@ -297,7 +297,30 @@ class RevolvingCarousel {
       });
     }
 
-    // Build stages HTML if present (e.g. EBS Tech)
+    // Build sections HTML if present (e.g. EBS Tech Case Study)
+    let sectionsHtml = '';
+    if (project.sections && Array.isArray(project.sections)) {
+      project.sections.forEach((sec, idx) => {
+        const hasVisual = Boolean(sec.image);
+        sectionsHtml += `
+          <div class="detail-step${!hasVisual ? ' detail-step--no-visual' : ''}">
+            <div class="detail-step__number">0${idx + 1}</div>
+            <div class="detail-step__content">
+              <span class="detail-step__phase">${sec.phase || `Section 0${idx + 1}`}</span>
+              <h4 class="detail-step__title">${sec.title}</h4>
+              <p class="detail-step__desc">${sec.desc || sec.description || ''}</p>
+            </div>
+            ${hasVisual ? `
+              <div class="detail-step__visual">
+                <img src="${sec.image}" alt="${sec.title}" loading="lazy" />
+              </div>
+            ` : ''}
+          </div>
+        `;
+      });
+    }
+
+    // Build stages HTML if present
     let stagesHtml = '';
     if (project.stages) {
       const stageEntries = Object.entries(project.stages);
@@ -354,7 +377,7 @@ class RevolvingCarousel {
       });
     }
 
-    const targetSection = project.id === 'bharat-mobility' ? '#immersive-garage' : '#workshop-showcase';
+    const targetSection = project.id === 'bharat-mobility' ? '#immersive-garage' : '#immersive-workshop';
     const targetLabel = project.id === 'bharat-mobility' ? 'Explore in Virtual Garage (3D)' : 'Explore in Workshop Showcase (3D)';
 
     // Animate out, swap content, animate in
@@ -377,6 +400,18 @@ class RevolvingCarousel {
         </div>
 
         ${specsHtml ? `<div class="detail-specs">${specsHtml}</div>` : ''}
+
+        ${sectionsHtml ? `
+          <div class="detail-process">
+            <div class="detail-process__header">
+              <div>
+                <div class="detail-process__title">${project.sectionsTitle || 'Case Study & Architecture'}</div>
+                <div class="detail-process__subtitle">${project.sectionsSubtitle || 'Three key stages from crisis research to hardware deployment.'}</div>
+              </div>
+            </div>
+            <div class="detail-process__steps">${sectionsHtml}</div>
+          </div>
+        ` : ''}
 
         ${stagesHtml ? `
           <div class="detail-process">

@@ -129,8 +129,8 @@ class PortfolioApp {
           `).join('')}
         </div>
       `;
-    } else {
-      const stage = project.stages[stageKey || 'rendering'];
+    } else if (project.stages) {
+      const stage = project.stages[stageKey || 'rendering'] || Object.values(project.stages)[0];
       modalBody.innerHTML = `
         <div style="margin-bottom: 1.5rem;">
           <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-amber); text-transform: uppercase;">${stage.phase}</span>
@@ -146,13 +146,37 @@ class PortfolioApp {
         </div>
         <h4 style="font-family: var(--font-display); margin-bottom: 0.8rem;">Technical Parameters</h4>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem;">
-          ${Object.entries(stage.specs).map(([k, v]) => `
+          ${stage.specs ? Object.entries(stage.specs).map(([k, v]) => `
             <div style="background: var(--bg-tertiary); padding: 0.8rem; border-radius: var(--radius-sm); border: 1px solid var(--glass-border);">
               <div style="font-size: 0.75rem; color: var(--text-muted);">${k}</div>
               <div style="font-family: var(--font-mono); font-weight: 600; color: var(--text-primary); margin-top: 0.2rem;">${v}</div>
             </div>
-          `).join('')}
+          `).join('') : ''}
         </div>
+      `;
+    } else {
+      modalBody.innerHTML = `
+        <div style="margin-bottom: 1.5rem;">
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-amber, #f97316); text-transform: uppercase;">${project.category}</span>
+          <h2 style="font-family: var(--font-display); font-size: 2rem; font-weight: 800; margin: 0.4rem 0;">${project.title}</h2>
+          <p style="color: var(--text-secondary);">${project.tagline}</p>
+        </div>
+        ${project.heroImage ? `
+          <div style="border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1.5rem;">
+            <img src="${project.heroImage}" alt="${project.title}" style="width: 100%; height: auto; object-fit: cover;" />
+          </div>
+        ` : ''}
+        ${project.sections ? `
+          <div style="margin-bottom: 1.5rem;">
+            ${project.sections.map((sec, idx) => `
+              <div style="background: var(--bg-tertiary); padding: 1.2rem; border-radius: var(--radius-md); margin-bottom: 0.8rem; border: 1px solid var(--glass-border);">
+                <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-orange, #f97316); text-transform: uppercase;">0${idx+1} · ${sec.phase}</span>
+                <h4 style="font-family: var(--font-display); font-size: 1.05rem; margin: 0.2rem 0 0.4rem;">${sec.title}</h4>
+                <p style="color: var(--text-secondary); line-height: 1.6; margin: 0;">${sec.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
       `;
     }
 

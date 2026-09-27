@@ -28,55 +28,40 @@ const PORTFOLIO_DATA = {
     {
       id: 'ebs-tech',
       title: 'EBS Tech',
-      tagline: 'Physical Architecture & Autonomous Last-Mile Transit Platform',
-      category: 'Transportation Design & Physical Architecture',
-      accentColor: '#38bdf8',
-      heroImage: '',
+      tagline: 'Emergency Communication Systems (EBS) · Low-Tech Solution for High-Stakes Environments',
+      category: 'Disaster Resilience & Emergency Hardware',
+      accentColor: '#f97316',
+      heroImage: 'assets/Project_2/Renders/Render_1.png',
       modelUrl: 'assets/Project_2/3D Models/Segmented 3D model_ Max · Balanced 3D model.glb',
       specs: {
-        'Target Application': 'Urban Last-Mile Transit & Campus Shuttle',
-        'Wheelbase': '2,180 mm Compact Urban Stance',
-        'Accessibility': 'Zero-Step Ingress Low Floor',
-        'Architecture': 'Bi-Directional Symmetrical Cabin'
+        'System Type': 'Off-Grid LoRaWAN Mesh Device',
+        'Power Source': 'Manual Kinetic Hand-Crank Dynamo',
+        'Target Context': 'Himalayan Cloudburst / Remote Terrain',
+        'Form Factor': 'Detachable Handheld Staff Module',
+        'Interface': 'High-Contrast Emergency LCD & Tactile Alert'
       },
-      stages: {
-        ideation: {
-          title: 'Packaging Architecture & Bi-Directional Form',
-          phase: 'Phase 01: Ideation & Ergonomics',
-          image: '',
-          description: 'Engineered an inclusive, low-floor autonomous micro-mobility platform for last-mile public transit. Optimized 4-6 passenger ingress/egress, expansive panoramic safety glazing, and modular skateboard chassis integration.',
-          specs: {
-            'Target Application': 'Urban Last-Mile Transit & Campus Shuttle',
-            'Wheelbase': '2,180 mm Compact Urban Stance',
-            'Accessibility': 'Zero-Step Ingress Low Floor',
-            'Architecture': 'Bi-Directional Symmetrical Cabin'
-          }
+      sectionsTitle: 'Case Study & Architecture',
+      sectionsSubtitle: 'A low-tech physical communication system engineered for crisis silence and infrastructure collapse.',
+      sections: [
+        {
+          title: 'Ground Zero & The Communication Void',
+          phase: 'Phase 01 · Crisis Research',
+          desc: 'Triggered by the Dehradun cloudburst where collapsed bridges and severed cell towers caused panic. When centralized networks fail, rumor spreads faster than facts without trusted hyper-local alerts.',
+          image: ''
         },
-        rendering: {
-          title: 'Segmented Class-A Surfacing & CMF Strategy',
-          phase: 'Phase 02: CAD & Photorealistic CMF',
-          image: '',
-          description: 'Modeled aerodynamic unibody exterior volumes with segmented modular panels for rapid maintenance and field replacement. Applied high-contrast ceramic gloss white body panels, satin charcoal impact cladding, and aerodynamic flush disc wheels.',
-          specs: {
-            'Surface Quality': 'Class-A Curvature Continuity',
-            'Glazing': 'Smart Electrochromic Acoustic Glass',
-            'Livery Accent': 'Geometric Cyan Transit Graphic',
-            'CMF Palette': 'Ceramic White + Satin Basalt'
-          }
+        {
+          title: 'The Hardware Design Brief',
+          phase: 'Phase 02 · Engineering Constraints',
+          desc: 'Engineered for complete power and cellular grid independence using durable low-tech components, an authenticated LoRaWAN mesh network, and intuitive physical dials to eliminate cognitive panic during critical crises.',
+          image: ''
         },
-        prototyping: {
-          title: 'Segmented 3D CAD Validation & Physical Digital Twin',
-          phase: 'Phase 03: 3D Model & Scale Validation',
-          image: '',
-          description: 'Exported segmented multi-part 3D assembly for scale validation, wind tunnel boundary layer observation, and ergonomic sightline analysis in physical studio space.',
-          specs: {
-            'Model Format': 'Segmented Multi-Body GLB Assembly',
-            'Sensor Suite': '360° Flush LIDAR & Radar Pucks',
-            'Scale Model': 'Interactive 3D Digital Twin Showroom',
-            'Aero Feature': 'Flush Disc Wheel Aero Covers'
-          }
+        {
+          title: 'EBS Guardian Interface & Anatomy',
+          phase: 'Phase 03 · Physical Hardware',
+          desc: 'Adapted to Himalayan terrain within a trekking staff format featuring a detachable handheld module, manual kinetic hand-crank generator, high-contrast emergency LCD, and tactile distress alert button.',
+          image: 'assets/Project_2/Renders/Render_1.png'
         }
-      }
+      ]
     }
   ]
 };
