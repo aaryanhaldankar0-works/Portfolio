@@ -1,0 +1,371 @@
+/* ==========================================================================
+   THE VIRTUAL GARAGE - MOBILITY & VEHICLE DESIGN (MINIMAL STUDIO)
+   No neon glows, soft muted studio tones, editorial typography
+   ========================================================================== */
+
+.garage-section {
+  position: relative;
+  padding: 6rem 0 8rem;
+  z-index: 2;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.section-intro {
+  margin-bottom: 3.5rem;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-clay);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.section-description {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 680px;
+  line-height: 1.7;
+}
+
+/* Vehicle Selector Tabs (Minimal Tab Bar) */
+.garage-tabs-nav {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 2.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.garage-tab-item {
+  padding: 0.65rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border-radius: var(--radius-xs);
+  background: transparent;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  white-space: nowrap;
+}
+
+.garage-tab-item .tab-index {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+
+.garage-tab-item:hover {
+  color: var(--text-main);
+}
+
+.garage-tab-item.active {
+  color: var(--text-main);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.garage-tab-item.active .tab-index {
+  color: var(--accent-clay);
+}
+
+/* Vehicle Showcase Card & Studio View */
+.garage-showcase-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 5rem;
+}
+
+.garage-showcase-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.garage-image-wrapper {
+  position: relative;
+  background: #0d0f12;
+  border-right: 1px solid var(--border-subtle);
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.garage-display-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.garage-img-badge {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  padding: 0.3rem 0.75rem;
+  background: rgba(17, 19, 23, 0.85);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Telemetry & Spec Column */
+.garage-details-column {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--bg-card);
+}
+
+.vehicle-title-wrap {
+  margin-bottom: 2rem;
+}
+
+.vehicle-category-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-clay);
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.vehicle-name {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.4rem;
+}
+
+.vehicle-tagline {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Specs Table */
+.specs-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.spec-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.spec-value {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.spec-value.highlight-spec {
+  color: var(--accent-clay);
+}
+
+.garage-footnote {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   SCROLL-DRIVEN THOUGHT PROCESS SECTION
+   ========================================================================== */
+.thought-process-container {
+  margin-top: 2rem;
+}
+
+.process-intro-block {
+  margin-bottom: 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1.5rem;
+}
+
+.process-intro-block h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.3rem;
+}
+
+.process-intro-block p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.process-scroll-indicator {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Process Timeline List */
+.process-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.process-step-item {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  padding: 2.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast);
+}
+
+.process-step-item:hover {
+  border-color: var(--border-medium);
+}
+
+.step-number-col {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent-clay);
+  line-height: 1;
+}
+
+.step-info-col h4 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+}
+
+.step-phase-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.step-info-col p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.step-tags-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.step-tag-item {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.25rem 0.6rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  color: var(--text-secondary);
+}
+
+.step-visual-col {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: #0d0f12;
+}
+
+.step-visual-col img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.process-step-item:hover .step-visual-col img {
+  transform: scale(1.03);
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .garage-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .garage-image-wrapper {
+    min-height: 320px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  
+  .process-step-item {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.75rem;
+  }
+}
+/* Fallback Placeholders */
+.garage-img-placeholder {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.process-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: #0d0f12;
+}

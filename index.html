@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aaryan Haldankar | Mobility & Vehicle Design</title>
+  <meta name="description" content="Portfolio of Aaryan Haldankar - Mechanical Engineer pursuing a Master's in Mobility and Vehicle Design. Exploring automotive architecture, aerodynamics, and design thought process.">
+
+  <!-- Google Fonts: Space Grotesk, IBM Plex Sans, Plus Jakarta Sans, Outfit, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Three.js & Addons (Import Map) -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.164.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/intro.css">
+  <link rel="stylesheet" href="css/garage.css">
+  <link rel="stylesheet" href="css/revolving-carousel.css">
+  <link rel="stylesheet" href="css/garage-immersive.css">
+  <link rel="stylesheet" href="css/workshop-immersive.css">
+</head>
+<body>
+
+  <!-- Subtle Ambient Wind Tunnel Airflow Background -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- =========================================================================
+       MINIMAL TOP-RIGHT NAVIGATION HEADER
+       ========================================================================= -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <div class="brand-area">
+        <a href="#hero" class="brand-name">Aaryan Haldankar</a>
+        <span class="brand-subtitle">Mobility & Vehicle Design</span>
+      </div>
+
+      <div class="nav-right-cluster">
+        <nav aria-label="Primary Navigation">
+          <ul class="nav-links">
+            <li><a href="#featured" class="nav-link">Featured</a></li>
+            <li><a href="#immersive-garage" class="nav-link">Virtual Garage</a></li>
+            <li><a href="#immersive-workshop" class="nav-link">Workshop Showcase</a></li>
+            <li><a href="#connect" class="nav-link">Connect</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle Studio Light/Dark Theme" aria-label="Toggle Theme">
+            <svg id="theme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- =======================================================================
+         HERO SECTION: INTRO WITH MICRO-ANIMATIONS & EDITORIAL TELEMETRY
+         ======================================================================= -->
+    <section class="hero-section intro-enhanced" id="hero">
+      <div class="intro-wrap">
+
+        <!-- Topbar Meta -->
+        <div class="intro-topbar">
+          <span class="intro-topbar-mark">A. Haldankar</span>
+          <span class="intro-topbar-tag">Mobility &middot; Vehicle Design &middot; M.Des</span>
+        </div>
+
+        <div class="intro-grid">
+          <!-- Left Column: Editorial & Interactive Chips -->
+          <div class="intro-col-text">
+            <h1 class="intro-headline">Aaryan<br><span class="intro-accent">Haldankar</span></h1>
+            <p class="intro-tagline">I design mobility. Occasionally it even moves.</p>
+            <p class="intro-bio">Mobility and vehicle designer, and professional bridge between "that'll never work" and a finished product. I sit between feasibility and emotion &mdash; technical enough to know what's possible, human enough to care whether anyone actually likes it.</p>
+
+            <div class="intro-chips-wrapper">
+              <div class="intro-chips" id="introChipGroup">
+                <button class="intro-chip" data-key="design">Design</button>
+                <button class="intro-chip" data-key="engineering">Engineering</button>
+                <button class="intro-chip" data-key="systems">Systems</button>
+                <button class="intro-chip" data-key="human">Human Experience</button>
+              </div>
+              <p class="intro-chip-detail" id="introChipDetail">
+                <span class="show" data-key="_default">Tap one &mdash; I promise it's more interesting than a bullet list.</span>
+                <span data-key="design">The part where I sketch things that don't exist yet and convince people they should.</span>
+                <span data-key="engineering">The part where I find out why they actually don't exist yet, and fix that.</span>
+                <span data-key="systems">Zooming out until one part's problem turns into everyone's problem &mdash; on purpose.</span>
+                <span data-key="human">Asking "would a real person want to sit in this" before anyone else does.</span>
+              </p>
+            </div>
+
+            <!-- Quick Navigation Pills to Main Sections -->
+            <div class="intro-nav-pills">
+              <a href="#featured" class="intro-nav-pill">
+                <span class="pill-num">01</span>
+                <span>Featured Projects</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="#immersive-garage" class="intro-nav-pill">
+                <span class="pill-num">02</span>
+                <span>Virtual Garage</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="#immersive-workshop" class="intro-nav-pill">
+                <span class="pill-num">03</span>
+                <span>Workshop Showcase</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="#connect" class="intro-nav-pill">
+                <span class="pill-num">04</span>
+                <span>Connect</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive 3D Perspective Photo & Facts Grid -->
+          <div class="intro-col-photo">
+            <div class="photo-frame" id="introPhotoFrame" title="Aaryan Haldankar &mdash; Hover to tilt">
+              <img src="assets/Intro/aaryan-haldankar.jpg" alt="Aaryan Haldankar - Mobility & Vehicle Designer">
+              <div class="photo-glow"></div>
+              <div class="photo-reticle-tl"></div>
+              <div class="photo-reticle-br"></div>
+            </div>
+
+            <div class="facts-grid">
+              <div class="fact-card">
+                <p class="fact-k">Role</p>
+                <p class="fact-v">Mobility &amp; vehicle designer</p>
+              </div>
+              <div class="fact-card">
+                <p class="fact-k">Based</p>
+                <p class="fact-v">Mumbai, India</p>
+              </div>
+              <div class="fact-card">
+                <p class="fact-k">Focus</p>
+                <p class="fact-v">Products, systems, people</p>
+              </div>
+              <div class="fact-card">
+                <p class="fact-k">Status</p>
+                <p class="fact-v"><span class="status-pulse-dot"></span>Accepting problems</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Intro Footer strip -->
+        <div class="intro-footer">
+          <span class="intro-footer-motto">Design &middot; Engineering &middot; A healthy disregard for "that's how it's always done"</span>
+          <a href="#featured" class="intro-footer-scroll">
+            <span>Scroll to explore projects</span>
+            <span class="arrow">&darr;</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+    <!-- =======================================================================
+         FEATURED PROJECTS: REVOLVING 3D CAROUSEL
+         ======================================================================= -->
+    <section id="featured" class="garage-section">
+      <div class="container">
+        <div class="section-intro">
+          <div class="section-label">01 / FEATURED PROJECTS</div>
+
+          <h2 class="section-heading">
+            Selected Works
+          </h2>
+
+          <p class="section-description">
+            A selection of mobility concepts and physical systems. Scroll or drag to browse.
+          </p>
+        </div>
+      </div>
+
+      <!-- Revolving Carousel Viewport -->
+      <div class="carousel-viewport" id="carousel-viewport">
+        
+        <!-- Navigation Arrows -->
+        <button class="carousel-arrow carousel-arrow--prev" id="carousel-prev" aria-label="Previous project">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="carousel-arrow carousel-arrow--next" id="carousel-next" aria-label="Next project">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+
+        <!-- 3D Carousel Scene -->
+        <div class="carousel-scene" id="carousel-scene">
+          <div class="carousel-drum" id="carousel-drum">
+            <!-- Cards injected by JS -->
+          </div>
+        </div>
+
+        <!-- Scroll / Drag Hint -->
+        <div class="carousel-hint" id="carousel-hint">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span>Scroll or drag to browse</span>
+        </div>
+
+        <!-- Carousel Dot Indicators -->
+        <div class="carousel-dots" id="carousel-dots"></div>
+      </div>
+
+      <!-- Expanded Project Details Panel (Toggleable below carousel) -->
+      <div class="container">
+        <div class="carousel-toggle-wrap" id="carousel-toggle-wrap">
+          <button class="carousel-toggle-btn" id="carousel-toggle-btn" aria-expanded="false" aria-controls="carousel-detail-panel">
+            <span class="carousel-toggle-btn__indicator"></span>
+            <span class="carousel-toggle-btn__text" id="carousel-toggle-btn-text">View Project Details</span>
+            <span class="carousel-toggle-btn__action">
+              <span class="toggle-action-label" id="carousel-toggle-action-label">Expand</span>
+              <svg class="toggle-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+
+        <div class="carousel-detail-panel" id="carousel-detail-panel">
+          <!-- Dynamically populated when user clicks toggle -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         IMMERSIVE VIRTUAL GARAGE (Desktop) – 3D Showroom
+         ======================================================================= -->
+    <section class="immersive-garage" id="immersive-garage">
+      <div class="immersive-container">
+        <!-- Add a Section Intro for the Immersive Garage to match the rest of the layout -->
+        <div class="container" style="position: absolute; top: 0; left: 0; width: 100%; z-index: 10; pointer-events: none;">
+          <div class="workshop-section-intro" style="padding-top: 4rem;">
+            <div class="section-label" style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">02 / VIRTUAL GARAGE</div>
+            <h2 class="section-heading" style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">Interactive 3D Showroom</h2>
+          </div>
+        </div>
+        <canvas id="immersive-canvas"></canvas>
+        <!-- Info panel slides in when a vehicle is selected -->
+        <div class="info-panel" id="vehicle-info-panel"></div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         THE WORKSHOP: INDUSTRIAL DESIGN & PHYSICAL HARDWARE SHOWCASE
+         Scandinavian Ash Wood Slat Wall & Concrete Plinths with Dedicated Spotlights
+         ======================================================================= -->
+    <section class="immersive-workshop-section" id="immersive-workshop">
+      <div class="container">
+        <div class="workshop-section-intro">
+          <div class="section-label">03 / THE WORKSHOP</div>
+          <h2 class="section-heading">Industrial Design & Hardware Systems</h2>
+          <p class="section-description">
+            Physical hardware products, ergonomic tool systems and computational devices showcased on architectural concrete plinths along a Scandinavian Ash timber acoustic wall. Click any product to inspect CMF details and design process stages.
+          </p>
+        </div>
+
+        <div class="workshop-3d-wrapper">
+          <canvas id="workshop-canvas"></canvas>
+          <div class="product-info-panel" id="product-info-panel"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       CONNECT WITH ME SECTION
+       ========================================================================= -->
+  <section class="connect-section" id="connect">
+    <div class="container">
+      <div class="connect-inner">
+        <div class="connect-meta">04 / CONNECT WITH ME</div>
+        <h2 class="connect-heading">Let's Build Something Together</h2>
+        <p class="connect-sub">Open to collaborations, internships, and conversations around mobility, vehicle design, and automotive engineering.</p>
+
+        <div class="connect-links-row">
+          <a href="mailto:aaryanhaldankar@gmail.com" class="connect-btn" id="connect-email-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+            <span>Send an Email</span>
+          </a>
+          <a href="https://linkedin.com/in/aaryanhaldankar" target="_blank" rel="noopener" class="connect-btn" id="connect-linkedin-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       MINIMAL FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <strong>Aaryan Haldankar</strong>
+        <span class="footer-sep">&mdash;</span>
+        <span>Mobility &amp; Vehicle Design</span>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:aaryanhaldankar@gmail.com" class="footer-link">Email</a>
+        <a href="https://linkedin.com/in/aaryanhaldankar" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+        <a href="#hero" class="footer-link">&uarr; Top</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js?v=4"></script>
+  <script src="js/canvas-effects.js"></script>
+  <script src="js/intro.js?v=3"></script>
+  <script src="js/garage.js"></script>
+  <script src="js/revolving-carousel.js"></script>
+  <script type="module" src="js/immersive-garage.js?v=5"></script>
+  <script type="module" src="js/immersive-workshop.js?v=5"></script>
+  <script src="js/app.js?v=4"></script>
+</body>
+</html>
