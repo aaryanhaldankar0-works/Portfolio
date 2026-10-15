@@ -1,41 +1,83 @@
 /* ==========================================================================
-   AARYAN HALDANKAR - MINIMAL STUDIO DESIGN SYSTEM
-   Soft, understated palette with refined automotive studio aesthetic (No neon glows)
+   AARYAN HALDANKAR — THEME TOKENS V2
+   Mist (light) + Dusk (dark). Teal leads, Clay sparks.
    ========================================================================== */
 
+:root, [data-theme="light"], body.light-theme {
+  --bg: #EAEAE6;
+  --surface: #F4F3F0;
+  --raised: #D3D2CB;
+  --line: #D3D2CB;
+  --text: #1E1E1C;   /* 13.3:1 */
+  --muted: #6E6D68;  /* 5.2:1 */
+
+  /* Yellow = active chip & primary spark from intro-section */
+  --accent: #F0BE2C;
+  --accent-ink: #1E1E1C;
+  --accent-text: #1E1E1C;
+
+  --spark: #E8907E;
+  --spark-text: #A33F2E;
+
+  --body-weight: 400;
+  --img-dim: 1;
+
+  /* Aliases for studio palette compatibility */
+  --bg-primary: var(--bg);
+  --bg-secondary: var(--surface);
+  --bg-tertiary: var(--raised);
+  --bg-surface: var(--surface);
+  --bg-card: var(--surface);
+  --border-subtle: var(--line);
+  --border-medium: var(--line);
+  --border-hover: var(--muted);
+  --text-main: var(--text);
+  --text-secondary: var(--muted);
+  --text-muted: var(--muted);
+  --text-faint: var(--muted);
+  --accent-clay: var(--accent);
+  --accent-clay-subtle: rgba(240, 190, 44, 0.16);
+}
+
+[data-theme="dark"] {
+  --bg: #191917;
+  --surface: #232320;
+  --raised: #3A3A36;
+  --line: #3A3A36;
+  --text: #EDEDE8;   /* 13.7:1 */
+  --muted: #A2A199;  /* 7.0:1 */
+  --accent: #F0BE2C;
+  --accent-ink: #1E1E1C;
+  --accent-text: #F0BE2C;
+  --spark: #E8907E;
+  --spark-text: #E8907E;
+
+  --body-weight: 300;
+  --img-dim: 0.9;
+
+  /* Aliases for studio palette compatibility */
+  --bg-primary: var(--bg);
+  --bg-secondary: var(--surface);
+  --bg-tertiary: var(--raised);
+  --bg-surface: var(--surface);
+  --bg-card: var(--surface);
+  --border-subtle: var(--line);
+  --border-medium: var(--line);
+  --border-hover: var(--muted);
+  --text-main: var(--text);
+  --text-secondary: var(--muted);
+  --text-muted: var(--muted);
+  --text-faint: var(--muted);
+  --accent-clay: var(--accent);
+  --accent-clay-subtle: rgba(240, 190, 44, 0.16);
+}
+
+/* Typography & Layout Tokens */
 :root {
-  /* Soft, Quiet Studio Palette */
-  --bg-primary: #111317;
-  --bg-secondary: #17191f;
-  --bg-tertiary: #1f222a;
-  --bg-surface: #262a34;
-  --bg-card: rgba(23, 25, 31, 0.85);
-  
-  /* Subtle, Quiet Borders */
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-medium: rgba(255, 255, 255, 0.14);
-  --border-hover: rgba(255, 255, 255, 0.28);
-  
-  /* Text Hierarchy - Soft on the eyes */
-  --text-main: #f3f4f6;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
-  --text-faint: #4b5563;
-  
-  /* Project-Aligned Soft Accent Tones (Matte, Understated, No Neon) */
-  --accent-soft-slate: #cbd5e1;
-  --accent-clay: #d97757;
-  --accent-clay-subtle: rgba(217, 119, 87, 0.12);
-  --accent-warm-brass: #c59b6d;
-  --accent-warm-brass-subtle: rgba(197, 155, 109, 0.12);
-  --accent-sage: #7da288;
-  --accent-sage-subtle: rgba(125, 162, 136, 0.12);
-  
-  /* Fonts */
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  
+
   /* Layout */
   --radius-xs: 4px;
   --radius-sm: 8px;
@@ -46,21 +88,7 @@
   --max-width: 1240px;
 }
 
-/* Light Theme (Soft Muted Stone/Chalk Mode) */
-body.light-theme {
-  --bg-primary: #f5f5f3;
-  --bg-secondary: #eaeae6;
-  --bg-tertiary: #dfdfd9;
-  --bg-surface: #d4d4cc;
-  --bg-card: rgba(255, 255, 255, 0.9);
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --border-medium: rgba(0, 0, 0, 0.16);
-  --border-hover: rgba(0, 0, 0, 0.35);
-  --text-main: #18191c;
-  --text-secondary: #575b66;
-  --text-muted: #8b909d;
-  --text-faint: #b4b8c2;
-}
+
 
 /* Reset */
 *, *::before, *::after {
@@ -131,12 +159,16 @@ img {
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 1.5rem 0;
-  background: rgba(17, 19, 23, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  padding: 1.15rem 0;
+  background: rgba(234, 234, 230, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-subtle);
   transition: var(--transition-smooth);
+}
+
+[data-theme="dark"] .site-header {
+  background: rgba(25, 25, 23, 0.92);
 }
 
 .nav-container {
@@ -152,18 +184,19 @@ img {
 }
 
 .brand-name {
-  font-family: var(--font-display);
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   color: var(--text-main);
 }
 
 .brand-subtitle {
-  font-size: 0.8rem;
+  font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+  font-size: 0.82rem;
   color: var(--text-muted);
   font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .nav-right-cluster {
@@ -180,7 +213,8 @@ img {
 }
 
 .nav-link {
-  font-size: 0.88rem;
+  font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+  font-size: 0.86rem;
   font-weight: 500;
   color: var(--text-secondary);
   transition: color var(--transition-fast);
@@ -199,7 +233,7 @@ img {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: var(--accent-clay);
+  background-color: var(--accent);
   border-radius: 2px;
 }
 
@@ -210,16 +244,24 @@ img {
 }
 
 .theme-toggle-btn {
-  width: 34px;
-  height: 34px;
-  border-radius: var(--radius-sm);
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
+  font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+  font-size: 0.75rem;
   color: var(--text-secondary);
-  background: var(--bg-secondary);
+  background: transparent;
   border: 1px solid var(--border-subtle);
   transition: var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--text-main);
+  color: var(--text-main);
 }
 
 .theme-toggle-btn:hover {
@@ -479,69 +521,105 @@ img {
 }
 
 /* ==========================================================================
-   CONNECT WITH ME SECTION
+   SPACE 05 · THE EXIT — STUDIO DEPARTURE & DIALOGUE
    ========================================================================== */
-.connect-section {
+.exit-spatial-section {
   position: relative;
   z-index: 2;
-  padding: 7rem 0;
+  padding: clamp(5rem, 8vw, 8rem) 0 clamp(4rem, 6vw, 6rem);
   border-top: 1px solid var(--border-subtle);
+  background: var(--bg-primary);
 }
 
-.connect-inner {
-  max-width: 600px;
+.exit-spatial-inner {
+  max-width: 720px;
 }
 
-.connect-meta {
+.exit-spatial-kicker {
+  display: block;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: var(--text-faint);
-  letter-spacing: 0.12em;
+  color: var(--accent-clay, #d97757);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
-.connect-heading {
+.exit-spatial-heading {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
   color: var(--text-main);
-  margin-bottom: 1rem;
+  line-height: 1.18;
+  margin-bottom: 1.25rem;
+  max-width: 20ch;
 }
 
-.connect-sub {
-  font-size: 1rem;
+.exit-spatial-sub {
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--text-secondary);
-  line-height: 1.75;
-  margin-bottom: 2.5rem;
-  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+  max-width: 52ch;
 }
 
-.connect-links-row {
+.exit-dialogue-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+}
+
+.exit-dialogue-link {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.exit-dialogue-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--border-medium);
+  transform: translateY(-2px);
+}
+
+.exit-link-meta {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.exit-link-value {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-main);
+  letter-spacing: 0.02em;
+}
+
+.exit-studio-colophon {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 2rem;
   flex-wrap: wrap;
 }
 
-.connect-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.75rem 1.4rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  border: 1px solid var(--border-medium);
-  border-radius: var(--radius-sm);
-  color: var(--text-main);
-  background: transparent;
-  transition: var(--transition-fast);
-}
-
-.connect-btn:hover {
-  background: var(--text-main);
-  color: var(--bg-primary);
-  border-color: var(--text-main);
+.colophon-divider {
+  color: rgba(255, 255, 255, 0.2);
 }
 
 /* ==========================================================================

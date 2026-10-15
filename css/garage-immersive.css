@@ -1,28 +1,71 @@
 /* ===========================================================================
-   THE IMMERSIVE VIRTUAL GARAGE - STYLING
+   SPACE 04 · THE GARAGE — ARCHITECTURAL STYLING
+   A calm Japanese concrete & timber sanctuary. Sunday morning daylight.
    =========================================================================== */
 
 /* Section wrapper */
 .immersive-garage {
   position: relative;
   width: 100%;
-  padding: 5rem 0 3rem;
-  background: #0f1115;
+  padding: clamp(3rem, 4.5vw, 4.5rem) 0 clamp(2.5rem, 4vw, 3.5rem);
+  background: var(--bg-surface, #0f1115);
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.garage-arch-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 3vw, 3rem);
+}
+
+/* Calm Architectural Space Header */
+.garage-spatial-header {
+  margin-bottom: clamp(1.5rem, 2.5vw, 2.2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.garage-spatial-kicker {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-clay, #d97757);
+}
+
+.garage-spatial-title {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(1.85rem, 3.2vw, 2.8rem);
+  font-weight: 400;
+  color: var(--text-main, #f8fafc);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+  max-width: 24ch;
+}
+
+.garage-spatial-note {
+  font-family: var(--font-sans, sans-serif);
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  color: var(--text-muted, #94a3b8);
+  margin: 0;
+  line-height: 1.55;
+  max-width: 60ch;
+}
+
+/* The Architectural Room Canvas Container */
 .immersive-container {
   position: relative;
   width: 100%;
-  height: 78vh;
-  min-height: 520px;
-  max-height: 850px;
-  border-radius: 16px;
+  height: clamp(480px, 68vh, 760px);
+  border-radius: 0 !important; /* Razor-sharp architectural perimeter */
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  background: #bdb8ae; /* Matches the honed concrete floor */
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: none !important;
   touch-action: pan-y;
 }
 
@@ -32,358 +75,257 @@
   display: block;
 }
 
-
-/* Info panel that slides in from the right */
-.info-panel {
+/* Quiet Architectural Datum at Base of Canvas */
+.garage-spatial-datum {
   position: absolute;
-  top: 0;
-  right: -420px; /* hidden off‑screen */
-  width: 380px;
-  max-width: 92%;
-  height: 100%;
-  background: rgba(14, 17, 23, 0.78);
-  color: #e5e7eb;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-left: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 2rem 1.75rem;
-  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
-  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow-y: auto;
-  z-index: 20;
+  bottom: 1.75rem;
+  left: 2rem;
+  right: 2rem;
   display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.info-panel.visible {
-  right: 0;
-}
-
-/* Minimal Translucent UI Typography & Cards */
-.minimal-panel-tag {
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 0.68rem;
-  color: var(--accent-clay, #d97757);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 0.35rem;
-}
-
-.minimal-panel-title {
-  font-family: var(--font-display, 'Outfit', sans-serif);
-  font-size: 1.55rem;
-  font-weight: 700;
-  color: #f9fafb;
-  margin: 0 0 0.35rem;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-}
-
-.minimal-panel-sub {
-  color: #9ca3af;
-  font-size: 0.84rem;
-  margin: 0;
-  line-height: 1.5;
-}
-
-.minimal-specs-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.minimal-spec-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 10px;
-  padding: 0.95rem 1.1rem;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: all 0.25s ease;
-}
-
-.minimal-spec-card:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.18);
-  transform: translateY(-1px);
-}
-
-.minimal-spec-key {
-  display: block;
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: #9ca3af;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 0.25rem;
-}
-
-.minimal-spec-val {
-  display: block;
-  font-family: var(--font-display, 'Outfit', sans-serif);
-  font-size: 0.96rem;
-  font-weight: 600;
-  color: #f3f4f6;
-  line-height: 1.35;
-}
-
-.minimal-spec-sub {
-  display: block;
-  font-size: 0.78rem;
-  color: #9ca3af;
-  margin-top: 0.25rem;
-  line-height: 1.4;
-}
-
-/* In-Detail Research PDF Button */
-.btn-pdf-case-study {
-  display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+  flex-wrap: wrap;
   gap: 0.75rem;
-  padding: 0.95rem 1.25rem;
-  background: linear-gradient(135deg, rgba(217, 119, 87, 0.28) 0%, rgba(217, 119, 87, 0.12) 100%);
-  border: 1px solid rgba(217, 119, 87, 0.45);
-  border-radius: 10px;
-  color: #ffffff;
-  text-decoration: none;
-  font-family: var(--font-display, 'Outfit', sans-serif);
-  font-size: 0.88rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 20px rgba(217, 119, 87, 0.15);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  margin-top: 0.25rem;
 }
 
-.btn-pdf-case-study:hover {
-  background: linear-gradient(135deg, rgba(217, 119, 87, 0.45) 0%, rgba(217, 119, 87, 0.25) 100%);
-  border-color: rgba(217, 119, 87, 0.8);
-  box-shadow: 0 6px 25px rgba(217, 119, 87, 0.35);
-  transform: translateY(-2px);
-  color: #ffffff;
-}
-
-.btn-pdf-case-study svg {
-  flex-shrink: 0;
-}
-
-.minimal-panel-status {
+.datum-coords {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.65rem;
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
   font-size: 0.72rem;
-  color: #9ca3af;
-  margin-top: auto;
-  padding-top: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-.status-pulse-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 8px #10b981;
-  animation: pulseStatus 2s infinite ease-in-out;
+.datum-tag {
+  color: var(--accent-clay, #d97757);
 }
 
-@keyframes pulseStatus {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
+.datum-sep {
+  color: rgba(255, 255, 255, 0.25);
 }
 
-/* Mobile tweaks – keep canvas responsive */
+.datum-vehicle {
+  color: #1a1c20;
+  font-weight: 500;
+}
+
+.datum-scale {
+  color: rgba(26, 28, 32, 0.6);
+}
+
+.datum-hint {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(26, 28, 32, 0.5);
+}
+
 @media (max-width: 768px) {
-  .immersive-garage {
-    min-height: 55vh;
-    height: 60vh;
+  .immersive-container {
+    height: 65vh;
+    min-height: 440px;
+  }
+
+  .garage-spatial-datum {
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .garage-proximity-plate {
+    top: 1rem;
+    right: 1rem;
   }
 }
 
-/* 3D Showroom HUD Status & Interaction Badge */
-.garage-3d-status {
+/* ==========================================================================
+   PROXIMITY INSPECTION PLATE — APPEARS ONLY AFTER APPROACHING OBJECT
+   ========================================================================== */
+.garage-proximity-plate {
   position: absolute;
-  top: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 1.75rem;
+  right: 2rem;
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: rgba(18, 21, 26, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 0.55rem 1.35rem;
-  border-radius: 999px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
-  color: #f3f4f6;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.22);
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(-8px);
   pointer-events: none;
-  z-index: 15;
-  transition: opacity 0.6s ease, transform 0.4s ease;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.garage-3d-status .status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #d97757;
-  box-shadow: 0 0 10px #d97757;
-  animation: pulse-dot 1.8s infinite;
+.garage-proximity-plate.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
-@keyframes pulse-dot {
-  0%, 100% { opacity: 0.4; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-
-.garage-controls-hint {
-  position: absolute;
-  bottom: 4.8rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  color: #c9d1d9;
-  background: rgba(18, 21, 26, 0.82);
-  padding: 0.35rem 1.1rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+.garage-proximity-plate.is-panned {
+  opacity: 0.15 !important;
   pointer-events: none;
-  z-index: 5;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
+  transition: opacity 0.3s ease;
 }
 
-/* 360 Interactive HUD Controls Bar */
-.garage-360-bar {
-  position: absolute;
-  bottom: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%);
+.proximity-kicker {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(26, 28, 32, 0.55);
+}
+
+.proximity-actions {
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  background: rgba(15, 18, 23, 0.9);
-  padding: 0.4rem 0.6rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  z-index: 10;
-  max-width: 95%;
-  overflow-x: auto;
+  background: rgba(26, 28, 32, 0.06);
+  padding: 0.25rem;
+  border: 1px solid rgba(26, 28, 32, 0.12);
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
-.garage-hud-btn {
+.proximity-btn {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1a1c20;
   background: transparent;
   border: none;
-  color: #9ca3af;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 0.4rem 0.85rem;
-  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
   cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.proximity-btn:hover {
+  background: rgba(26, 28, 32, 0.08);
+}
+
+.proximity-btn.active {
+  background: #1a1c20;
+  color: #f8fafc;
+}
+
+.proximity-btn.cmf-active {
+  border-bottom: 2px solid var(--accent-clay, #d97757);
+}
+
+/* ==========================================================================
+   PROMENADE COLONNADE NAVIGATION DATUM & 10-YEAR EXPANDABLE LEDGER
+   ========================================================================== */
+.colonnade-datum {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.promenade-colonnade-nav {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  white-space: nowrap;
-  letter-spacing: 0.03em;
 }
 
-.garage-hud-btn:hover {
-  color: #f3f4f6;
-  background: rgba(255, 255, 255, 0.08);
+.promenade-walk-btn {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a1c20;
+  background: rgba(26, 28, 32, 0.06);
+  border: 1px solid rgba(26, 28, 32, 0.15);
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.3s ease;
 }
 
-.garage-hud-btn.active {
-  color: #ffffff;
-  background: #d97757;
-  box-shadow: 0 0 16px rgba(217, 119, 87, 0.45);
+.promenade-walk-btn:hover {
+  background: #1a1c20;
+  color: #f8fafc;
+  border-color: #1a1c20;
 }
 
-.garage-hud-btn:active {
-  transform: scale(0.96);
+.promenade-walk-edge {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(26, 28, 32, 0.35);
 }
 
-.hud-separator {
-  width: 1px;
-  height: 14px;
-  background: rgba(255, 255, 255, 0.15);
-  margin: 0 0.15rem;
+/* Colonnade Bay Ledger Register (Spanning 2 to 20 bays) */
+.colonnade-ledger {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(26, 28, 32, 0.05);
+  padding: 0.2rem 0.4rem;
+  border: 1px solid rgba(26, 28, 32, 0.1);
+  pointer-events: auto;
 }
 
-.hud-icon {
-  font-size: 0.95rem;
-  line-height: 1;
+.colonnade-ledger-label {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(26, 28, 32, 0.45);
+  padding: 0 0.4rem;
 }
 
-@media (max-width: 640px) {
-  .immersive-container {
-    min-height: 480px;
-    height: 60vh;
-  }
-
-  .info-panel {
-    width: 100% !important;
-    max-width: 100% !important;
-    right: -100% !important;
-    padding: 1.5rem 1.25rem 2.5rem !important;
-    border-left: none !important;
-  }
-
-  .info-panel.visible {
-    right: 0 !important;
-  }
-
-  .garage-3d-status {
-    top: 0.85rem;
-    padding: 0.35rem 0.85rem;
-    font-size: 0.7rem;
-    gap: 0.5rem;
-    max-width: 90%;
-  }
-
-  .garage-controls-hint {
-    display: none;
-  }
-
-  .garage-360-bar {
-    bottom: 0.65rem;
-    padding: 0.3rem 0.4rem;
-    gap: 0.2rem;
-    max-width: 95%;
-  }
-
-  .garage-hud-btn {
-    padding: 0.32rem 0.55rem;
-    font-size: 0.68rem;
-  }
-
-  .minimal-panel-title {
-    font-size: 1.35rem;
-  }
-
-  .btn-pdf-case-study {
-    padding: 0.8rem 1rem;
-    font-size: 0.82rem;
-  }
+.colonnade-bay-pill {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.66rem;
+  font-weight: 500;
+  padding: 0.25rem 0.55rem;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #1a1c20;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
+.colonnade-bay-pill:hover {
+  background: rgba(26, 28, 32, 0.08);
+  border-color: rgba(26, 28, 32, 0.2);
+}
+
+.colonnade-bay-pill.active {
+  background: #1a1c20;
+  color: #f8fafc;
+  border-color: #1a1c20;
+}
+
+.colonnade-bay-pill.future-expansion {
+  opacity: 0.35;
+  cursor: default;
+  border: 1px dashed rgba(26, 28, 32, 0.2);
+}
+
+.colonnade-bay-pill.future-expansion:hover {
+  background: transparent;
+  border-color: rgba(26, 28, 32, 0.2);
+}
+
+/* Promenade Keyboard Interaction Hint */
+.promenade-walk-hint {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(26, 28, 32, 0.4);
+  margin-top: 0.3rem;
+}
 
 

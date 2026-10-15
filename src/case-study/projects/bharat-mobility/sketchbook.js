@@ -1,0 +1,187 @@
+/**
+ * BHARAT MOBILITY POD — Sketchbook (Workshop · Zone 02)
+ * ---------------------------------------------------------------------------
+ * Authentic transportation design ideation archive.
+ * Displays genuine hand and digital sketches alongside intentional
+ * reserved drafting pages for upcoming packaging, perspective, orthographic,
+ * and marker rendering studies.
+ *
+ * HOW TO ADD MORE SKETCHES:
+ *  - To add a new sketch: append an object to `pages`.
+ *  - To complete a reserved page: add `src: 'assets/...'` to replace the drafting grid.
+ *  - The layout and page numbering adapt automatically.
+ */
+
+const sketchbookData = {
+  intro:
+    'Every vehicle begins as an argument between line and package. These are the authentic ideation sheets from the design process — raw ink, marker studies, and intentional drafting pages reserved for ongoing studies.',
+
+  categories: [
+    'All Pages',
+    'Current Sketches',
+    'Package Studies',
+    'Perspective Studies',
+    'Orthographic Studies',
+    'Marker Renderings',
+    'Future Sketches',
+  ],
+
+  pages: [
+    {
+      id: 'page-01',
+      pageNumber: '01',
+      title: 'Canopy Arch & Ingress Gesture',
+      category: 'Perspective Studies',
+      medium: 'Pen & Marker on Bond Paper',
+      date: 'March 2026',
+      isReserved: false,
+      src: 'assets/Project_1/Sketches/WhatsApp Image 2026-03-06 at 9.47.42 AM.jpeg',
+      alt: 'Early pen sketch exploring canopy archway and low-step ingress geometry',
+      note: 'Early ink study testing an open arched ingress threshold. Evaluating whether passengers carrying luggage can board without ducking under a conventional roof cant rail.',
+      tags: ['Ingress', 'Canopy Arch', 'Gestural'],
+    },
+    {
+      id: 'page-02',
+      pageNumber: '02',
+      title: 'Cabin Silhouette & Beltline Rhythm',
+      category: 'Orthographic Studies',
+      medium: 'Ballpoint & Graphite',
+      date: 'March 2026',
+      isReserved: false,
+      src: 'assets/Project_1/Sketches/WhatsApp Image 2026-03-06 at 9.56.21 AM.jpeg',
+      alt: 'Hand sketch exploring side profile and beltline proportions',
+      note: 'Side profile study defining the character shoulder line and high-visibility daylight opening. Balancing compact overall length with forward-facing legroom.',
+      tags: ['Silhouette', 'Beltline', 'Proportions'],
+    },
+    {
+      id: 'page-03',
+      pageNumber: '03',
+      title: 'Front Fascia & Lighting Identity',
+      category: 'Perspective Studies',
+      medium: 'Ink Pen & Felt Tip',
+      date: 'April 2026',
+      isReserved: false,
+      src: 'assets/Project_1/Sketches/WhatsApp Image 2026-04-09 at 4.39.46 PM.jpeg',
+      alt: 'Hand sketch exploring front fascia and lighting',
+      note: 'Exploring a calm, non-aggressive face for public transit. Testing continuous horizontal DRL light bands with recessed protective headlamp pods.',
+      tags: ['Front Fascia', 'Lighting', 'Civic Identity'],
+    },
+    {
+      id: 'page-04',
+      pageNumber: '04',
+      title: 'Step-in Proportions & Door Opening',
+      category: 'Package Studies',
+      medium: 'Drafting Pencil & Ink',
+      date: 'April 2026',
+      isReserved: false,
+      src: 'assets/Project_1/Sketches/WhatsApp Image 2026-04-15 at 9.58.58 AM.jpeg',
+      alt: 'Hand sketch studying entry threshold and door geometry',
+      note: 'Investigating door aperture geometry against curb clearance. Analyzing how an ultra-low floor (<320 mm) impacts side sill stiffness and door seal durability.',
+      tags: ['Door Opening', 'Threshold', 'Accessibility'],
+    },
+    {
+      id: 'page-05',
+      pageNumber: '05',
+      title: 'Door Structure & 3/4 Stance',
+      category: 'Perspective Studies',
+      medium: 'Ink on Vellum',
+      date: 'April 2026',
+      isReserved: false,
+      src: 'assets/Project_1/Sketches/WhatsApp Image 2026-04-15 at 10.37.30 AM.jpeg',
+      alt: 'Hand sketch studying door mechanics and quarter view',
+      note: 'Perspective exploration of bi-parting slider tracks integrated into the body beltline, maintaining the vehicle track width during crowded roadside pickup.',
+      tags: ['3/4 Stance', 'Slider Mechanism', 'Structure'],
+    },
+    {
+      id: 'page-06',
+      pageNumber: '06',
+      title: 'Aisle Flow & Seating Layout Concept',
+      category: 'Package Studies',
+      medium: 'Marker & Fine Liner',
+      date: 'May 2026',
+      isReserved: false,
+      src: 'assets/Project_1/Sketches/WhatsApp Image 2026-05-13 at 12.21.03 AM.jpeg',
+      alt: 'Sketch concept of interior circulation and seating',
+      note: 'Early layout explorations tracking boarding speed and standee movement. Comparing forward-facing staggered tiers against perimeter bench seating.',
+      tags: ['Interior Layout', 'Circulation', 'Packaging'],
+    },
+    {
+      id: 'page-07',
+      pageNumber: '07',
+      title: 'Volumetric Massing & Ingress Sheet',
+      category: 'Perspective Studies',
+      medium: 'Multi-view Ideation Sheet',
+      date: 'April 2026',
+      isReserved: false,
+      src: 'assets/Project_1/Sketches/WhatsApp Image 2026-04-06 at 4.12.39 PM.jpeg',
+      alt: 'Concept sketch sheet of pod proportions and stance',
+      note: 'Comprehensive ideation sheet testing ground clearance, bumper chamfers, wheel arch stances, and roofline transition curves.',
+      tags: ['Massing', 'Ground Clearance', 'Ideation'],
+    },
+    {
+      id: 'page-08',
+      pageNumber: '08',
+      title: 'Digital Surface & Volume Blockout',
+      category: 'Marker Renderings',
+      medium: 'Digital Tablet Sketch',
+      date: 'May 2026',
+      isReserved: false,
+      src: 'assets/Project_1/Sketches/digi -1.png',
+      alt: 'Digital sketch studying volumetric proportions and highlights',
+      note: 'Transition from paper to digital sketching. Exploring surface highlight roll, A-pillar tumblehome, and protective lower cladding volume.',
+      tags: ['Digital Sketch', 'Surfacing', 'Volumes'],
+    },
+
+    /* ---- Intentional Future Studies (Reserved Drafting Sheets) ---- */
+    {
+      id: 'page-09',
+      pageNumber: '09',
+      title: 'Seating Ergonomics & Manikin Clearance',
+      category: 'Package Studies',
+      medium: '2D Ergonomic Package Overlay',
+      date: 'Ongoing Study',
+      isReserved: true,
+      spec: '50th %ile Female & 95th %ile Male SAE Manikins · 1,300 mm Walkway',
+      note: 'Reserved study sheet: 2D ergonomic packaging overlay verifying knee clearance, head toss room, and unassisted step-in threshold against Indian commuter percentiles.',
+      tags: ['Ergonomics', 'SAE Manikins', 'Package Spec'],
+    },
+    {
+      id: 'page-10',
+      pageNumber: '10',
+      title: 'Dynamic 3/4 Exterior Stance & Attitude',
+      category: 'Perspective Studies',
+      medium: 'Rapid Line & Marker Perspective',
+      date: 'Ongoing Study',
+      isReserved: true,
+      spec: 'Low-Horizon 3-Point Perspective · Wheel Stance & Arch Flare',
+      note: 'Reserved study sheet: High-energy perspective study capturing vehicle attitude, wheel track-to-body relationship, and front fascia lighting signature under street lighting.',
+      tags: ['Dynamic 3/4', 'Attitude', 'Perspective'],
+    },
+    {
+      id: 'page-11',
+      pageNumber: '11',
+      title: 'Orthographic Elevations (Side, Front, Rear)',
+      category: 'Orthographic Studies',
+      medium: '1:20 Technical Tape & Graphite',
+      date: 'Ongoing Study',
+      isReserved: true,
+      spec: 'Strict 3-View Projections · 3,600 mm L × 1,380 mm W Datum',
+      note: 'Reserved study sheet: Technical orthographics establishing datum lines, departure/approach angles, ground clearance, and hardpoint references for CAD translation.',
+      tags: ['1:20 Elevations', 'Orthographic', 'Datum Reference'],
+    },
+    {
+      id: 'page-12',
+      pageNumber: '12',
+      title: 'CMF Marker Rendering & Material Section',
+      category: 'Marker Renderings',
+      medium: 'Copic Marker & Pastel on Toned Paper',
+      date: 'Ongoing Study',
+      isReserved: true,
+      spec: 'High-Durability Textured Polymer · Terracotta Warm Interior',
+      note: 'Reserved study sheet: Color, Material & Finish exploration balancing heavy-duty commercial polymer scuff barriers with human-centered, tactile interior fabrics.',
+      tags: ['CMF', 'Marker Render', 'Tactility'],
+    },
+  ],
+};
+
+export default sketchbookData;

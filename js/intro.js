@@ -13,11 +13,11 @@
 
   /* --- Interactive Pillar Chips --- */
   function initChips() {
-    const chipGroup = document.getElementById('introChipGroup');
-    const chipDetail = document.getElementById('introChipDetail');
+    const chipGroup = document.getElementById('chipGroup') || document.getElementById('introChipGroup');
+    const chipDetail = document.getElementById('chipDetail') || document.getElementById('introChipDetail');
     if (!chipGroup || !chipDetail) return;
 
-    const chips = chipGroup.querySelectorAll('.intro-chip');
+    const chips = chipGroup.querySelectorAll('.chip, .intro-chip');
     const spans = chipDetail.querySelectorAll('span');
     const defaultSpan = chipDetail.querySelector('[data-key="_default"]');
 
@@ -49,7 +49,7 @@
 
   /* --- 3D Photo Frame Perspective Tilt & Interactive Spotlight Glow --- */
   function initPhotoFrameTilt() {
-    const frame = document.getElementById('introPhotoFrame');
+    const frame = document.getElementById('photoFrame') || document.getElementById('introPhotoFrame');
     if (!frame) return;
 
     const glow = frame.querySelector('.photo-glow');

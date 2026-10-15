@@ -114,9 +114,6 @@ class VirtualGarage {
 
     container.innerHTML = html;
   }
-
-    container.innerHTML = html;
-  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {

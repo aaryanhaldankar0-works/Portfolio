@@ -11,3 +11,7 @@ tmp/
 # IDE & Editor Configs
 .vscode/
 .idea/
+
+# Vite / Node
+node_modules/
+dist/

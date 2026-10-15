@@ -5,7 +5,7 @@
 
 class PortfolioApp {
   constructor() {
-    this.theme = localStorage.getItem('aaryan_theme') || 'dark';
+    this.theme = localStorage.getItem('aaryan_theme') || 'light';
     this.init();
   }
 
@@ -72,6 +72,8 @@ class PortfolioApp {
   }
 
   applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.body.setAttribute('data-theme', theme);
     if (theme === 'light') {
       document.body.classList.add('light-theme');
       const icon = document.getElementById('theme-icon');

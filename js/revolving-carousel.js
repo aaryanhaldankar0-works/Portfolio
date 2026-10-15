@@ -266,8 +266,12 @@ class RevolvingCarousel {
       if (toggleText) toggleText.textContent = `View ${project.title} Details`;
       if (actionLabel) actionLabel.textContent = 'Expand';
 
-      panel.classList.remove('is-visible');
+       panel.classList.remove('is-visible');
       setTimeout(() => {
+        const mountRoot = document.getElementById('case-study-mount-root');
+        if (mountRoot && window.CaseStudy) {
+          window.CaseStudy.unmount(mountRoot);
+        }
         panel.classList.remove('is-open');
         panel.innerHTML = '';
       }, 250);
@@ -281,6 +285,30 @@ class RevolvingCarousel {
 
     const project = this.projects[this.currentIndex];
     if (!project) return;
+
+    // Clean up any existing case study mount
+    const prevMount = document.getElementById('case-study-mount-root');
+    if (prevMount && window.CaseStudy) {
+      window.CaseStudy.unmount(prevMount);
+    }
+
+    // Check if project has a native React Case Study
+    if (window.CaseStudy && window.CaseStudy.has(project.id)) {
+      panel.classList.remove('is-visible');
+      setTimeout(() => {
+        panel.innerHTML = `
+          <div class="case-study-mount-wrapper">
+            <div id="case-study-mount-root" data-case-study="${project.id}"></div>
+          </div>
+        `;
+        const mountRoot = document.getElementById('case-study-mount-root');
+        window.CaseStudy.mount(mountRoot, project.id);
+        requestAnimationFrame(() => {
+          panel.classList.add('is-visible');
+        });
+      }, 180);
+      return;
+    }
 
     // Build specs HTML
     let specsHtml = '';
@@ -377,8 +405,9 @@ class RevolvingCarousel {
       });
     }
 
-    const targetSection = project.id === 'bharat-mobility' ? '#immersive-garage' : '#immersive-workshop';
-    const targetLabel = project.id === 'bharat-mobility' ? 'Explore in Virtual Garage (3D)' : 'Explore in Workshop Showcase (3D)';
+    const targetSection = '#immersive-garage';
+    const targetLabel = project.id === 'bharat-mobility' ? 'Walk to Bay 01 in Garage (3D)' : 'Walk to Bay 02 in Garage (3D)';
+    const targetBay = project.id === 'bharat-mobility' ? 0 : 1;
 
     // Animate out, swap content, animate in
     panel.classList.remove('is-visible');
@@ -437,6 +466,19 @@ class RevolvingCarousel {
           </div>
         ` : ''}
       `;
+
+      const jumpBtn = panel.querySelector('.btn-jump-3d');
+      if (jumpBtn) {
+        jumpBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (typeof window.walkToStudioBay === 'function') {
+            window.walkToStudioBay(targetBay);
+          } else {
+            const el = document.querySelector(targetSection);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }
 
       // Trigger entrance animation
       requestAnimationFrame(() => {
@@ -545,3 +587,14 @@ class RevolvingCarousel {
 document.addEventListener('DOMContentLoaded', () => {
   window.revolvingCarousel = new RevolvingCarousel();
 });
+
+// React Case Study bundle sync
+window.addEventListener('casestudy:ready', () => {
+  if (window.revolvingCarousel && window.revolvingCarousel.isDetailOpen) {
+    const project = window.revolvingCarousel.projects[window.revolvingCarousel.currentIndex];
+    if (project && window.CaseStudy && window.CaseStudy.has(project.id)) {
+      window.revolvingCarousel.renderDetailPanel();
+    }
+  }
+});
+
