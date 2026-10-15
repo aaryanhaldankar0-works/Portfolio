@@ -26,16 +26,25 @@ function getPortfolioData() {
 function findProject(id) {
   const data = getPortfolioData();
   if (!data || !id) return null;
-  return (data.garage && data.garage[id]) || (data.workshop || []).find((p) => p.id === id) || null;
+  return (
+    (data.projects && (data.projects.find((p) => p.id === id || p.slug === id))) ||
+    (data.garage && data.garage[id]) ||
+    (data.workshop || []).find((p) => p.id === id) ||
+    null
+  );
 }
 
 function navigateToProject(id) {
-  const carousel = window.revolvingCarousel;
-  if (!carousel) return;
-  const index = carousel.projectKeys.indexOf(id);
-  if (index < 0) return;
-  document.getElementById('featured')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  carousel.goTo(index);
+  const slugMap = {
+    'bharat-mobility': 'bharat-mobility-pod',
+    'ebs-tech': 'ebs-guardian',
+  };
+  const slug = slugMap[id] || id;
+  if (window.router && typeof window.router.navigate === 'function') {
+    window.router.navigate(`/work/${slug}`);
+  } else {
+    window.location.href = `/work/${slug}`;
+  }
 }
 
 function unmount(el) {

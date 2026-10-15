@@ -814,7 +814,7 @@ const bharatMobility = {
                 media: {
                   kind: 'render',
                   label: 'ENGINEERING BLUEPRINT · FLAT-BED SKATEBOARD ARCHITECTURE',
-                  ratio: '16/9',
+                  ratio: 'auto',
                   src: 'assets/Project_1/Renders/Render_3.png',
                   alt: 'Flat-bed EV skateboard architecture render showing structural chassis, powertrain, and cabin frame',
                   fit: 'contain',
@@ -1364,9 +1364,10 @@ const bharatMobility = {
             media: {
               kind: 'render',
               label: 'FINAL PRODUCTION VEHICLE · CINEMATIC EXTERIOR 3/4',
-              ratio: '21/9',
+              ratio: 'auto',
               src: 'assets/Project_1/Renders/Render_1.png',
               alt: 'Final production vehicle exterior render showing compact stance and panoramic glazing',
+              fit: 'contain',
               caption:
                 'The final vehicle architecture: compact 3,600 mm envelope, 1,380 mm width for narrow street navigation, and calm civic character.',
             },

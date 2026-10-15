@@ -9,6 +9,14 @@ import Reveal from './Reveal.jsx';
  *  images      [{ src, alt, caption?, span? }]
  *  bleed       boolean: break out to full viewport
  */
+function resolveSrc(s) {
+  if (!s) return undefined;
+  if (s.startsWith('http://') || s.startsWith('https://') || s.startsWith('data:') || s.startsWith('/')) {
+    return encodeURI(s);
+  }
+  return '/' + encodeURI(s);
+}
+
 export default function PhotoCollage({
   caption = 'FIELD PHOTOGRAPHY · THE LIVING CITY',
   images = [],
@@ -26,7 +34,7 @@ export default function PhotoCollage({
             style={img.bg ? { background: img.bg } : undefined}
           >
             <img
-              src={img.src ? encodeURI(img.src) : undefined}
+              src={resolveSrc(img.src)}
               alt={img.alt || `Field observation ${i + 1}`}
               loading="lazy"
               className="cs-collage__img"

@@ -20,6 +20,10 @@ function copyStaticFolders(folders) {
           cpSync(src, resolve(__dirname, 'dist', folder), { recursive: true });
         }
       });
+      // Ensure SPA fallback redirect for Netlify
+      import('node:fs').then(({ writeFileSync }) => {
+        writeFileSync(resolve(__dirname, 'dist', '_redirects'), '/* /index.html 200\n');
+      });
     },
   };
 }

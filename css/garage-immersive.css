@@ -7,7 +7,7 @@
 .immersive-garage {
   position: relative;
   width: 100%;
-  padding: clamp(3rem, 4.5vw, 4.5rem) 0 clamp(2.5rem, 4vw, 3.5rem);
+  padding: var(--section-space) 0;
   background: var(--bg-surface, #0f1115);
   overflow: hidden;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -15,9 +15,9 @@
 }
 
 .garage-arch-container {
-  max-width: 1440px;
+  width: min(calc(100% - 2 * var(--page-gutter)), var(--content-max));
   margin: 0 auto;
-  padding: 0 clamp(1.5rem, 3vw, 3rem);
+  padding: 0;
 }
 
 /* Calm Architectural Space Header */

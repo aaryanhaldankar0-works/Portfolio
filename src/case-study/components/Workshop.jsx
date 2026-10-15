@@ -196,7 +196,7 @@ export default function Workshop({ projectId, title, zones = [], onExit, nextPro
       <footer className="ws-exit">
         <div className="ws-exit__options">
           <button type="button" id={`${projectId}-workshop-exit`} className="ws-exit__door" onClick={onExit}>
-            <span aria-hidden="true">←</span> Back to Bharat Exhibition
+            <span aria-hidden="true">←</span> Back to {title ? `${title} Exhibition` : 'Project Exhibition'}
           </button>
           {nextProject && (
             <button

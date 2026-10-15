@@ -1,5 +1,5 @@
 import { useRef, useState, useCallback } from 'react';
-import { Hero, SectionNavigation, CaseSection, NextProject, WorkshopThreshold, Workshop } from './components/index.js';
+import { Hero, SectionNavigation, CaseSection, NextProject, BackDoor, RabbitHole, Workshop } from './components/index.js';
 import { BlockRenderer } from './blocks.jsx';
 import useActiveSection from './hooks/useActiveSection.js';
 
@@ -105,13 +105,20 @@ export default function CaseStudy({ config, project = {}, nextProject, onNavigat
         ))}
       </div>
 
+      {/* 01: Compact Rabbit Hole — Entrance to Original Deep Dive */}
       {config.workshop && (
-        <WorkshopThreshold
+        <RabbitHole
           projectId={config.id}
-          {...config.workshop}
+          workshop={config.workshop}
           onEnter={enterWorkshop}
         />
       )}
+
+      {/* 02: Behind the Design — Architectural Double Door to 3D Garage */}
+      <BackDoor
+        projectId={config.id}
+        projectTitle={hero.title || project.title}
+      />
 
       {nextProject && <NextProject project={nextProject} onNavigate={onNavigateProject} />}
     </article>

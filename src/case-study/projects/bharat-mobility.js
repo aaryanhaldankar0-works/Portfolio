@@ -51,7 +51,7 @@ const bharatMobility = {
       src: 'assets/Project_1/Renders/render_2.png',
       alt: 'Bharat Mobility Pod Hero Render · Exterior aerodynamic and architectural view',
     }),
-    showSpecs: false,
+    showSpecs: true,
     actions: [
       { label: 'Explore in Virtual Garage (3D)', href: '#immersive-garage' },
     ],
@@ -144,13 +144,8 @@ const bharatMobility = {
       note: 'STRUCTURAL INSIGHT · FROM PRODUCT TO SYSTEM',
       body:
         'Friction lived in the transfers, not the ride: 10–15 minutes of waiting at every junction while drivers held out for a full vehicle. Solving the journey mattered more than styling the box.',
-      media: {
-        kind: 'image',
-        label: 'JOURNEY MAP · THE BROKEN COMMUTE',
-        ratio: '16/9',
-        src: 'assets/Project_1/Photos/user/journey-map-broken-commute.svg',
-        alt: 'User journey mapping showing fragmented commute transfers across short, moderate, and long distances',
-        caption: 'Field Commute Topology · Mapping transfer delays, wait times and multimodal friction across distance scales',
+      block: {
+        type: 'journeyMotion',
       },
     }),
 
@@ -225,7 +220,7 @@ const bharatMobility = {
       media: {
         kind: 'render',
         label: 'ENGINEERING BLUEPRINT · FLAT-BED SKATEBOARD ARCHITECTURE',
-        ratio: '16/9',
+        ratio: 'auto',
         src: 'assets/Project_1/Renders/Render_3.png',
         alt: 'Flat-bed EV skateboard architecture render showing structural chassis, powertrain, and cabin frame',
         fit: 'contain',
@@ -266,9 +261,10 @@ const bharatMobility = {
       media: {
         kind: 'render',
         label: 'FINAL VEHICLE · CINEMATIC EXTERIOR 3/4',
-        ratio: '21/9',
+        ratio: 'auto',
         src: 'assets/Project_1/Renders/Render_1.png',
         alt: 'Final vehicle exterior render showing compact stance and panoramic glazing',
+        fit: 'contain',
       },
     }),
 
@@ -282,7 +278,13 @@ const bharatMobility = {
       note: 'PHASED ROLLOUT',
       body:
         'Rollout starts in universities and industrial campuses where demand and charging can be validated, then expands to Tier 2 and Tier 3 feeder routes, schools and quick commerce.',
-      media: img('DEPLOYMENT · CAMPUS TO CITY ROLLOUT', '21/9'),
+      media: {
+        kind: 'render',
+        label: 'DEPLOYMENT · CAMPUS TO CITY ROLLOUT',
+        ratio: '21/9',
+        src: 'assets/Project_1/Renders/this is a autonomous transit vehicle consists of hydrogen and electric powertrains with capabilities for docking moped, e-bikes, electric cycles roll in roll out style for last mile mobility mostly made .png',
+        alt: 'Bharat Mobility Pod deployment and multimodal fleet rollout render',
+      },
     }),
   ],
 

@@ -107,9 +107,9 @@ const ebsTech = {
             bleed: false,
             images: [
               {
-                src: 'assets/Project_2/Images/WhatsApp Image 2026-10-15 at 3.56.53 PM.jpeg',
-                alt: 'Field Interview: On-ground inquiry with security checkpoint guard at perimeter outpost',
-                caption: 'The Guard Outpost · Inquiring with outpost personnel on how alerts currently travel during road washouts',
+                src: 'assets/Project_2/Images/WhatsApp Image 2026-10-15 at 3.56.53 PM (1).jpeg',
+                alt: 'Community elder and shopkeeper at village perimeter',
+                caption: 'Community Trust Hubs · Local shopkeepers and elders who anchor informal communication',
                 span: 'hero',
               },
               {
@@ -119,9 +119,9 @@ const ebsTech = {
                 span: 'standard',
               },
               {
-                src: 'assets/Project_2/Images/WhatsApp Image 2026-10-15 at 3.56.53 PM (1).jpeg',
-                alt: 'Community elder and shopkeeper at village perimeter',
-                caption: 'Community Trust Hubs · Local shopkeepers and elders who anchor informal communication',
+                src: 'assets/Project_2/Images/WhatsApp Image 2026-10-15 at 3.56.53 PM.jpeg',
+                alt: 'Field Interview: On-ground inquiry with security checkpoint guard at perimeter outpost',
+                caption: 'The Guard Outpost · Inquiring with outpost personnel on how alerts currently travel during road washouts',
                 span: 'standard',
               },
             ],

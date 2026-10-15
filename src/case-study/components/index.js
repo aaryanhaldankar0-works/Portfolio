@@ -21,6 +21,8 @@ export { default as FutureRenderPlaceholder } from './FutureRenderPlaceholder.js
 export { default as SectionNavigation } from './SectionNavigation.jsx';
 export { default as NextProject } from './NextProject.jsx';
 export { default as PhotoCollage } from './PhotoCollage.jsx';
+export { default as BackDoor } from './BackDoor.jsx';
+export { default as RabbitHole } from './RabbitHole.jsx';
 export { default as WorkshopThreshold } from './WorkshopThreshold.jsx';
 export { default as Workshop } from './Workshop.jsx';
 export { default as Sketchbook } from './Sketchbook.jsx';
@@ -29,6 +31,7 @@ export { default as WorkflowRoom } from './WorkflowRoom.jsx';
 export { default as PrototypeRoom } from './PrototypeRoom.jsx';
 export { default as NotebookQuestions } from './NotebookQuestions.jsx';
 export { default as JourneyMap } from './JourneyMap.jsx';
+export { default as JourneyMotionGraphic } from './JourneyMotionGraphic.jsx';
 export { default as ModularSketchSystem } from './ModularSketchSystem.jsx';
 export { default as AIWorkflow } from './AIWorkflow.jsx';
 export { default as ArchitectureComparison } from './ArchitectureComparison.jsx';

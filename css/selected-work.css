@@ -1,0 +1,327 @@
+/* ==========================================================================
+   SELECTED WORK — MINIMAL EDITORIAL GALLERY & DEDICATED PROJECT VIEW
+   Clean 12-column editorial grid, image dominance, no borders, no shadows.
+   ========================================================================== */
+
+/* Gallery Section */
+.selected-work-section {
+  position: relative;
+  padding: var(--section-space) 0;
+  z-index: 2;
+  border-top: 1px solid var(--border-subtle);
+  background-color: var(--bg);
+}
+
+.selected-work-intro {
+  margin-bottom: var(--space-48);
+}
+
+.selected-work-kicker {
+  display: block;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: var(--font-meta-fluid, 0.78rem);
+  font-weight: 500;
+  color: var(--accent, #F0BE2C);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-8);
+}
+
+.selected-work-heading {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: var(--font-heading-section);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: var(--space-16);
+}
+
+.selected-work-lead {
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: var(--font-body-fluid, 1.05rem);
+  color: var(--muted);
+  max-width: 60ch;
+  line-height: 1.6;
+}
+
+/* Two-column Minimal Editorial Grid */
+.selected-work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-48) var(--grid-gap);
+  width: 100%;
+}
+
+@media (max-width: 960px) {
+  .selected-work-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-48);
+  }
+}
+
+/* Individual Project Composition */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+}
+
+/* Large Project Preview — Image Dominates Composition */
+.project-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--surface);
+  overflow: hidden;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.project-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.65s ease;
+  will-change: transform;
+}
+
+/* Editorial Typography Strip */
+.project-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line, var(--border-subtle));
+  margin-top: 1.25rem;
+}
+
+.project-card-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.project-card-num {
+  color: var(--accent, #F0BE2C);
+  font-weight: 600;
+}
+
+.project-card-sep {
+  opacity: 0.4;
+}
+
+.project-card-cat {
+  letter-spacing: 0.06em;
+}
+
+.project-card-title {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(1.4rem, 2vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+  transition: color 0.3s ease;
+}
+
+.project-card-desc {
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.925rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Subtle Directional Arrow */
+.project-card-arrow-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  color: var(--text);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+.project-card-arrow {
+  width: 20px;
+  height: 20px;
+}
+
+/* Restrained Hover Behaviors */
+.project-card:hover .project-card-img {
+  transform: scale(1.025);
+}
+
+.project-card:hover .project-card-title {
+  color: var(--accent, #F0BE2C);
+}
+
+.project-card:hover .project-card-arrow-wrap {
+  transform: translate(4px, -4px);
+  color: var(--accent, #F0BE2C);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .project-card-img,
+  .project-card-arrow-wrap,
+  .project-card-title,
+  .project-view {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   DEDICATED PROJECT VIEW
+   ========================================================================== */
+.project-view {
+  --cs-nav-top: 52px;
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.project-view.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Minimal Sticky Project Top-Bar */
+.project-top-bar {
+  position: sticky;
+  top: 0;
+  height: 52px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border-subtle);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.project-top-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.project-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.4rem 0.5rem 0.4rem 0;
+  margin-left: 0;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.project-back-btn:hover {
+  color: var(--accent, #F0BE2C);
+  transform: translateX(-3px);
+}
+
+.project-top-bar-center {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.project-top-bar-kicker {
+  color: var(--accent, #F0BE2C);
+  font-weight: 600;
+}
+
+.project-top-bar-title {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.project-top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.project-garage-jump {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs, 4px);
+  transition: all 0.2s ease;
+}
+
+.project-garage-jump:hover {
+  color: var(--text);
+  border-color: var(--accent);
+  background: var(--accent-clay-subtle, rgba(240, 190, 44, 0.12));
+}
+
+@media (max-width: 768px) {
+  .project-top-bar-center {
+    display: none;
+  }
+}

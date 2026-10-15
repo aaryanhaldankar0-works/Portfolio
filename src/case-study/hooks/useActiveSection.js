@@ -30,11 +30,29 @@ export default function useActiveSection(ids, containerRef) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
 
-  // Reading progress through the whole case study
+  // Reading progress through the project sections
   useEffect(() => {
     let frame = 0;
     const update = () => {
       frame = 0;
+      // Prefer measuring the project chapters (.cs-chapters)
+      const chaptersEl = document.querySelector('.cs-chapters');
+      if (chaptersEl) {
+        const rect = chaptersEl.getBoundingClientRect();
+        const navOffset = 104; // 52px top bar + 52px sticky nav
+        const scrolled = navOffset - rect.top;
+        const total = rect.height - (window.innerHeight - navOffset);
+        if (scrolled <= 0) {
+          setProgress(0);
+        } else if (total > 0) {
+          setProgress(Math.min(Math.max(scrolled / total, 0), 1));
+        } else {
+          setProgress(scrolled > 0 ? 1 : 0);
+        }
+        return;
+      }
+
+      // Fallback: full container measurement
       const el = containerRef?.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();

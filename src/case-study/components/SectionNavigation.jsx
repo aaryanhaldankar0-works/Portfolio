@@ -27,6 +27,8 @@ export default function SectionNavigation({ sections = [], activeId, progress = 
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
+  const clampedProgress = Math.min(1, Math.max(0, Number(progress) || 0));
+
   return (
     <nav className="cs-sectionnav" aria-label="Case study chapters">
       <div className="cs-sectionnav__inner">
@@ -48,10 +50,15 @@ export default function SectionNavigation({ sections = [], activeId, progress = 
           ))}
         </ol>
         <span className="cs-sectionnav__pct" aria-hidden="true">
-          {String(Math.round(progress * 100)).padStart(2, '0')}%
+          {String(Math.round(clampedProgress * 100)).padStart(2, '0')}%
         </span>
       </div>
-      <span className="cs-sectionnav__progress" style={{ transform: `scaleX(${progress})` }} aria-hidden="true" />
+      <div className="cs-sectionnav__track" aria-hidden="true">
+        <span
+          className="cs-sectionnav__progress"
+          style={{ transform: `scaleX(${clampedProgress})` }}
+        />
+      </div>
     </nav>
   );
 }

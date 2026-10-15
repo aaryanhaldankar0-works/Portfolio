@@ -47,19 +47,18 @@
 }
 
 .intro-wrap {
-  width: 100%;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 28px;
+  width: min(calc(100% - 2 * var(--page-gutter)), var(--content-max));
+  margin-inline: auto;
+  padding: 0;
   box-sizing: border-box;
 }
 
-/* Two-Column Breathable Hero Grid */
+/* Two-Column Breathable Hero Grid (7fr 5fr on 12-col grid) */
 .intro-hero-grid {
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
-  gap: 52px;
-  padding: 24px 0 36px;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 4vw, 56px);
+  padding: var(--space-24) 0 var(--space-32);
   align-items: start;
 }
 
@@ -74,21 +73,21 @@
 .intro-tagline {
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
-  font-size: clamp(2.2rem, 4.2vw, 3.8rem);
-  line-height: 1.05;
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--intro-ink);
-  margin: 0 0 22px;
+  margin: 0 0 var(--space-24);
   max-width: 22ch;
 }
 
 .intro-bio {
   font-family: "IBM Plex Sans", -apple-system, sans-serif;
-  font-size: 1.05rem;
+  font-size: var(--font-body-fluid, 1.05rem);
   line-height: 1.7;
   color: var(--intro-ink);
-  max-width: 52ch;
-  margin: 0 0 32px;
+  max-width: 58ch;
+  margin: 0 0 var(--space-32);
   opacity: 0.95;
 }
 
@@ -161,12 +160,12 @@
   width: 100%;
   aspect-ratio: 3 / 4;
   border: 1px solid var(--intro-grey3);
-  border-radius: 4px;
+  border-radius: 0;
   overflow: hidden;
   background: var(--intro-grey1);
   transform: perspective(900px) rotateX(0) rotateY(0);
   transition: transform 0.25s ease-out;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.12);
+  box-shadow: none;
 }
 
 .photo-frame img {

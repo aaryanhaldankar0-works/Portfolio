@@ -13,11 +13,21 @@ const KIND = {
 };
 
 function toAspect(ratio) {
+  if (!ratio || ratio === 'auto' || ratio === 'natural') return undefined;
   return String(ratio).replace(/\s*[/:]\s*/, ' / ');
 }
 
 function toLabel(ratio) {
+  if (!ratio || ratio === 'auto' || ratio === 'natural') return 'AUTO';
   return String(ratio).replace(/\s*[/:]\s*/, ':');
+}
+
+function resolveSrc(s) {
+  if (!s) return undefined;
+  if (s.startsWith('http://') || s.startsWith('https://') || s.startsWith('data:') || s.startsWith('/')) {
+    return encodeURI(s);
+  }
+  return '/' + encodeURI(s);
 }
 
 export default function ImagePlaceholder({
@@ -32,13 +42,18 @@ export default function ImagePlaceholder({
   fit,
   bg,
 }) {
-  const style = { aspectRatio: toAspect(ratio), ...(bg ? { background: bg } : {}) };
-  const safeSrc = src ? encodeURI(src) : undefined;
+  const isAutoRatio = !ratio || ratio === 'auto' || ratio === 'natural';
+  const aspect = toAspect(ratio);
+  const style = {
+    ...(aspect ? { aspectRatio: aspect } : {}),
+    ...(bg ? { background: bg } : {}),
+  };
+  const safeSrc = resolveSrc(src);
 
   return (
     <figure className={`cs-figure${className ? ` ${className}` : ''}`}>
       {src ? (
-        <div className="cs-media" style={style}>
+        <div className={`cs-media${isAutoRatio ? ' cs-media--auto' : ''}`} style={style}>
           {src.endsWith('.mp4') || src.endsWith('.webm') || variant === 'video' ? (
             <video
               src={safeSrc}
@@ -52,8 +67,8 @@ export default function ImagePlaceholder({
               tabIndex={-1}
               style={{
                 width: '100%',
-                height: '100%',
-                objectFit: 'cover',
+                height: isAutoRatio ? 'auto' : '100%',
+                objectFit: fit || 'cover',
                 display: 'block',
                 pointerEvents: controls ? 'auto' : 'none',
               }}
@@ -64,7 +79,10 @@ export default function ImagePlaceholder({
               alt={alt || label}
               loading="lazy"
               style={{
-                ...(fit ? { objectFit: fit } : {}),
+                width: '100%',
+                height: isAutoRatio ? 'auto' : '100%',
+                objectFit: fit || (isAutoRatio ? undefined : 'cover'),
+                display: 'block',
                 ...(bg ? { background: bg } : {}),
               }}
             />

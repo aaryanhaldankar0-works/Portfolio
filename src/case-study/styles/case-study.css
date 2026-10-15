@@ -7,14 +7,19 @@
 
 .cs {
   --cs-accent: var(--accent-clay);
-  --cs-nav-top: 0px;
+  --cs-nav-top: 52px;
   --cs-ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --cs-gap-section: clamp(5rem, 10vw, 9rem);
-  --cs-gap-block: clamp(3.5rem, 7vw, 6.5rem);
-  --cs-measure: 68ch;
+  --cs-gap-section: var(--section-space, clamp(72px, 8vw, 144px));
+  --cs-gap-block: clamp(48px, 6vw, 96px);
+  --cs-measure: var(--measure-optimal, 65ch);
 
+  width: 100%;
   position: relative;
   color: var(--text-main);
+}
+
+.cs * {
+  min-width: 0;
 }
 
 .cs *:focus-visible {
@@ -26,7 +31,7 @@
 
 .cs-eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--font-meta-fluid, 0.72rem);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--cs-accent);
@@ -37,15 +42,28 @@
   color: var(--cs-accent);
 }
 
-/* Full-viewport breakout from the content column */
+/* Global Editorial Container Alignment for Case Study Sections */
+.cs-hero__intro,
+.cs-hero__meta,
+.cs-section__header,
+.cs-section__blocks,
+.cs-next__link,
+.cs-rabbithole__wrapper {
+  width: min(calc(100% - 2 * var(--page-gutter)), var(--content-max));
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+
+/* Full-width container exception (avoids 100vw scrollbar leakage) */
 .cs-bleed {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .cs-bleed--padded {
-  padding-left: clamp(1rem, 3vw, 2.5rem);
-  padding-right: clamp(1rem, 3vw, 2.5rem);
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
 }
 
 /* Scroll-reveal motion */
@@ -140,7 +158,7 @@
 .cs-media {
   width: 100%;
   overflow: hidden;
-  border-radius: var(--radius-sm);
+  border-radius: 0;
   background: var(--bg-secondary);
 }
 
@@ -357,7 +375,7 @@
 
 .cs-hero__index {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--font-meta-fluid, 0.72rem);
   color: var(--text-muted);
   padding: 0.25rem 0.55rem;
   border: 1px solid var(--border-medium);
@@ -366,10 +384,10 @@
 
 .cs-hero__title {
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 10vw, 9rem);
+  font-size: var(--font-display-hero, clamp(56px, 7vw, 112px));
   font-weight: 700;
-  line-height: 0.92;
-  letter-spacing: -0.045em;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
   color: var(--text-main);
   margin: clamp(1.25rem, 3vw, 2rem) 0 clamp(1.75rem, 4vw, 3rem);
 }
@@ -378,13 +396,13 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
-  gap: 2rem;
+  gap: var(--space-32);
 }
 
 .cs-hero__tagline {
-  max-width: 34ch;
-  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-  line-height: 1.5;
+  max-width: 48ch;
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  line-height: 1.55;
   color: var(--text-secondary);
 }
 
@@ -395,7 +413,10 @@
 }
 
 .cs-hero__visual {
-  margin-top: clamp(3rem, 6vw, 5rem);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .cs-hero__visual .cs-ph,
@@ -409,7 +430,7 @@
 .cs-hero__meta {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 2rem 2.5rem;
+  gap: 2rem var(--grid-gap);
   margin-top: clamp(2.5rem, 5vw, 4rem);
 }
 
@@ -441,11 +462,11 @@
 
 .cs-sectionnav {
   position: sticky;
-  top: var(--cs-nav-top);
+  top: var(--cs-nav-top, 52px);
   z-index: 40;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-top: clamp(4rem, 8vw, 6rem);
+  width: 100%;
+  margin-left: 0;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
   background: var(--bg-card);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -454,49 +475,66 @@
 }
 
 .cs-sectionnav__inner {
-  max-width: var(--max-width);
+  width: min(calc(100% - 2 * var(--page-gutter)), var(--content-max));
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 0.5rem;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
   height: 52px;
 }
 
 .cs-sectionnav__title {
   flex-shrink: 0;
   font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-main);
-  padding-right: 1.5rem;
+  padding-right: 1.25rem;
   border-right: 1px solid var(--border-subtle);
+  max-width: 260px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cs-sectionnav__list {
   flex: 1;
+  min-width: 0;
   display: flex;
-  gap: 0.25rem;
+  align-items: center;
+  gap: 0.35rem;
   list-style: none;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+  margin: 0;
   padding: 0 0.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
 }
 
 .cs-sectionnav__list::-webkit-scrollbar { display: none; }
 
+.cs-sectionnav__list li {
+  flex-shrink: 0 !important;
+  display: inline-flex;
+}
+
 .cs-sectionnav__link {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   white-space: nowrap;
-  padding: 0.4rem 0.75rem;
+  padding: 0.35rem 0.65rem;
   border-radius: 999px;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--text-muted);
   transition: color var(--transition-fast), background-color var(--transition-fast);
@@ -523,21 +561,35 @@
 .cs-sectionnav__pct {
   flex-shrink: 0;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--text-muted);
-  min-width: 3ch;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--cs-accent);
+  min-width: 4ch;
   text-align: right;
+  letter-spacing: 0.04em;
+}
+
+.cs-sectionnav__track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--border-subtle);
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .cs-sectionnav__progress {
   position: absolute;
   left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 2px;
+  top: 0;
+  bottom: 0;
+  width: 100%;
   background: var(--cs-accent);
   transform-origin: left center;
-  transition: transform 0.15s linear;
+  transition: transform 0.1s linear;
+  box-shadow: 0 0 10px var(--cs-accent);
 }
 
 /* ==========================================================================
@@ -557,9 +609,9 @@
 /* Full-bleed tonal band without affecting layout width */
 .cs-section--raised {
   background: var(--bg-secondary);
-  box-shadow: 0 0 0 100vmax var(--bg-secondary);
-  clip-path: inset(0 -100vmax);
   border-top-color: transparent !important;
+  box-shadow: none;
+  clip-path: none;
 }
 
 .cs-section--raised + .cs-section {
@@ -576,10 +628,10 @@
 
 .cs-section__index {
   font-family: var(--font-display);
-  font-size: clamp(4rem, 10vw, 8.5rem);
+  font-size: clamp(3rem, 6vw, 5.5rem);
   font-weight: 700;
-  line-height: 0.8;
-  letter-spacing: -0.05em;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
   color: transparent;
   -webkit-text-stroke: 1px var(--border-medium);
   user-select: none;
@@ -592,7 +644,7 @@
 .cs-section__label {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--font-meta-fluid, 0.75rem);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--cs-accent);
@@ -601,7 +653,7 @@
 .cs-section__title {
   margin-top: 0.75rem;
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-size: var(--font-heading-section, clamp(36px, 4vw, 64px));
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -610,9 +662,10 @@
 
 .cs-section__intro {
   margin-top: 1rem;
-  max-width: 56ch;
+  max-width: 58ch;
+  font-size: var(--font-body-fluid, 1.05rem);
   color: var(--text-secondary);
-  line-height: 1.75;
+  line-height: 1.7;
 }
 
 .cs-section__blocks {
@@ -631,30 +684,30 @@
 
 .cs-editorial .cs-eyebrow {
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-16);
 }
 
 .cs-editorial__heading {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-size: var(--font-heading-sub, clamp(24px, 2.5vw, 40px));
   font-weight: 600;
-  line-height: 1.15;
+  line-height: 1.25;
   letter-spacing: -0.02em;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-24);
 }
 
 .cs-editorial__heading-slot {
-  margin-bottom: 1.75rem;
+  margin-bottom: var(--space-24);
 }
 
 .cs-editorial__body p {
-  font-size: 1.06rem;
-  line-height: 1.85;
+  font-size: var(--font-body-fluid, 1.05rem);
+  line-height: 1.75;
   color: var(--text-secondary);
 }
 
 .cs-editorial__body p + p {
-  margin-top: 1.25rem;
+  margin-top: var(--space-16);
 }
 
 .cs-editorial--cols-2 {
@@ -856,17 +909,17 @@
 
 .cs-split {
   display: grid;
-  grid-template-columns: 7fr 5fr;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   align-items: center;
-  gap: clamp(2rem, 6vw, 6rem);
+  gap: clamp(24px, 4vw, 56px);
 }
 
-.cs-split--balanced { grid-template-columns: 1fr 1fr; }
-.cs-split--text { grid-template-columns: 5fr 7fr; }
+.cs-split--balanced { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.cs-split--text { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
 
 .cs-split--reverse .cs-split__media { order: 2; }
-.cs-split--reverse.cs-split--media { grid-template-columns: 5fr 7fr; }
-.cs-split--reverse.cs-split--text { grid-template-columns: 7fr 5fr; }
+.cs-split--reverse.cs-split--media { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+.cs-split--reverse.cs-split--text { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
 
 .cs-split--sticky {
   align-items: start;
@@ -874,11 +927,11 @@
 
 .cs-split--sticky .cs-split__text {
   position: sticky;
-  top: calc(var(--cs-nav-top) + 52px + 3rem);
+  top: calc(var(--cs-nav-top) + 52px + 2rem);
 }
 
 .cs-split__text .cs-editorial {
-  max-width: 46ch;
+  max-width: 48ch;
 }
 
 /* ==========================================================================
@@ -1385,6 +1438,7 @@
    ========================================================================== */
 
 .cs-next {
+  width: 100%;
   border-top: 1px solid var(--border-subtle);
 }
 
@@ -1392,13 +1446,13 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  padding: clamp(4rem, 8vw, 7rem) 0 clamp(3rem, 6vw, 5rem);
+  gap: var(--space-16);
+  padding: var(--space-96) 0 var(--space-64);
 }
 
 .cs-next__label {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--font-meta-fluid, 0.75rem);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -1413,10 +1467,10 @@
 
 .cs-next__title {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 8vw, 6.5rem);
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
   font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.045em;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
   color: var(--text-main);
   transition: transform 0.7s var(--cs-ease), color 0.4s ease;
 }
@@ -3433,129 +3487,336 @@ body.light-theme .cs-notebook__paper {
   }
 }
 
-/* ---- Workshop threshold ------------------------------------------------
-   One quiet doorway between the Exhibition and the project's Workshop.
-   Generous empty space, a hairline, two lines, and a single door.
+/* ---- Back Door: Architectural Double Door to 3D Garage -----------------
+   Contemporary concrete & metal design studio entrance.
+   Substantial visual scale, symmetrical double panels, minimal vertical
+   handles, central seam, restrained warm light, and smooth physical opening.
    ------------------------------------------------------------------------ */
 
-.cs-threshold {
+.cs-backdoor {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 78vh;
-  padding: clamp(6rem, 14vw, 12rem) clamp(1.25rem, 4vw, 3rem);
+  padding: var(--space-96) 0;
   text-align: center;
+  background: transparent;
+  width: 100%;
 }
 
-.cs-threshold__inner {
+.cs-backdoor__inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.4rem;
-  max-width: 34rem;
+  width: 100%;
+  max-width: 36rem;
 }
 
-.cs-threshold__rule {
+.cs-backdoor__header {
+  margin-bottom: var(--space-32);
+}
+
+.cs-backdoor__kicker {
   display: block;
-  width: 1px;
-  height: clamp(3.5rem, 8vw, 6rem);
-  margin-bottom: 1.2rem;
-  background: linear-gradient(to bottom, transparent, var(--border-subtle));
-}
-
-.cs-threshold__line {
-  margin: 0;
-  font-family: var(--font-display, inherit);
-  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
-  line-height: 1.35;
-  letter-spacing: -0.01em;
-  color: var(--text-main);
-}
-
-.cs-threshold__aside {
-  margin: 0;
-  font-size: 0.98rem;
-  line-height: 1.7;
-  color: var(--text-muted, var(--text-secondary));
-}
-
-.cs-threshold__door {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 2.4rem;
-  color: var(--text-main);
-  text-decoration: none;
-}
-
-/* The door: a tall, thin frame with light spilling from behind */
-.cs-threshold__frame {
-  position: relative;
-  display: block;
-  width: 64px;
-  height: 104px;
-  border: 1px solid var(--border-subtle);
-  border-radius: 2px;
-  overflow: hidden;
-  transition: border-color 0.6s var(--cs-ease), transform 0.8s var(--cs-ease);
-}
-
-.cs-threshold__light {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, transparent 0%, var(--cs-accent) 100%);
-  opacity: 0.06;
-  transform-origin: left center;
-  transform: scaleX(0.08);
-  transition: transform 0.9s var(--cs-ease), opacity 0.9s var(--cs-ease);
-}
-
-.cs-threshold__label {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.75rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--text-muted, var(--text-secondary));
-  transition: color 0.5s var(--cs-ease);
+  color: var(--accent, #F0BE2C);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
 }
 
-.cs-threshold__arrow {
-  font-size: 0.9rem;
-  color: var(--cs-accent);
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity 0.5s var(--cs-ease), transform 0.6s var(--cs-ease);
-}
-
-.cs-threshold__door:hover .cs-threshold__frame,
-.cs-threshold__door:focus-visible .cs-threshold__frame {
-  border-color: var(--cs-accent);
-  transform: translateY(-3px);
-}
-
-.cs-threshold__door:hover .cs-threshold__light,
-.cs-threshold__door:focus-visible .cs-threshold__light {
-  transform: scaleX(1);
-  opacity: 0.22;
-}
-
-.cs-threshold__door:hover .cs-threshold__label,
-.cs-threshold__door:focus-visible .cs-threshold__label {
+.cs-backdoor__title {
+  margin: 0;
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(1.4rem, 2.5vw, 1.95rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
   color: var(--text-main);
+  font-weight: 600;
 }
 
-.cs-threshold__door:hover .cs-threshold__arrow,
-.cs-threshold__door:focus-visible .cs-threshold__arrow {
-  opacity: 1;
-  transform: none;
+/* The Portal: Interactive Button Container */
+.cs-backdoor__portal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  color: inherit;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
+.cs-backdoor__portal:focus-visible {
+  outline: 2px solid var(--accent, #F0BE2C);
+  outline-offset: 8px;
+}
+
+/* Outer Architectural Portal Aperture */
+.cs-backdoor__frame {
+  position: relative;
+  width: clamp(240px, 28vw, 300px);
+  height: clamp(330px, 36vw, 410px);
+  background: #141412;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+  perspective: 1000px;
+  box-shadow: 
+    inset 0 3px 20px rgba(0, 0, 0, 0.7),
+    0 24px 48px -18px rgba(0, 0, 0, 0.45);
+  transition: border-color 0.4s var(--cs-ease), box-shadow 0.4s var(--cs-ease);
+}
+
+[data-theme="light"] .cs-backdoor__frame,
+body.light-theme .cs-backdoor__frame {
+  background: #232320;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: 
+    inset 0 3px 20px rgba(0, 0, 0, 0.5),
+    0 20px 40px -16px rgba(0, 0, 0, 0.22);
+}
+
+/* Restrained warm studio daylight behind panels */
+.cs-backdoor__interior {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    ellipse at 50% 55%,
+    rgba(255, 222, 140, 0.95) 0%,
+    rgba(240, 190, 44, 0.5) 40%,
+    rgba(25, 25, 23, 0.98) 85%
+  );
+  opacity: 0.18;
+  transition: opacity 0.85s var(--cs-ease), transform 0.85s var(--cs-ease);
+  pointer-events: none;
+}
+
+.cs-backdoor__glow {
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(240, 190, 44, 0.3) 0%, transparent 65%);
+}
+
+.cs-backdoor__sunbeam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  background: linear-gradient(to right, transparent, rgba(255, 240, 190, 0.4), transparent);
+}
+
+/* Door Panels: Symmetrical Medium Charcoal Leaves */
+.cs-backdoor__panel {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 2;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.85s ease;
+  will-change: transform;
+}
+
+.cs-backdoor__panel--left {
+  left: 0;
+  transform-origin: left center;
+}
+
+.cs-backdoor__panel--right {
+  right: 0;
+  transform-origin: right center;
+}
+
+/* Matte Architectural Concrete & Metal Surface */
+.cs-backdoor__panel-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #333330 0%, #272724 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
+}
+
+[data-theme="light"] .cs-backdoor__panel-face,
+body.light-theme .cs-backdoor__panel-face {
+  background: linear-gradient(180deg, #3f3f3a 0%, #31312d 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Minimal Vertical Handles */
+.cs-backdoor__handle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 48px;
+  background: linear-gradient(180deg, #c4c3bb 0%, #76756e 100%);
+  border-radius: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cs-backdoor__handle--left {
+  right: 12px;
+}
+
+.cs-backdoor__handle--right {
+  left: 12px;
+}
+
+/* Central Seam & Ambient Light Leak */
+.cs-backdoor__seam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: rgba(0, 0, 0, 0.55);
+  box-shadow: 0 0 10px 1px rgba(240, 190, 44, 0.35);
+  z-index: 3;
+  pointer-events: none;
+  transition: box-shadow 0.4s var(--cs-ease), opacity 0.4s var(--cs-ease);
+}
+
+/* Action Trigger Text */
+.cs-backdoor__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-main);
+  transition: color 0.3s var(--cs-ease);
+}
+
+.cs-backdoor__action-arrow {
+  color: var(--accent, #F0BE2C);
+  transition: transform 0.4s var(--cs-ease);
+}
+
+/* ---- Hover State (Interactivity Preview) ---- */
+.cs-backdoor__portal:hover .cs-backdoor__frame,
+.cs-backdoor__portal:focus-visible .cs-backdoor__frame {
+  border-color: rgba(240, 190, 44, 0.4);
+}
+
+.cs-backdoor__portal:hover .cs-backdoor__seam,
+.cs-backdoor__portal:focus-visible .cs-backdoor__seam {
+  box-shadow: 0 0 16px 2px rgba(240, 190, 44, 0.7);
+}
+
+.cs-backdoor__portal:hover .cs-backdoor__interior,
+.cs-backdoor__portal:focus-visible .cs-backdoor__interior {
+  opacity: 0.32;
+}
+
+.cs-backdoor__portal:hover .cs-backdoor__panel--left,
+.cs-backdoor__portal:focus-visible .cs-backdoor__panel--left {
+  transform: perspective(800px) rotateY(-4deg) translateX(-2px);
+}
+
+.cs-backdoor__portal:hover .cs-backdoor__panel--right,
+.cs-backdoor__portal:focus-visible .cs-backdoor__panel--right {
+  transform: perspective(800px) rotateY(4deg) translateX(2px);
+}
+
+.cs-backdoor__portal:hover .cs-backdoor__handle,
+.cs-backdoor__portal:focus-visible .cs-backdoor__handle {
+  background: linear-gradient(180deg, #F0BE2C 0%, #a3811f 100%);
+}
+
+.cs-backdoor__portal:hover .cs-backdoor__action,
+.cs-backdoor__portal:focus-visible .cs-backdoor__action {
+  color: var(--accent, #F0BE2C);
+}
+
+.cs-backdoor__portal:hover .cs-backdoor__action-arrow,
+.cs-backdoor__portal:focus-visible .cs-backdoor__action-arrow {
+  transform: translateX(5px);
+}
+
+/* ---- Click State: Smooth Architectural Opening Sequence (700-900ms) ---- */
+.cs-backdoor__portal.is-open .cs-backdoor__panel--left {
+  transform: perspective(1000px) rotateY(-82deg) translateX(-90%);
+  opacity: 0.25;
+}
+
+.cs-backdoor__portal.is-open .cs-backdoor__panel--right {
+  transform: perspective(1000px) rotateY(82deg) translateX(90%);
+  opacity: 0.25;
+}
+
+.cs-backdoor__portal.is-open .cs-backdoor__interior {
+  opacity: 0.95;
+  transform: scale(1.06);
+}
+
+.cs-backdoor__portal.is-open .cs-backdoor__seam {
+  opacity: 0;
+}
+
+.cs-backdoor__portal.is-open .cs-backdoor__handle {
+  opacity: 0.2;
+}
+
+.cs-backdoor__portal.is-open .cs-backdoor__action {
+  color: var(--accent, #F0BE2C);
+}
+
+.cs-backdoor__portal.is-open .cs-backdoor__action-arrow {
+  transform: translateX(10px);
+  opacity: 0.5;
+}
+
+/* Mobile Adaptation */
+@media (max-width: 640px) {
+  .cs-backdoor {
+    padding: 5rem 1rem 6rem;
+  }
+  .cs-backdoor__frame {
+    width: 210px;
+    height: 290px;
+  }
+  .cs-backdoor__handle {
+    height: 38px;
+    width: 2.5px;
+  }
+  .cs-backdoor__handle--left {
+    right: 9px;
+  }
+  .cs-backdoor__handle--right {
+    left: 9px;
+  }
+}
+
+/* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
-  .cs-threshold__frame,
-  .cs-threshold__light,
-  .cs-threshold__arrow { transition: none; }
+  .cs-backdoor__panel,
+  .cs-backdoor__interior,
+  .cs-backdoor__action-arrow,
+  .cs-backdoor__seam {
+    transition: none !important;
+  }
+  .cs-backdoor__portal.is-open .cs-backdoor__panel--left,
+  .cs-backdoor__portal.is-open .cs-backdoor__panel--right {
+    transform: none !important;
+    opacity: 0 !important;
+  }
 }
 
 /* ==========================================================================
@@ -4281,14 +4542,18 @@ body.light-theme .cs-notebook__paper {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 1.25rem;
+  grid-auto-rows: auto;
+  align-items: stretch;
 }
 
 .cs[data-project="ebs-tech"] .cs-collage__item--hero {
   grid-column: span 6;
+  grid-row: auto;
 }
 
 .cs[data-project="ebs-tech"] .cs-collage__item--standard {
   grid-column: span 3;
+  grid-row: auto;
 }
 
 .cs[data-project="ebs-tech"] .cs-collage__item {
@@ -4298,12 +4563,14 @@ body.light-theme .cs-notebook__paper {
   margin: 0;
   display: flex;
   flex-direction: column;
+  background: var(--bg-surface, var(--bg-secondary));
 }
 
 .cs[data-project="ebs-tech"] .cs-collage__img {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
+  height: 380px;
+  object-fit: contain;
+  background: #090c10;
   display: block;
 }
 
@@ -4321,15 +4588,21 @@ body.light-theme .cs-notebook__paper {
 @media (max-width: 900px) {
   .cs[data-project="ebs-tech"] .cs-collage__item--hero {
     grid-column: span 12;
+    grid-row: auto;
   }
   .cs[data-project="ebs-tech"] .cs-collage__item--standard {
     grid-column: span 6;
+    grid-row: auto;
   }
 }
 
 @media (max-width: 600px) {
   .cs[data-project="ebs-tech"] .cs-collage__item--standard {
     grid-column: span 12;
+    grid-row: auto;
+  }
+  .cs[data-project="ebs-tech"] .cs-collage__img {
+    height: 300px;
   }
 }
 
@@ -4518,6 +4791,573 @@ body.light-theme .cs-notebook__paper {
   border-top: 1px solid var(--border-subtle);
   padding-top: 0.65rem;
 }
+
+/* ==========================================================================
+   JOURNEY MOTION GRAPHIC — MINIMAL AUTOMATIC COMMUTE INFOGRAPHIC
+   ========================================================================== */
+.cs-journey-motion {
+  margin: clamp(2rem, 4vw, 3.5rem) 0;
+  width: 100%;
+}
+
+.cs-journey-motion__card {
+  background: #141518;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: clamp(1.25rem, 2.5vw, 2rem) clamp(1.25rem, 3vw, 2.25rem);
+  box-shadow: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-journey-motion__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cs-journey-motion__header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+}
+
+.cs-journey-motion__cat-num {
+  color: #e5a93c;
+  font-weight: 600;
+}
+
+.cs-journey-motion__cat-name {
+  color: #f8fafc;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.cs-journey-motion__cat-sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.cs-journey-motion__cat-dist {
+  color: #94a3b8;
+}
+
+.cs-journey-motion__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  color: #94a3b8;
+}
+
+.cs-journey-motion__badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.cs-journey-motion__badge--accent {
+  background: rgba(229, 169, 60, 0.12);
+  color: #e5a93c;
+  border: 1px solid rgba(229, 169, 60, 0.25);
+}
+
+.cs-journey-motion__badge--accent-high {
+  background: rgba(239, 68, 68, 0.12);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.cs-journey-motion__lede {
+  margin-top: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.cs-journey-motion__lede-text {
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(0.88rem, 1.4vw, 1.02rem);
+  color: #e2e8f0;
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.cs-journey-motion__canvas-wrap {
+  width: 100%;
+  position: relative;
+  margin: 0.5rem 0 1rem;
+}
+
+.cs-journey-motion__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 200px;
+}
+
+.cs-jm-modelabel {
+  font-family: var(--font-mono, monospace);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cs-jm-nodelabel {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.cs-jm-nodelabel--main {
+  fill: #f8fafc;
+}
+
+.cs-jm-nodesub {
+  font-family: var(--font-mono, monospace);
+  font-size: 8.5px;
+  letter-spacing: 0.04em;
+  fill: #64748b;
+}
+
+@keyframes cs-jm-pulse {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.35); opacity: 0.15; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+.cs-jm-pulse-ring {
+  transform-origin: center;
+  animation: cs-jm-pulse 2s infinite ease-in-out;
+}
+
+.cs-journey-motion__footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: #64748b;
+}
+
+.cs-journey-motion__footer-tag {
+  color: #e5a93c;
+  font-weight: 600;
+}
+
+.cs-journey-motion__footer-text {
+  color: #94a3b8;
+}
+
+/* Static Reduced Motion Fallback */
+.cs-journey-motion__static-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.cs-journey-motion__static-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+}
+
+.cs-journey-motion__static-cat {
+  color: #e5a93c;
+  font-weight: 600;
+  min-width: 140px;
+}
+
+.cs-journey-motion__static-flow {
+  color: #f8fafc;
+  flex: 1;
+}
+
+.cs-journey-motion__static-stat {
+  color: #94a3b8;
+}
+
+@media (max-width: 768px) {
+  .cs-journey-motion__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .cs-journey-motion__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+  .cs-journey-motion__static-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+}
+
+/* ==========================================================================
+   RABBIT HOLE — COMPACT ENTRANCE TO ORIGINAL PROCESS DEEP DIVE
+   Positioned toward the right side of the project-ending layout, immediately
+   preceding the Garage double doors.
+   ========================================================================== */
+.cs-rabbithole {
+  position: relative;
+  width: 100%;
+  padding-top: var(--space-64);
+  padding-bottom: var(--space-32);
+}
+
+.cs-rabbithole__wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cs-rabbithole__content {
+  width: 100%;
+  max-width: 520px;
+  background: #141518;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  position: relative;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+body.light-theme .cs-rabbithole__content,
+[data-theme="light"] .cs-rabbithole__content {
+  background: #f4f4f2;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .cs-rabbithole__meta,
+[data-theme="light"] .cs-rabbithole__meta {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .cs-rabbithole__title,
+[data-theme="light"] .cs-rabbithole__title {
+  color: #1a1a1a;
+}
+
+body.light-theme .cs-rabbithole__aside,
+[data-theme="light"] .cs-rabbithole__aside {
+  color: #555555;
+}
+
+body.light-theme .cs-rabbithole__tag,
+[data-theme="light"] .cs-rabbithole__tag {
+  background: rgba(0, 0, 0, 0.05);
+  color: #555555;
+}
+
+body.light-theme .cs-rabbithole__door,
+[data-theme="light"] .cs-rabbithole__door {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #1a1a1a;
+}
+
+body.light-theme .cs-rabbithole__door:hover,
+body.light-theme .cs-rabbithole__door:focus-visible,
+[data-theme="light"] .cs-rabbithole__door:hover,
+[data-theme="light"] .cs-rabbithole__door:focus-visible {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: var(--cs-accent, #d97757);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .cs-rabbithole__aperture,
+[data-theme="light"] .cs-rabbithole__aperture {
+  background: #e6e6e2;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+body.light-theme .cs-rabbithole__plaque,
+[data-theme="light"] .cs-rabbithole__plaque {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+body.light-theme .cs-rabbithole__label,
+[data-theme="light"] .cs-rabbithole__label {
+  color: #1a1a1a;
+}
+
+body.light-theme .cs-rabbithole__hint,
+[data-theme="light"] .cs-rabbithole__hint {
+  color: #64748b;
+}
+
+.cs-rabbithole__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cs-rabbithole__kicker {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cs-accent, #d97757);
+  font-weight: 600;
+}
+
+.cs-rabbithole__tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #94a3b8;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.cs-rabbithole__title {
+  font-family: var(--font-display, inherit);
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: #f8fafc;
+  margin: 0 0 0.65rem 0;
+}
+
+.cs-rabbithole__aside {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin: 0 0 1.5rem 0;
+}
+
+.cs-rabbithole__door {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.9rem 1.15rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 3px;
+  color: #f8fafc;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+/* Compact Architectural Aperture Frame */
+.cs-rabbithole__aperture {
+  position: relative;
+  width: 44px;
+  height: 68px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 2px;
+  background: #0f1013;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 0.35rem;
+  transition: border-color 0.4s ease, transform 0.4s ease;
+}
+
+.cs-rabbithole__beam {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--cs-accent, #d97757) 0%, transparent 85%);
+  opacity: 0.15;
+  transform-origin: bottom center;
+  transform: scaleY(0.4);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.cs-rabbithole__plaque {
+  position: relative;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.45);
+  z-index: 2;
+  transition: color 0.4s ease;
+}
+
+.cs-rabbithole__action {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.cs-rabbithole__label {
+  font-family: var(--font-display, inherit);
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: #f8fafc;
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease;
+}
+
+.cs-rabbithole__hint {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.64rem;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cs-rabbithole__arrow {
+  font-size: 1.15rem;
+  color: var(--cs-accent, #d97757);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* Hover & Focus Interactions */
+.cs-rabbithole__door:hover,
+.cs-rabbithole__door:focus-visible {
+  background: rgba(255, 255, 255, 0.045);
+  border-color: var(--cs-accent, #d97757);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.cs-rabbithole__door:hover .cs-rabbithole__aperture,
+.cs-rabbithole__door:focus-visible .cs-rabbithole__aperture {
+  border-color: var(--cs-accent, #d97757);
+  transform: translateY(-2px);
+}
+
+.cs-rabbithole__door:hover .cs-rabbithole__beam,
+.cs-rabbithole__door:focus-visible .cs-rabbithole__beam {
+  transform: scaleY(1);
+  opacity: 0.35;
+}
+
+.cs-rabbithole__door:hover .cs-rabbithole__plaque,
+.cs-rabbithole__door:focus-visible .cs-rabbithole__plaque {
+  color: #f8fafc;
+}
+
+.cs-rabbithole__door:hover .cs-rabbithole__label,
+.cs-rabbithole__door:focus-visible .cs-rabbithole__label {
+  color: var(--cs-accent, #d97757);
+}
+
+.cs-rabbithole__door:hover .cs-rabbithole__arrow,
+.cs-rabbithole__door:focus-visible .cs-rabbithole__arrow {
+  transform: translateX(5px);
+}
+
+@media (max-width: 640px) {
+  .cs-rabbithole {
+    justify-content: stretch;
+  }
+  .cs-rabbithole__wrapper {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-rabbithole__door,
+  .cs-rabbithole__aperture,
+  .cs-rabbithole__beam,
+  .cs-rabbithole__arrow {
+    transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   BORDERLESS EDITORIAL IMAGERY (THE GRID IS THE FRAME. THE IMAGES ARE THE WORK.)
+   Section 08: Open and borderless. No decorative borders, rounded cards,
+   drop shadows, tinted image containers, or artificial frames.
+   ========================================================================== */
+.cs-media,
+.cs-media img,
+.cs-ph,
+.cs-figure img,
+.cs-split__media img,
+.cs-split__media .cs-media,
+.cs-research__item img,
+.cs-research__item .cs-media,
+.cs-sketchsystem__card,
+.cs-sketchsystem__media-wrap,
+.cs-sketchsystem__media-wrap img,
+.cs-archcompare__card,
+.cs-archcompare__media-wrap,
+.cs-archcompare__media-wrap img,
+.cs-modapps__card,
+.cs-fleet__pillar,
+.cs-fleet__vehicle-card,
+.cs-ticketing__card,
+.cs-union__card,
+.cs-collage__item img,
+.cs-comparison__card {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.cs-media:not(.cs-media--auto) img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.cs-media:not(.cs-media--auto) img[style*="contain"] {
+  object-fit: contain;
+}
+
+.cs-media--auto {
+  aspect-ratio: auto !important;
+  height: auto !important;
+}
+
+.cs-media--auto img {
+  width: 100%;
+  height: auto !important;
+  max-width: 100%;
+  display: block;
+}
+
+.cs-figure img,
+.cs-split__media img {
+  max-width: 100%;
+}
+
+
 
 
 

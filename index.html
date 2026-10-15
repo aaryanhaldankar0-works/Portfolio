@@ -2,6 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
+  <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aaryan Haldankar | Mobility & Vehicle Design</title>
   <meta name="description" content="Portfolio of Aaryan Haldankar - Mechanical Engineer pursuing a Master's in Mobility and Vehicle Design. Exploring automotive architecture, aerodynamics, and design thought process.">
@@ -17,7 +18,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/intro.css">
   <link rel="stylesheet" href="css/garage.css">
-  <link rel="stylesheet" href="css/revolving-carousel.css">
+  <link rel="stylesheet" href="css/selected-work.css">
   <link rel="stylesheet" href="css/garage-immersive.css?v=6">
 </head>
 <body>
@@ -38,10 +39,10 @@
       <div class="nav-right-cluster">
         <nav aria-label="Main Navigation">
           <ul class="nav-links">
-            <li><a href="#hero" class="nav-link active">Entrance</a></li>
-            <li><a href="#featured" class="nav-link">Gallery</a></li>
+            <li><a href="#hero" class="nav-link active">Introduction</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
             <li><a href="#immersive-garage" class="nav-link">Garage</a></li>
-            <li><a href="#connect" class="nav-link">Exit</a></li>
+            <li><a href="#connect" class="nav-link">Connect</a></li>
           </ul>
         </nav>
 
@@ -64,233 +65,331 @@
     <!-- Mobile Slide-Down Navigation Menu -->
     <div class="mobile-nav-menu" id="mobile-nav-menu" aria-hidden="true">
       <ul class="mobile-nav-links">
-        <li><a href="#hero" class="mobile-nav-link">01 / Entrance</a></li>
-        <li><a href="#featured" class="mobile-nav-link">02 / Gallery &amp; Exhibition</a></li>
-        <li><a href="#immersive-garage" class="mobile-nav-link">04 / The Garage</a></li>
-        <li><a href="#connect" class="mobile-nav-link">05 / Exit</a></li>
+        <li><a href="#hero" class="mobile-nav-link">01 / Introduction</a></li>
+        <li><a href="#projects" class="mobile-nav-link">02 / Projects</a></li>
+        <li><a href="#immersive-garage" class="mobile-nav-link">03 / Garage</a></li>
+        <li><a href="#connect" class="mobile-nav-link">04 / Connect</a></li>
       </ul>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main>
-    <!-- =======================================================================
-         BREATHABLE EDITORIAL INTRO SECTION
-         Derived directly from assets/Intro/intro-section (1).html
-         ======================================================================= -->
-    <section class="hero-section intro-enhanced" id="hero">
-      <div class="intro-wrap">
+  <!-- =========================================================================
+       HOMEPAGE VIEW (Entrance, Selected Work Gallery, Garage, Exit, Footer)
+       ========================================================================= -->
+  <div id="homepage-view">
+    <!-- Main Content -->
+    <main>
+      <!-- =======================================================================
+           BREATHABLE EDITORIAL INTRO SECTION
+           Derived directly from assets/Intro/intro-section (1).html
+           ======================================================================= -->
+      <section class="hero-section intro-enhanced" id="hero">
+        <div class="intro-wrap">
 
-        <div class="intro-hero-grid">
-          <!-- Left Column: Tagline, Bio, Interactive Chips -->
-          <div class="intro-col-text">
-            <p class="intro-tagline">I design mobility. Occasionally it even moves.</p>
-            <p class="intro-bio">
-              Mobility and vehicle designer, and professional bridge between &ldquo;that'll never work&rdquo; and a finished product. I sit between feasibility and emotion &mdash; technical enough to know what's possible, human enough to care whether anyone actually likes it.
-            </p>
+          <div class="intro-hero-grid">
+            <!-- Left Column: Tagline, Bio, Interactive Chips -->
+            <div class="intro-col-text">
+              <p class="intro-tagline">I design mobility. Occasionally it even moves.</p>
+              <p class="intro-bio">
+                Mobility and vehicle designer, and professional bridge between &ldquo;that'll never work&rdquo; and a finished product. I sit between feasibility and emotion &mdash; technical enough to know what's possible, human enough to care whether anyone actually likes it.
+              </p>
 
-            <div class="intro-chips" id="chipGroup">
-              <button class="intro-chip" data-key="design">Design</button>
-              <button class="intro-chip" data-key="engineering">Engineering</button>
-              <button class="intro-chip" data-key="systems">Systems</button>
-              <button class="intro-chip" data-key="human">Human Experience</button>
+              <div class="intro-chips" id="chipGroup">
+                <button class="intro-chip" data-key="design">Design</button>
+                <button class="intro-chip" data-key="engineering">Engineering</button>
+                <button class="intro-chip" data-key="systems">Systems</button>
+                <button class="intro-chip" data-key="human">Human Experience</button>
+              </div>
+              <p class="intro-chip-detail" id="chipDetail">
+                <span class="show" data-key="_default">Tap one &mdash; I promise it's more interesting than a bullet list.</span>
+                <span data-key="design">The part where I sketch things that don't exist yet and convince people they should.</span>
+                <span data-key="engineering">The part where I find out why they actually don't exist yet, and fix that.</span>
+                <span data-key="systems">Zooming out until one part's problem turns into everyone's problem &mdash; on purpose.</span>
+                <span data-key="human">Asking &ldquo;would a real person want to sit in this&rdquo; before anyone else does.</span>
+              </p>
             </div>
-            <p class="intro-chip-detail" id="chipDetail">
-              <span class="show" data-key="_default">Tap one &mdash; I promise it's more interesting than a bullet list.</span>
-              <span data-key="design">The part where I sketch things that don't exist yet and convince people they should.</span>
-              <span data-key="engineering">The part where I find out why they actually don't exist yet, and fix that.</span>
-              <span data-key="systems">Zooming out until one part's problem turns into everyone's problem &mdash; on purpose.</span>
-              <span data-key="human">Asking &ldquo;would a real person want to sit in this&rdquo; before anyone else does.</span>
+
+            <!-- Right Column: 3D Photo Plate & Facts Grid -->
+            <div class="intro-col-photo">
+              <div class="photo-frame" id="photoFrame" title="Aaryan Haldankar — Mobility &amp; Vehicle Design">
+                <img src="assets/Intro/aaryan-haldankar.jpg" alt="Aaryan Haldankar - Mobility &amp; Vehicle Designer">
+                <span class="photo-glow" aria-hidden="true"></span>
+              </div>
+
+              <div class="facts-grid">
+                <div class="fact-item">
+                  <p class="fact-k">Role</p>
+                  <p class="fact-v">Mobility &amp; vehicle designer</p>
+                </div>
+                <div class="fact-item">
+                  <p class="fact-k">Based</p>
+                  <p class="fact-v">Mumbai, India</p>
+                </div>
+                <div class="fact-item">
+                  <p class="fact-k">Focus</p>
+                  <p class="fact-v">Products, systems, people</p>
+                </div>
+                <div class="fact-item">
+                  <p class="fact-k">Status</p>
+                  <p class="fact-v">Accepting problems</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Intro Footer Strip -->
+          <footer class="intro-footer-strip">
+            <span>Design &middot; engineering &middot; a healthy disregard for &ldquo;that's how it's always done&rdquo;</span>
+            <a href="#projects" class="intro-scroll-link">
+              <span>Scroll to see the work</span>
+              <span class="arrow">&darr;</span>
+            </a>
+          </footer>
+
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           02 / PROJECTS — MINIMAL EDITORIAL GALLERY (TWO FEATURED WORKS)
+           ======================================================================= -->
+      <section id="projects" class="selected-work-section">
+        <!-- Anchor alias for legacy links -->
+        <span id="featured" style="position: absolute; top: -80px; visibility: hidden;" aria-hidden="true"></span>
+        <div class="container">
+          <div class="selected-work-intro">
+            <span class="selected-work-kicker">02 / PROJECTS</span>
+            <h2 class="selected-work-heading">Projects</h2>
+            <p class="selected-work-lead">
+              Autonomous transit architecture and emergency crisis communication hardware.
             </p>
           </div>
 
-          <!-- Right Column: 3D Photo Plate & Facts Grid -->
-          <div class="intro-col-photo">
-            <div class="photo-frame" id="photoFrame" title="Aaryan Haldankar — Mobility &amp; Vehicle Design">
-              <img src="assets/Intro/aaryan-haldankar.jpg" alt="Aaryan Haldankar - Mobility &amp; Vehicle Designer">
-              <span class="photo-glow" aria-hidden="true"></span>
-            </div>
+          <!-- Editorial Grid: 2 Substantial Compositions, Large Imagery, No Rounded Cards or Shadows -->
+          <div class="selected-work-grid" id="selected-work-gallery">
+            <!-- 01 — Bharat Mobility Pod -->
+            <a href="/work/bharat-mobility-pod" class="project-card" data-project-slug="bharat-mobility-pod" data-project-id="bharat-mobility">
+              <div class="project-card-media">
+                <img src="assets/Project_1/Renders/Render_1.png" alt="Bharat Mobility Pod" class="project-card-img" loading="eager" />
+              </div>
+              <div class="project-card-meta">
+                <div class="project-card-info">
+                  <div class="project-card-header">
+                    <span class="project-card-num">01</span>
+                    <span class="project-card-sep">/</span>
+                    <span class="project-card-cat">Mobility / Transportation / Systems</span>
+                  </div>
+                  <h3 class="project-card-title">Bharat Mobility Pod</h3>
+                  <p class="project-card-desc">Autonomous Transit for Tier 2 &amp; 3 India</p>
+                </div>
+                <div class="project-card-arrow-wrap" aria-hidden="true">
+                  <svg class="project-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </a>
 
-            <div class="facts-grid">
-              <div class="fact-item">
-                <p class="fact-k">Role</p>
-                <p class="fact-v">Mobility &amp; vehicle designer</p>
+            <!-- 02 — EBS Guardian -->
+            <a href="/work/ebs-guardian" class="project-card" data-project-slug="ebs-guardian" data-project-id="ebs-tech">
+              <div class="project-card-media">
+                <img src="assets/Project_2/Renders/Render_1.png" alt="EBS Guardian" class="project-card-img" loading="eager" />
               </div>
-              <div class="fact-item">
-                <p class="fact-k">Based</p>
-                <p class="fact-v">Mumbai, India</p>
+              <div class="project-card-meta">
+                <div class="project-card-info">
+                  <div class="project-card-header">
+                    <span class="project-card-num">02</span>
+                    <span class="project-card-sep">/</span>
+                    <span class="project-card-cat">Industrial Design / Product / Systems</span>
+                  </div>
+                  <h3 class="project-card-title">EBS Guardian</h3>
+                  <p class="project-card-desc">Emergency Communication Systems</p>
+                </div>
+                <div class="project-card-arrow-wrap" aria-hidden="true">
+                  <svg class="project-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
               </div>
-              <div class="fact-item">
-                <p class="fact-k">Focus</p>
-                <p class="fact-v">Products, systems, people</p>
-              </div>
-              <div class="fact-item">
-                <p class="fact-k">Status</p>
-                <p class="fact-v">Accepting problems</p>
-              </div>
-            </div>
+            </a>
           </div>
         </div>
+      </section>
 
-        <!-- Intro Footer Strip -->
-        <footer class="intro-footer-strip">
-          <span>Design &middot; engineering &middot; a healthy disregard for &ldquo;that's how it's always done&rdquo;</span>
-          <a href="#featured" class="intro-scroll-link">
-            <span>Scroll to see the work</span>
-            <span class="arrow">&darr;</span>
-          </a>
-        </footer>
+      <!-- =======================================================================
+           SPACE 03 · THE GARAGE — A QUIET PLACE WHERE FINISHED IDEAS REST
+           ======================================================================= -->
+      <section class="immersive-garage" id="immersive-garage">
+        <div class="garage-arch-container">
+          <div class="garage-spatial-header">
+            <span class="garage-spatial-kicker">03 / THE GARAGE</span>
+            <h2 class="garage-spatial-title">A quiet place where finished ideas rest.</h2>
+            <p class="garage-spatial-note">
+              Sunday morning daylight. Board-formed concrete, warm timber, and brushed steel.
+              The room disappears behind the prototype.
+            </p>
+          </div>
 
+          <div class="immersive-container">
+            <canvas id="immersive-canvas"></canvas>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- =========================================================================
+         SPACE 04 · CONNECT — STUDIO DEPARTURE & DIALOGUE
+         ========================================================================= -->
+    <section class="connect-section exit-spatial-section" id="connect">
+      <div class="container">
+        <div class="connect-inner exit-spatial-inner">
+          <span class="exit-spatial-kicker">04 / CONNECT</span>
+          <h2 class="exit-spatial-heading">The room is always open to suggestions.</h2>
+          <p class="exit-spatial-sub">
+            On vehicle packaging, extreme terrain mobility, structural honesty, and physical prototyping.
+          </p>
+
+          <div class="exit-dialogue-row">
+            <!-- Email -->
+            <a href="mailto:aaryanhaldankar0@gmail.com" class="exit-dialogue-link" id="connect-email-btn" aria-label="Send email to aaryanhaldankar0@gmail.com">
+              <div class="exit-link-main">
+                <svg class="connect-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+                <div class="exit-link-text">
+                  <span class="exit-link-platform">Email</span>
+                  <span class="exit-link-detail">aaryanhaldankar0@gmail.com</span>
+                </div>
+              </div>
+              <svg class="connect-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/aaryan-haldankar/" target="_blank" rel="noopener noreferrer" class="exit-dialogue-link" id="connect-linkedin-btn" aria-label="Visit LinkedIn profile">
+              <div class="exit-link-main">
+                <svg class="connect-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect width="4" height="12" x="2" y="9"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                <div class="exit-link-text">
+                  <span class="exit-link-platform">LinkedIn</span>
+                  <span class="exit-link-detail">aaryan-haldankar</span>
+                </div>
+              </div>
+              <svg class="connect-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/aaryan.works/?hl=en" target="_blank" rel="noopener noreferrer" class="exit-dialogue-link" id="connect-instagram-btn" aria-label="Visit Instagram profile @aaryan.works">
+              <div class="exit-link-main">
+                <svg class="connect-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                </svg>
+                <div class="exit-link-text">
+                  <span class="exit-link-platform">Instagram</span>
+                  <span class="exit-link-detail">@aaryan.works</span>
+                </div>
+              </div>
+              <svg class="connect-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <div class="exit-studio-colophon">
+            <span>Aaryan Haldankar &middot; Transportation &amp; Physical Systems Designer</span>
+            <span class="colophon-divider">&middot;</span>
+            <span>Mumbai, India / Global</span>
+          </div>
+        </div>
       </div>
     </section>
-    <!-- =======================================================================
-         FEATURED PROJECTS: REVOLVING 3D CAROUSEL
-         ======================================================================= -->
-    <section id="featured" class="garage-section">
-      <div class="container">
-        <div class="section-intro">
-          <div class="section-label">01 / FEATURED PROJECTS</div>
 
-          <h2 class="section-heading">
-            Selected Works
-          </h2>
-
-          <p class="section-description">
-            A selection of mobility concepts and physical systems. Drag or click to browse.
-          </p>
+    <!-- =========================================================================
+         MINIMAL FOOTER
+         ========================================================================= -->
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <div class="footer-left">
+          <strong>Aaryan Haldankar</strong>
+          <span class="footer-sep">&mdash;</span>
+          <span>Mobility &amp; Vehicle Design</span>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:aaryanhaldankar0@gmail.com" class="footer-link">Email</a>
+          <a href="https://www.linkedin.com/in/aaryan-haldankar/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+          <a href="https://www.instagram.com/aaryan.works/?hl=en" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
+          <a href="#hero" class="footer-link">&uarr; Top</a>
         </div>
       </div>
+    </footer>
+  </div>
 
-      <!-- Revolving Carousel Viewport -->
-      <div class="carousel-viewport" id="carousel-viewport">
-        
-        <!-- Navigation Arrows -->
-        <button class="carousel-arrow carousel-arrow--prev" id="carousel-prev" aria-label="Previous project">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="carousel-arrow carousel-arrow--next" id="carousel-next" aria-label="Next project">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 6 15 12 9 18"/></svg>
-        </button>
+  <!-- =========================================================================
+       DEDICATED PROJECT VIEW CONTAINER (/work/:slug)
+       Isolated, dedicated route view with clean top bar and React case-study mount
+       ========================================================================= -->
+  <div id="project-view" class="project-view" hidden>
+    <!-- Sticky Minimal Top Bar -->
+    <header class="project-top-bar" id="project-top-bar">
+      <div class="container project-top-bar-inner">
+        <a href="#projects" class="project-back-btn" id="project-back-btn" aria-label="Back to Projects">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back to Projects</span>
+        </a>
 
-        <!-- 3D Carousel Scene -->
-        <div class="carousel-scene" id="carousel-scene">
-          <div class="carousel-drum" id="carousel-drum">
-            <!-- Cards injected by JS -->
-          </div>
+        <div class="project-top-bar-center">
+          <span class="project-top-bar-kicker" id="project-top-bar-kicker">01 / Mobility / Transportation / Systems</span>
+          <span class="project-top-bar-sep">·</span>
+          <span class="project-top-bar-title" id="project-top-bar-title">Bharat Mobility Pod</span>
         </div>
 
-        <!-- Drag Hint -->
-        <div class="carousel-hint" id="carousel-hint">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          <span>Drag or use arrows to browse</span>
-        </div>
+        <div class="project-top-bar-right">
+          <a href="#immersive-garage" class="project-garage-jump" id="project-garage-link" title="Explore interactive 3D model in the Garage">
+            <span>View 3D in Garage</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 6 15 12 9 18"></polyline>
+            </svg>
+          </a>
 
-        <!-- Carousel Dot Indicators -->
-        <div class="carousel-dots" id="carousel-dots"></div>
-      </div>
-
-      <!-- Expanded Project Details Panel (Toggleable below carousel) -->
-      <div class="container">
-        <div class="carousel-toggle-wrap" id="carousel-toggle-wrap">
-          <button class="carousel-toggle-btn" id="carousel-toggle-btn" aria-expanded="false" aria-controls="carousel-detail-panel">
-            <span class="carousel-toggle-btn__indicator"></span>
-            <span class="carousel-toggle-btn__text" id="carousel-toggle-btn-text">View Project Details</span>
-            <span class="carousel-toggle-btn__action">
-              <span class="toggle-action-label" id="carousel-toggle-action-label">Expand</span>
-              <svg class="toggle-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"/>
-              </svg>
-            </span>
+          <button class="theme-toggle-btn project-theme-btn" id="project-theme-toggle-btn" title="Toggle Light / Dark Theme" aria-label="Toggle Theme">
+            <svg class="project-theme-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
           </button>
         </div>
-
-        <div class="carousel-detail-panel" id="carousel-detail-panel">
-          <!-- Dynamically populated when user clicks toggle -->
-        </div>
       </div>
-    </section>
+    </header>
 
-    <!-- =======================================================================
-         SPACE 04 · THE GARAGE — A QUIET PLACE WHERE FINISHED IDEAS REST
-         ======================================================================= -->
-    <section class="immersive-garage" id="immersive-garage">
-      <div class="garage-arch-container">
-        <div class="garage-spatial-header">
-          <span class="garage-spatial-kicker">04 / THE GARAGE</span>
-          <h2 class="garage-spatial-title">A quiet place where finished ideas rest.</h2>
-          <p class="garage-spatial-note">
-            Sunday morning daylight. Board-formed concrete, warm timber, and brushed steel.
-            The room disappears behind the prototype.
-          </p>
-        </div>
-
-        <div class="immersive-container">
-          <canvas id="immersive-canvas"></canvas>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- =========================================================================
-       SPACE 05 · THE EXIT — STUDIO DEPARTURE & DIALOGUE
-       ========================================================================= -->
-  <section class="connect-section exit-spatial-section" id="connect">
-    <div class="container">
-      <div class="connect-inner exit-spatial-inner">
-        <span class="exit-spatial-kicker">05 / EXIT</span>
-        <h2 class="exit-spatial-heading">The studio is always open for dialogue.</h2>
-        <p class="exit-spatial-sub">
-          On vehicle packaging, extreme terrain mobility, structural honesty, and physical prototyping.
-        </p>
-
-        <div class="exit-dialogue-row">
-          <a href="mailto:aaryanhaldankar0@gmail.com" class="exit-dialogue-link" id="connect-email-btn">
-            <span class="exit-link-meta">DIRECT INQUIRY</span>
-            <span class="exit-link-value">aaryanhaldankar0@gmail.com &nearr;</span>
-          </a>
-          <a href="https://www.linkedin.com/in/aaryan-haldankar/" target="_blank" rel="noopener" class="exit-dialogue-link" id="connect-linkedin-btn">
-            <span class="exit-link-meta">PROFESSIONAL RECORD</span>
-            <span class="exit-link-value">LinkedIn &nearr;</span>
-          </a>
-        </div>
-
-        <div class="exit-studio-colophon">
-          <span>Aaryan Haldankar &middot; Transportation &amp; Physical Systems Designer</span>
-          <span class="colophon-divider">&middot;</span>
-          <span>Pune, India / Global</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       MINIMAL FOOTER
-       ========================================================================= -->
-  <footer class="site-footer">
-    <div class="container footer-content">
-      <div class="footer-left">
-        <strong>Aaryan Haldankar</strong>
-        <span class="footer-sep">&mdash;</span>
-        <span>Mobility &amp; Vehicle Design</span>
-      </div>
-      <div class="footer-links">
-        <a href="mailto:aaryanhaldankar0@gmail.com" class="footer-link">Email</a>
-        <a href="https://www.linkedin.com/in/aaryan-haldankar/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-        <a href="#hero" class="footer-link">&uarr; Top</a>
-      </div>
-    </div>
-  </footer>
+    <!-- React Case Study Mount Target -->
+    <div id="project-case-study-root"></div>
+  </div>
 
   <!-- Scripts -->
-  <script src="js/data.js?v=6"></script>
+  <script src="js/data.js?v=7"></script>
   <script src="js/canvas-effects.js"></script>
   <script src="js/intro.js?v=3"></script>
   <script src="js/garage.js?v=2"></script>
-  <script src="js/revolving-carousel.js?v=3"></script>
+  <script src="js/router.js?v=1"></script>
   <script type="module" src="js/immersive-garage.js"></script>
   <script src="js/app.js?v=5"></script>
-  <!-- React: modular case study architecture (mounted into the featured detail panel) -->
+  <!-- React: modular case study architecture -->
   <script type="module" src="/src/case-study/main.jsx"></script>
 </body>
 </html>

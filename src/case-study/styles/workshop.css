@@ -1544,8 +1544,9 @@
 
 .et-exploded-image {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  height: auto;
+  max-height: 680px;
+  object-fit: contain;
   display: block;
 }
 
