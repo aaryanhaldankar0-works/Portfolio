@@ -33,6 +33,7 @@ export default function ImagePlaceholder({
   bg,
 }) {
   const style = { aspectRatio: toAspect(ratio), ...(bg ? { background: bg } : {}) };
+  const safeSrc = src ? encodeURI(src) : undefined;
 
   return (
     <figure className={`cs-figure${className ? ` ${className}` : ''}`}>
@@ -40,7 +41,7 @@ export default function ImagePlaceholder({
         <div className="cs-media" style={style}>
           {src.endsWith('.mp4') || src.endsWith('.webm') || variant === 'video' ? (
             <video
-              src={src}
+              src={safeSrc}
               autoPlay
               muted
               loop
@@ -59,7 +60,7 @@ export default function ImagePlaceholder({
             />
           ) : (
             <img
-              src={src}
+              src={safeSrc}
               alt={alt || label}
               loading="lazy"
               style={{

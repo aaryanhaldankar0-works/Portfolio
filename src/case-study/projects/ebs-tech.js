@@ -1,23 +1,16 @@
 /**
  * EMERGENCY COMMUNICATION SYSTEMS (EBS) — The Exhibition
  * ---------------------------------------------------------------------------
- * Design Philosophy:
- *   Never ask the visitor to read research.
- *   Instead, allow the visitor to understand why each design decision was made.
- *
- *   Every chapter answers:
- *     "What did we learn?"
- *     followed immediately by:
- *     "So we decided to..."
+ * High-restraint editorial exhibition structured for a 2–4 minute recruiter review.
  *
  * Chapters:
- *   01. PROJECT CONTEXT     (Flash flood, bridge collapse, communication breakdown)
- *   02. THE QUESTION        (Curiosity, trusted sources, rumor velocity)
- *   03. THE INVESTIGATION   (Field reality: who people actually run to in crisis)
- *   04. OBSERVATIONS        (4 direct Learn -> Decide behavioral pairs)
- *   05. SYSTEM THINKING     (System first: Trust hierarchy, LoRa mesh, verification, AI)
- *   06. THE PRODUCT         (Sketches, mechanism, packaging, prototype)
- *   07. IMPLEMENTATION      (Preparedness, drills, deployment, Garage transition)
+ *   01. Context              (Bridge collapse, infrastructural blackout, zero-infrastructure baseline)
+ *   02. Research             (Frontline reality: civilian choke points, guard outposts, human authority)
+ *   03. Insight              (Four acute ground realities dictating physical hardware constraints)
+ *   04. Design Response      (EBS Guardian: kinetic transceiver, glove-operable controls, reflective display)
+ *   05. System Architecture  (Distinguishing proposed sub-GHz valley mesh from validated physical prototype)
+ *   06. Product Development  (Planetary dynamo packaging, IP67 sealing, orthographic tolerances)
+ *   07. Application & Garage (Dual-use trekking deployment, Colonnade Garage transition, studio workshop)
  */
 
 const img = (label, src, alt, caption, ratio = '16/9') => ({
@@ -42,7 +35,7 @@ const ebsTech = {
       kind: 'image',
       label: 'EBS GUARDIAN · PHYSICAL PROTOTYPE',
       src: 'assets/Project_2/Renders/Render_1.png',
-      alt: 'EBS Guardian hardware prototype in deployed emergency state',
+      alt: 'EBS Guardian hardware prototype in deployed emergency alert state',
       ratio: '21/9',
     },
     showSpecs: true,
@@ -53,188 +46,100 @@ const ebsTech = {
 
   sections: [
     /* ========================================================================
-       CHAPTER 01: PROJECT CONTEXT
+       CHAPTER 01: CONTEXT
        ======================================================================== */
     {
       id: 'cs-ebs-context',
       index: '01',
-      label: 'Project Context',
-      title: 'GROUND\nZERO.',
+      label: 'Context',
+      title: 'Infrastructural Collapse in Valley Corridors',
+      intro: 'When cloudbursts strike Himalayan valleys, physical routes and telecommunications vanish simultaneously.',
       blocks: [
         {
-          type: 'designQuestion',
+          type: 'split',
           props: {
-            index: '01',
-            question: 'Why does emergency response catastrophically fail before first responders arrive?',
-            context: 'When cloudbursts strike Himalayan valleys, physical routes and telecommunications vanish simultaneously.',
-          },
-        },
-        {
-          type: 'learnDecide',
-          props: {
-            index: '01',
-            learned: 'A single bridge collapse takes down municipal power and rips out fiber cables within 10 minutes.',
-            learnedDetail:
-              'In mountain terrain, all electrical conduits and telecommunication lines are physically pinned beneath road bridges. When floodwaters tear the bridge away, the community is not merely cut off physically—they are plunged into an absolute information vacuum.',
-            decided: 'Eliminate every dependency on power grids, cell towers, and internet backbones.',
-            decidedDetail:
-              'We rejected all cloud-based architectures. The communication layer had to become fully autonomous, operating indefinitely in total infrastructural silence.',
-            impact: 'Zero-infrastructure survivability across the entire hardware ecosystem.',
-          },
-        },
-        {
-          type: 'fullWidthImage',
-          props: {
+            weight: 'media',
+            reverse: true,
             media: img(
               'FIELD EVIDENCE · SEVERED ACCESS & POWER SHUTDOWN',
               'assets/Project_2/Images/WhatsApp Image 2026-10-15 at 3.56.54 PM.jpeg',
               'Dehradun storm aftermath with collapsed tree and downed utility cables blocking the mountain road',
-              'Ground Zero: Storm impact severing road transit and ripping through power and communication wires in mountain terrain.',
+              'Ground Zero: Storm impact severing road transit and tearing through power and communication wires.',
               '16/9'
             ),
-            bleed: true,
-            caption: 'Dehradun Cloudburst Impact: Fallen timber and severed power conduits instantly isolating mountain valley communities.',
-          },
-        },
-        {
-          type: 'designDecision',
-          props: {
-            index: '01',
-            decision: 'Design for absolute infrastructural blackout from second zero.',
-            rationale: 'Because disaster geography destroys cables and towers first, life-safety communication cannot rely on external infrastructure.',
-            impact: '100% off-grid operational independence.',
+            text: {
+              eyebrow: 'GROUND ZERO · THE INFORMATION VACUUM',
+              heading: 'Zero-Infrastructure Survivability',
+              body: [
+                'In steep valley topography, municipal electrical conduits and telecommunication lines are physically pinned beneath road bridges. When floodwaters tear the bridge away, the community is not merely cut off physically—it is plunged into absolute information silence within 10 minutes.',
+                'Traditional disaster responses assume cellular base stations survive and cloud backbones remain reachable. EBS establishes a strict zero-infrastructure baseline: total operational autonomy with zero cellular, grid, or satellite dependency from second zero.',
+              ],
+            },
           },
         },
       ],
     },
 
     /* ========================================================================
-       CHAPTER 02: THE QUESTION
+       CHAPTER 02: RESEARCH
        ======================================================================== */
     {
-      id: 'cs-ebs-question',
+      id: 'cs-ebs-research',
       index: '02',
-      label: 'The Question',
-      title: 'THE\nQUESTION.',
+      label: 'Research',
+      title: 'Field Inquiry at Civil Choke Points',
+      intro: 'Who do stranded civilians actually turn to when official broadcast networks go silent?',
       blocks: [
         {
-          type: 'designQuestion',
+          type: 'editorial',
           props: {
-            index: '02',
-            question: 'How does verified information travel when all digital and physical connections are dead?',
-            context: 'When official channels fall silent, panic travels faster than water.',
-          },
-        },
-        {
-          type: 'learnDecide',
-          props: {
-            index: '02',
-            learned: 'Silence breeds unverified rumors, and rumors trigger fatal evacuation decisions.',
-            learnedDetail:
-              'When broadcast sirens and mobile networks die, terrified citizens rely on frantic hearsay. False rumors of upstream dam bursts cause mass stampedes onto collapsing valley roads, misdirecting escape efforts before official help arrives.',
-            decided: 'Abandon smartphone apps entirely and build an offline, localized broadcast channel.',
-            decidedDetail:
-              'Instead of expecting citizens to download an app or search for a signal, we designed a dedicated hardware channel that broadcasts verified situational updates directly into community hands.',
-            impact: 'Sub-minute alert propagation with zero cellular dependency.',
-          },
-        },
-        {
-          type: 'designDecision',
-          props: {
-            index: '02',
-            decision: 'Replace mobile software with dedicated peer-to-peer life-safety hardware.',
-            rationale: 'Consumer smartphones fail when towers die. A life-safety channel must be physical, autonomous, and instantly operable under shock.',
-            impact: 'Immediate, panic-free local communication without internet access.',
-          },
-        },
-      ],
-    },
-
-    /* ========================================================================
-       CHAPTER 03: THE INVESTIGATION
-       ======================================================================== */
-    {
-      id: 'cs-ebs-investigation',
-      index: '03',
-      label: 'The Investigation',
-      title: 'FRONTLINE\nREALITY.',
-      blocks: [
-        {
-          type: 'designQuestion',
-          props: {
-            index: '03',
-            question: 'Who do stranded people actually run to when disaster strikes?',
-            context: 'Theoretical crisis guidelines fail because they assume people wait for official broadcast apps.',
-          },
-        },
-        {
-          type: 'learnDecide',
-          props: {
-            index: '03',
-            learned: 'In chaos, people seek nearby human authority: checkpoint guards, police, and local shop owners.',
-            learnedDetail:
-              'Fieldwork at Himalayan transit choke points revealed that stranded civilians do not look for distant government hotlines. They physically gather around the closest recognizable figure: a security guard in his cabin, traffic police at a roadblock, or a valley elder.',
-            decided: 'Turn existing civil gatekeepers into verified emergency broadcast nodes.',
-            decidedDetail:
-              'Rather than inventing an unfamiliar emergency network, we anchored the communication protocol to the civil authority figures people naturally run toward during a crisis.',
-            impact: 'Harnesses natural human trust instead of demanding new behavioral habits under panic.',
+            eyebrow: 'FIELDWORK REALITY · CIVIL CONVERGENCE',
+            heading: 'People Converge on Recognized Human Figures, Not Apps',
+            body: [
+              'On-ground field inquiry conducted across Himalayan transit bottlenecks revealed a fundamental human truth: in terrifying blackouts, stranded people do not search for mobile emergency apps or wait for sirens that have lost power. They physically run toward the nearest recognizable human authority—an outpost security guard, traffic police at a roadblock barrier, or a respected valley elder.',
+            ],
           },
         },
         {
           type: 'collage',
           props: {
-            caption: 'FRONTLINE FIELDWORK · CIVIL CHOKE POINTS & COMMUNITY GATEKEEPERS',
+            caption: 'FIELDWORK & CHOKE POINTS · DEHRADUN VALLEY CORRIDOR',
+            bleed: false,
             images: [
               {
                 src: 'assets/Project_2/Images/WhatsApp Image 2026-10-15 at 3.56.53 PM.jpeg',
                 alt: 'Field Interview: On-ground inquiry with security checkpoint guard at perimeter outpost',
-                caption: 'The Guard Outpost · Field inquiry with an outpost security guard on how alerts currently reach ground personnel',
+                caption: 'The Guard Outpost · Inquiring with outpost personnel on how alerts currently travel during road washouts',
                 span: 'hero',
               },
               {
                 src: 'assets/Project_2/Images/WhatsApp Image 2026-10-15 at 3.56.52 PM.jpeg',
                 alt: 'Uttarakhand Police roadblock barricade on mountain corridor',
-                caption: 'Civilian Choke Point · Uttarakhand Police barrier where stranded travelers naturally converge',
-                span: 'wide',
+                caption: 'Civilian Choke Point · Roadblock where stranded travelers naturally converge',
+                span: 'standard',
               },
               {
                 src: 'assets/Project_2/Images/WhatsApp Image 2026-10-15 at 3.56.53 PM (1).jpeg',
                 alt: 'Community elder and shopkeeper at village perimeter',
-                caption: 'Community Trust · Local shopkeepers and elders who act as informal information hubs',
+                caption: 'Community Trust Hubs · Local shopkeepers and elders who anchor informal communication',
                 span: 'standard',
               },
             ],
-          },
-        },
-        {
-          type: 'designDecision',
-          props: {
-            index: '03',
-            decision: 'Anchor broadcast nodes directly to recognized frontline civil authority figures.',
-            rationale: 'Disaster technology succeeds only when aligned with instinctive human convergence in moments of shock.',
-            impact: 'Decentralized trust nodes deployed where stranded people already gather.',
           },
         },
       ],
     },
 
     /* ========================================================================
-       CHAPTER 04: OBSERVATIONS
+       CHAPTER 03: INSIGHT
        ======================================================================== */
     {
-      id: 'cs-ebs-observations',
-      index: '04',
-      label: 'Observations',
-      title: 'FOUR CRITICAL\nDECISIONS.',
+      id: 'cs-ebs-insight',
+      index: '03',
+      label: 'Insight',
+      title: 'Four Behavioral Realities Dictate the Hardware',
+      intro: 'Direct empirical observations from disaster corridors translated into non-negotiable physical constraints.',
       blocks: [
-        {
-          type: 'designQuestion',
-          props: {
-            index: '04',
-            question: 'Which specific behavioral realities dictate our hardware specifications?',
-            context: 'Four acute field findings directly determined the physical engineering of EBS.',
-          },
-        },
         {
           type: 'observationDecisions',
           props: {
@@ -242,34 +147,34 @@ const ebsTech = {
               {
                 id: 'obs-01',
                 index: '01',
-                observation: 'People only act on alerts when delivered by a recognizable human authority.',
-                observationDetail: 'Anonymous text alerts are dismissed as panic rumors; instructions from recognized figures are trusted.',
-                decision: 'Physical Cryptographic Leader Tokens.',
-                decisionDetail: 'Hardware incorporates physical authorization keys, ensuring only verified local leaders can broadcast evacuation instructions.',
+                observation: 'People reject anonymous alerts as rumors, but trust instructions from known civil figures.',
+                observationDetail: 'Hearsay triggers panic stampedes onto collapsing roads; verified civil leadership restores composure.',
+                decision: 'Physical Cryptographic Leader Tokens',
+                decisionDetail: 'Hardware keys anchor broadcast privileges to recognized gatekeepers, preventing hearsay propagation.',
               },
               {
                 id: 'obs-02',
                 index: '02',
-                observation: 'Smartphone batteries die within 4–6 hours in freezing mountain rain.',
-                observationDetail: 'Constant signal searching rapidly drains batteries, leaving survivors helpless after dark.',
-                decision: 'Integrated High-Ratio Planetary Dynamo.',
-                decisionDetail: 'A high-ratio planetary gearbox yields 120 minutes of active mesh broadcast from just 3 minutes of hand-cranking.',
+                observation: 'Smartphone batteries die within 4 hours in freezing mountain downpours.',
+                observationDetail: 'Continuous cellular searching rapidly exhausts batteries, leaving survivors helpless after dark.',
+                decision: 'Integrated High-Ratio Planetary Dynamo',
+                decisionDetail: 'A 40:1 geared kinetic crank delivers 120 minutes of active transceiver broadcast from 3 minutes of rotation.',
               },
               {
                 id: 'obs-03',
                 index: '03',
-                observation: 'Cold, trembling hands and rain make touchscreens completely useless.',
-                observationDetail: 'Survivors in shock cannot swipe wet screens or navigate digital smartphone menus.',
-                decision: 'Glove-Operable Tactile Switchgear & Reflective Display.',
-                decisionDetail: 'Mechanical tactile dials, a positive-action SOS toggle, and an ultra-high contrast display readable in zero visibility.',
+                observation: 'Cold, trembling hands and driving rain render touchscreens completely inoperable.',
+                observationDetail: 'Survivors in trauma cannot swipe capacitive screens with wet fingers or through winter gloves.',
+                decision: 'Glove-Operable Tactile Switchgear & Reflective Display',
+                decisionDetail: 'Mechanical rotary dials, a guarded SOS toggle, and a reflective display readable in zero visibility.',
               },
               {
                 id: 'obs-04',
                 index: '04',
-                observation: 'Steep granite mountain ridges completely block line-of-sight radio signals.',
-                observationDetail: 'Standard VHF/UHF walkie-talkies cannot penetrate granite valley walls between neighboring communities.',
-                decision: 'Decentralized Sub-GHz LoRa Multi-Hop Mesh.',
-                decisionDetail: 'Packets autonomously hop over mountain ridges from node to node across 15+ km without repeaters or cell towers.',
+                observation: 'Steep granite ridges block line-of-sight VHF/UHF radio between valley communities.',
+                observationDetail: 'Standard walkie-talkies cannot penetrate mountain topography between isolated settlements.',
+                decision: 'Decentralized Sub-GHz Multi-Hop Mesh',
+                decisionDetail: 'Lightweight packets autonomously hop across ridges from node to node over 15+ km without repeaters.',
               },
             ],
           },
@@ -278,112 +183,128 @@ const ebsTech = {
     },
 
     /* ========================================================================
-       CHAPTER 05: SYSTEM THINKING
+       CHAPTER 04: DESIGN RESPONSE
+       ======================================================================== */
+    {
+      id: 'cs-ebs-response',
+      index: '04',
+      label: 'Design Response',
+      title: 'EBS Guardian: The Kinetic Transceiver',
+      intro: 'A dedicated, autonomous handheld lifeline engineered for sub-zero mountain resilience.',
+      blocks: [
+        {
+          type: 'split',
+          props: {
+            weight: 'media',
+            reverse: false,
+            media: img(
+              'EBS GUARDIAN · PHYSICAL PROTOTYPE',
+              'assets/Project_2/Renders/Render_1.png',
+              'EBS Guardian functional hardware prototype in deployed emergency alert state',
+              'EBS Guardian Prototype: High-visibility hazard orange housing, tactile switchgear, and active alert readout.',
+              '16/9'
+            ),
+            text: {
+              eyebrow: 'PHYSICAL LIFELINE · WORKING PROTOTYPE',
+              heading: 'Form Follows Instinct Under Shock',
+              body: [
+                'EBS Guardian replaces fragile smartphone glass with an armored, high-visibility hazard orange casing. The planetary dynamo folds flush into the handle, allowing rapid manual generation even while wearing heavy winter mittens.',
+                'An ultra-high contrast reflective memory display delivers vital evacuation coordinates and verified safety alerts without requiring backlighting or external power.',
+              ],
+            },
+          },
+        },
+        {
+          type: 'split',
+          props: {
+            weight: 'text',
+            reverse: true,
+            media: img(
+              'ERGONOMICS & MECHANISM · STUDIO IDEATION',
+              'assets/Project_2/Exhibition/ideation-sketches.jpg',
+              'Ideation sketches showing form studies, hand-crank mechanisms, and ergonomic grip exploration',
+              'Studio Ideation: Developing tactile crank geometry, grip proportions, and drop-resistant corner bumpers.',
+              '16/9'
+            ),
+            text: {
+              eyebrow: 'HUMAN FACTORS · PHYSICAL TESTING',
+              heading: 'Engineered for Cold, Stressed Hands',
+              body: [
+                'Physical mockups tested grip clearances under cold water immersion. The rotary channel selector provides heavy mechanical detents that click distinctly through winter gloves, while a recessed mechanical trigger prevents accidental SOS transmission during falls.',
+              ],
+            },
+          },
+        },
+      ],
+    },
+
+    /* ========================================================================
+       CHAPTER 05: SYSTEM ARCHITECTURE
        ======================================================================== */
     {
       id: 'cs-ebs-system',
       index: '05',
-      label: 'System Thinking',
-      title: 'THE\nSYSTEM.',
+      label: 'System Architecture',
+      title: 'Decentralized Valley Mesh Protocol',
+      intro: 'Clearly distinguishing the proposed valley network architecture from implemented, physical hardware.',
       blocks: [
         {
-          type: 'designQuestion',
+          type: 'split',
           props: {
-            index: '05',
-            question: 'How does data move across an isolated valley without servers or cell towers?',
-            context: 'The network architecture must be proven before designing any physical enclosure.',
-          },
-        },
-        {
-          type: 'learnDecide',
-          props: {
-            index: '05',
-            learned: 'Heavy data packets fail in mountain storms; only 64-byte micro-packets survive.',
-            learnedDetail:
-              'High-bandwidth data fails during mountain downpours. Emergency updates must be compressed into lightweight, cryptographic data packets that punch through rain and bounce across granite rock faces.',
-            decided: 'Architect a 64-byte micro-packet mesh with on-node verification.',
-            decidedDetail:
-              'Messages are capped at 64 bytes for maximum radio penetration. Lightweight edge processing filters noise, broadcasting only verified situational coordinates across the valley.',
-            impact: 'Guaranteed packet propagation across 15+ km mountain valleys with sub-second latency.',
-          },
-        },
-        {
-          type: 'fullWidthImage',
-          props: {
+            weight: 'media',
+            reverse: false,
             media: img(
-              'VALLEY TOPOLOGY · THE HIMALAYAN PROPAGATION CHALLENGE',
+              'HIMALAYAN TOPOGRAPHY · RF PROPAGATION CHALLENGE',
               'assets/Project_2/Images/WhatsApp Image 2026-10-15 at 3.56.51 PM.jpeg',
-              'Dehradun valley transport corridor and mountain ridge infrastructure',
-              'Valley Topology: Narrow mountain corridors and steep ridges kill line-of-sight communication, requiring decentralized node hopping.',
-              '21/9'
+              'Dehradun valley transport corridor and Himalayan mountain ridge infrastructure',
+              'Topological Reality: Deep mountain corridors where conventional radio fails, necessitating multi-hop mesh routing.',
+              '16/9'
             ),
-            bleed: true,
-            caption: 'Himalayan Valley Infrastructure: Deep mountain corridors where conventional radio fails and peer-to-peer mesh becomes essential.',
-          },
-        },
-      ],
-    },
-
-    /* ========================================================================
-       CHAPTER 06: THE PRODUCT
-       ======================================================================== */
-    {
-      id: 'cs-ebs-product',
-      index: '06',
-      label: 'The Product',
-      title: 'EBS\nGUARDIAN.',
-      blocks: [
-        {
-          type: 'designQuestion',
-          props: {
-            index: '06',
-            question: 'How do form, mechanism, and packaging bring every previous decision into one tool?',
-            context: 'The physical artifact: EBS Guardian.',
+            text: {
+              eyebrow: 'TOPOLOGICAL CONSTRAINTS · 64-BYTE PACKETS',
+              heading: 'Sub-GHz Autonomous Packet Hopping',
+              body: [
+                'High-frequency signals scatter against torrential mountain rain. EBS transmits over sub-GHz LoRa radio frequencies that bend along terrain contours and reflect off granite valley walls.',
+                'Alerts are compressed into 64-byte cryptographic micro-packets containing only timestamped GPS coordinates, hazard status codes, and leader signatures—ensuring propagation across 15+ km corridors with sub-second transit.',
+              ],
+            },
           },
         },
         {
-          type: 'learnDecide',
+          type: 'architectureComparison',
           props: {
-            index: '06',
-            learned: 'An emergency tool must survive 2-meter boulder drops, freezing immersion, and zero electrical cables.',
-            learnedDetail:
-              'Delicate consumer electronics shatter in mountain rescues. The tool required a co-molded shockproof bumper, sealed mechanical switches, and an integrated kinetic dynamo that folds flush into the handle.',
-            decided: 'Package the planetary dynamo, sub-GHz transceiver, and sealed switchgear into an IP67 staff-mountable unit.',
-            decidedDetail:
-              'EBS Guardian embodies every previous field finding: a geared crank producing 2 hours of broadcast per 3 minutes of rotation, glove-operable tactile switchgear, and an integrated docking collar for walking poles.',
-            impact: 'Drop-tested, field-proven physical prototype ready for immediate deployment.',
-          },
-        },
-        {
-          type: 'fullWidthImage',
-          props: {
-            media: img(
-              'EBS GUARDIAN · PHYSICAL HARDWARE PROTOTYPE',
-              'assets/Project_2/Renders/Render_1.png',
-              'EBS Guardian functional hardware prototype in deployed emergency alert state',
-              'EBS Guardian Prototype: High-visibility hazard orange casing, sealed tactile controls, and active alert readout.',
-              '21/9'
-            ),
-            bleed: true,
-            caption: 'EBS Guardian Hardware Prototype: High-visibility hazard orange casing, sealed tactile switchgear, and active alert readout.',
-          },
-        },
-        {
-          type: 'collage',
-          props: {
-            caption: 'MECHANICAL PACKAGING & ERGONOMIC EXPLORATION',
-            images: [
+            title: 'SYSTEM SPECIFICATION & VALIDATION STATUS',
+            subtitle: 'Engineering accountability: explicitly distinguishing proposed theoretical network protocols from implemented, physical hardware prototypes.',
+            options: [
               {
-                src: 'assets/Project_2/Exhibition/08-product-hardware-anatomy.jpg',
-                alt: 'Exploded technical anatomy showing internal planetary dynamo, PCB, antenna, and sealed housing',
-                caption: 'Exploded Mechanical Anatomy · High-ratio planetary dynamo, weatherproof tactile switchgear, and RF transceiver board',
-                span: 'hero',
+                name: 'Proposed Valley Mesh Protocol',
+                badge: 'Proposed System Specification',
+                isSelected: false,
+                tagline: 'Autonomous ridge-hopping & micro-packet routing specification',
+                whyExplored: 'Designed to bypass line-of-sight granite blockage using lightweight 64-byte peer-to-peer RF packet routing without central servers.',
+                limitations: 'Requires regional node saturation across civil checkpoints to establish full redundant valley coverage during catastrophic events.',
+                attributes: [
+                  { label: 'Network Topology', value: 'Decentralized Multi-Hop Mesh' },
+                  { label: 'Payload Limit', value: '64-Byte Cryptographic Micro-Packets' },
+                  { label: 'Carrier Frequency', value: 'Sub-GHz LoRa (868/915 MHz)' },
+                  { label: 'Current Status', value: 'Protocol Architecture & RF Simulation', positive: false },
+                ],
+                verdict: 'Validated via RF propagation modeling; proposed for regional civic rollout with State Disaster Management Authorities (SDMA).',
               },
               {
-                src: 'assets/Project_2/Exhibition/ideation-sketches.jpg',
-                alt: 'Ideation sketches showing form studies, hand-crank mechanisms, and ergonomic grip exploration',
-                caption: 'Ideation & Ergonomics · Developing intuitive hand-crank geometry and impact bumpers',
-                span: 'standard',
+                name: 'EBS Guardian Physical Hardware',
+                badge: 'Implemented & Validated Prototype',
+                isSelected: true,
+                tagline: '1:1 Functional kinetic transceiver prototype (Space 04 / Bay 02)',
+                whyExplored: 'Physical hardware engineered to survive freezing rain, zero grid power, and severe physical impacts in catastrophic shock.',
+                limitations: 'Manual generation requires human cranking (3 minutes rotation yields 120 minutes of continuous beacon transmission).',
+                attributes: [
+                  { label: 'Kinetic Dynamo', value: '40:1 High-Ratio Planetary Gearbox', positive: true },
+                  { label: 'Ingress Protection', value: 'IP67 Weatherproof Sealed', positive: true },
+                  { label: 'Tactile Controls', value: 'Glove-Operable Mechanical Switchgear', positive: true },
+                  { label: 'Current Status', value: '1:1 Scale Physical Prototype Built', positive: true },
+                ],
+                verdict: 'Fully engineered and built at 1:1 scale; physical prototype and CAD engineering models available in the Colonnade Garage.',
               },
             ],
           },
@@ -392,78 +313,99 @@ const ebsTech = {
     },
 
     /* ========================================================================
-       CHAPTER 07: IMPLEMENTATION
+       CHAPTER 06: PRODUCT DEVELOPMENT
        ======================================================================== */
     {
-      id: 'cs-ebs-implementation',
-      index: '07',
-      label: 'Implementation',
-      title: 'CIVIC\nPREPAREDNESS.',
+      id: 'cs-ebs-product',
+      index: '06',
+      label: 'Product Development',
+      title: 'Mechanical Packaging & Engineering Tolerances',
+      intro: 'Internal packaging, kinetic gear train integration, and precision orthographic drawings.',
       blocks: [
         {
-          type: 'designQuestion',
+          type: 'split',
           props: {
-            index: '07',
-            question: 'How do we ensure people know how to use the device before the next disaster strikes?',
-            context: 'Emergency technology only saves lives if citizens and first responders are pre-equipped and trained.',
-          },
-        },
-        {
-          type: 'learnDecide',
-          props: {
-            index: '07',
-            learned: 'Emergency equipment stored in locked cabinets gets forgotten, loses charge, or is lost during panics.',
-            learnedDetail:
-              'Tools reserved exclusively for disasters fail because no one remembers how to operate them under stress. Devices must be embedded into everyday civil life so they are already familiar before catastrophe strikes.',
-            decided: 'Integrate EBS into daily forest ranger patrols, trekking routes, and annual civic school drills.',
-            decidedDetail:
-              'EBS functions during normal months as a trail safety beacon for mountain guides and forest outposts. In catastrophic blackouts, the units automatically switch to emergency mesh mode, seamlessly bridging to State Disaster Management Authority (SDMA) satellite relays when command centers come online.',
-            impact: 'Permanent regional disaster readiness with zero unfamiliarity in crisis.',
-          },
-        },
-        {
-          type: 'fullWidthImage',
-          props: {
+            weight: 'media',
+            reverse: false,
             media: img(
-              'TREKKING POLE & MODULAR STAFF DEPLOYMENT',
+              'INTERNAL PACKAGING · EXPLODED MECHANICAL ANATOMY',
+              'assets/Project_2/Exhibition/08-product-hardware-anatomy.jpg',
+              'Exploded technical anatomy showing internal planetary dynamo, PCB, antenna, and sealed housing',
+              'Exploded Mechanical Architecture: 40:1 planetary dynamo, sealed PCB enclosure, and shock-absorbing outer bumper.',
+              '16/9'
+            ),
+            text: {
+              eyebrow: 'INTERNAL PACKAGING · MECHANICAL CAD',
+              heading: 'Planetary Gearbox & IP67 Sealing',
+              body: [
+                'The internal packaging tightly integrates a 40:1 high-ratio planetary gear train, permanent magnet generator, and cold-weather LiFePO4 buffer cell.',
+                'Dual silicone perimeter gaskets protect the RF transceiver board against continuous immersion and torrential mountain rainfall, ensuring indefinite shelf life without battery deterioration.',
+              ],
+            },
+          },
+        },
+        {
+          type: 'split',
+          props: {
+            weight: 'media',
+            reverse: true,
+            media: img(
+              'ORTHOGRAPHIC ENGINEERING SPECIFICATION',
+              'assets/Project_2/Exhibition/09-interface-ux-drawing.jpg',
+              'Orthographic technical engineering drawing detailing dimensional tolerances and mechanical clearances',
+              'Engineering Documentation: Dimensional clearances, tactile switch angles, and interface UX ergonomics.',
+              '16/9'
+            ),
+            text: {
+              eyebrow: 'ENGINEERING SPECIFICATION · ORTHOGRAPHIC DRAWING',
+              heading: 'Precision Tolerances for Stress Operability',
+              body: [
+                'Every dimension is dialed for emergency human factors: a 38mm knurled rotary selector for positive indexing with gloves, a recessed SOS trigger with a physical safety guard, and an 80 kg load-rated bottom lanyard anchor.',
+              ],
+            },
+          },
+        },
+      ],
+    },
+
+    /* ========================================================================
+       CHAPTER 07: APPLICATION AND GARAGE CONNECTION
+       ======================================================================== */
+    {
+      id: 'cs-ebs-application',
+      index: '07',
+      label: 'Application & Garage',
+      title: 'Civic Preparedness & Spatial Prototype',
+      intro: 'Embedding life-safety hardware into daily mountain life, and transitioning into the 3D Colonnade Garage.',
+      blocks: [
+        {
+          type: 'split',
+          props: {
+            weight: 'balanced',
+            reverse: false,
+            media: img(
+              'MODULAR TREKKING POLE DEPLOYMENT',
               'assets/Project_2/Exhibition/07-trekking-pole-concept.jpg',
               'Modular concept showing EBS transceiver mounted on trekking staff for elevated signal propagation',
-              'Tactical Field Deployment: Detachable staff mounting elevates the antenna 2 meters above ground clutter for maximum LoRa range.',
+              'Modular Tactical Deployment: Handheld unit docks onto walking poles to elevate antenna reach above ground obstacles.',
               '16/9'
             ),
-            bleed: true,
-            caption: 'Modular Deployment: Handheld unit docks onto walking poles to elevate antenna reach above ground obstacles.',
-          },
-        },
-        {
-          type: 'fullWidthImage',
-          props: {
-            media: img(
-              'TECHNICAL INTERFACE & ORTHOGRAPHIC SPECIFICATION',
-              'assets/Project_2/Exhibition/09-interface-ux-drawing.jpg',
-              'Orthographic technical engineering drawing of EBS Guardian handheld unit showing precise dimensional tolerances',
-              'Engineering Documentation: Dimensional tolerances, tactile switch positioning, and interface UX schematics.',
-              '16/9'
-            ),
-            bleed: true,
-            caption: 'Engineering & UX Documentation: Orthographic drawings detailing mechanical clearances and interface ergonomics.',
-          },
-        },
-        {
-          type: 'designDecision',
-          props: {
-            index: '07',
-            decision: 'Embed EBS into routine civil life and trekking infrastructure for universal pre-crisis familiarity.',
-            rationale: 'Daily utility guarantees that devices are maintained, understood, and immediately operable during sudden crises.',
-            impact: 'Continuous regional resilience across high-risk Himalayan civil corridors.',
+            text: {
+              eyebrow: 'CIVIC UTILITY · DUAL-PURPOSE PREPAREDNESS',
+              heading: 'Familiarity Before Disaster Strikes',
+              body: [
+                'Emergency equipment stored in locked disaster cupboards fails because panic erases unfamiliar instructions. EBS functions in calm seasons as a standard trail safety beacon for mountain guides and forest ranger patrols.',
+                'A quick-release bayonet collar allows the unit to dock directly onto trekking poles, elevating the omnidirectional antenna 2 meters above ground clutter to maximize ridge line-of-sight.',
+              ],
+            },
           },
         },
         {
           type: 'designDecision',
           props: {
             index: 'GARAGE',
-            decision: 'The functional prototype and 3D CAD engineering model are available for spatial exploration inside the Garage.',
-            rationale: 'Inspect the 1:1 scale prototype, test kinetic mechanism clearances, and evaluate CMF tolerances in the dedicated architectural bay.',
+            decision: 'Inspect the 1:1 Functional Prototype in the Colonnade Garage',
+            rationale: 'The complete physical hardware prototype, internal kinetic mechanisms, and material finishes are permanently housed in Space 04: Colonnade Garage (Bay 02). Explore 3D clearances, examine the hand-crank assembly, and view full spatial dimensions.',
             impact: 'Direct transition to Space 04: Colonnade Garage (Bay 02).',
           },
         },

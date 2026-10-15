@@ -26,7 +26,7 @@ export default function PhotoCollage({
             style={img.bg ? { background: img.bg } : undefined}
           >
             <img
-              src={img.src}
+              src={img.src ? encodeURI(img.src) : undefined}
               alt={img.alt || `Field observation ${i + 1}`}
               loading="lazy"
               className="cs-collage__img"
