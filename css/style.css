@@ -154,21 +154,17 @@ img {
    MINIMAL TOP-RIGHT NAVIGATION BAR
    ========================================================================== */
 .site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   z-index: 100;
   padding: 1.15rem 0;
-  background: rgba(234, 234, 230, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: var(--bg-primary);
   border-bottom: 1px solid var(--border-subtle);
   transition: var(--transition-smooth);
 }
 
 [data-theme="dark"] .site-header {
-  background: rgba(25, 25, 23, 0.92);
+  background: var(--bg-primary);
 }
 
 .nav-container {

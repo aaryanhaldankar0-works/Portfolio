@@ -7,7 +7,7 @@
 
 .cs {
   --cs-accent: var(--accent-clay);
-  --cs-nav-top: 84px;
+  --cs-nav-top: 0px;
   --cs-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --cs-gap-section: clamp(5rem, 10vw, 9rem);
   --cs-gap-block: clamp(3.5rem, 7vw, 6.5rem);
