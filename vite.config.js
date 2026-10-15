@@ -25,7 +25,7 @@ function copyStaticFolders(folders) {
 }
 
 export default defineConfig({
-  plugins: [react(), copyStaticFolders(['assets', 'Media', 'js'])],
+  plugins: [react(), copyStaticFolders(['assets', 'Media', 'js', 'css'])],
   // Existing static folders are served from the project root as-is.
   publicDir: false,
   build: {
