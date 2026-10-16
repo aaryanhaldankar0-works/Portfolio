@@ -105,7 +105,7 @@ export default function JourneyMotionGraphic() {
             </div>
             <div className="cs-journey-motion__static-row">
               <span className="cs-journey-motion__static-cat">03 / LONG (8–25 km)</span>
-              <span className="cs-journey-motion__static-flow">Home → Walk → [Auto Stand] → Feeder → [Bus Junction · Crowding] → City Bus → Hub</span>
+              <span className="cs-journey-motion__static-flow">Home → Walk → [Auto Stand] → Feeder → [Bus Junction · Crowding] → Normal Bus → Hub</span>
               <span className="cs-journey-motion__static-stat">2 Transfers · 65–85 min</span>
             </div>
           </div>
@@ -164,7 +164,7 @@ export default function JourneyMotionGraphic() {
     categoryNum = '03';
     categoryLabel = 'LONG DISTANCE';
     categoryDistance = '8 – 25 km';
-    categoryRoute = 'Multi-Leg Corridor: Walk + Feeder + Bus Trunk · 65–85 min';
+    categoryRoute = 'Multi-Leg Corridor: Walk + Feeder + Normal Bus · 65–85 min';
     frictionBadge = '2 TRANSFER BOTTLENECKS';
     frictionTone = 'accent-high';
   }
@@ -367,7 +367,7 @@ export default function JourneyMotionGraphic() {
                 className="cs-jm-modelabel"
                 fill={isPhase3 ? '#f8fafc' : '#64748b'}
               >
-                Arterial City Bus
+                Normal Bus
               </text>
             </g>
 
