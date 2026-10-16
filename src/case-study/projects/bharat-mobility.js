@@ -25,18 +25,19 @@ import prototypeData from './bharat-mobility/prototype.js';
 const img = (label, ratio = '16/9', extra = {}) => ({ kind: 'image', label, ratio, ...extra });
 const render = (label, ratio = '21/9', extra = {}) => ({ kind: 'render', label, ratio, ...extra });
 
-/** One exhibition room: statement → paragraph → image or visual block. */
-const room = ({ id, index, label, title, statement, emphasis, note, body, media, block }) => ({
-  id,
-  index,
-  label,
-  title,
-  blocks: [
+/** One exhibition room: statement → paragraph → optional image or visual block. */
+const room = ({ id, index, label, title, statement, emphasis, note, body, media, block }) => {
+  const blocks = [
     { type: 'statement', props: { text: statement, emphasis, note, align: 'left' } },
     { type: 'editorial', props: { body: [body], align: 'offset', showHeadingSlot: false, slotLines: 0 } },
-    block || { type: 'fullWidthImage', props: { media, bleed: true } },
-  ],
-});
+  ];
+  if (block) {
+    blocks.push(block);
+  } else if (media) {
+    blocks.push({ type: 'fullWidthImage', props: { media, bleed: true } });
+  }
+  return { id, index, label, title, blocks };
+};
 
 const bharatMobility = {
   id: 'bharat-mobility',
@@ -278,13 +279,6 @@ const bharatMobility = {
       note: 'PHASED ROLLOUT',
       body:
         'Rollout starts in universities and industrial campuses where demand and charging can be validated, then expands to Tier 2 and Tier 3 feeder routes, schools and quick commerce.',
-      media: {
-        kind: 'render',
-        label: 'DEPLOYMENT · CAMPUS TO CITY ROLLOUT',
-        ratio: '21/9',
-        src: 'assets/Project_1/Renders/this is a autonomous transit vehicle consists of hydrogen and electric powertrains with capabilities for docking moped, e-bikes, electric cycles roll in roll out style for last mile mobility mostly made .png',
-        alt: 'Bharat Mobility Pod deployment and multimodal fleet rollout render',
-      },
     }),
   ],
 
