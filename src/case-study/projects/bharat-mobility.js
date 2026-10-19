@@ -194,22 +194,14 @@ const bharatMobility = {
           },
         },
         {
-          type: 'split',
+          type: 'editorial',
           props: {
-            weight: 'text', // 5/7 split: text leading into the animated journey graphic
-            reverse: true,
-            media: {
-              kind: 'custom',
-              component: 'journeyMotion',
-            },
-            text: {
-              eyebrow: 'Friction Analysis',
-              heading: 'Transit failure happens during the 15-minute curbside pause.',
-              body: [
-                'In-depth interviews at tracker stands revealed that travel speed is rarely what breaks a commuter’s day. Friction lives entirely in the transfers: standing at dusty intersections for 10–15 minutes while informal drivers wait to pack vehicles past safe capacity.',
-                'Inspired by the universal accessibility of unreserved public transit networks, Bharat Mobility Pod pairs fixed-route affordability with advance seat assurance — eliminating the scramble to board overcrowded shared transit.',
-              ],
-            },
+            eyebrow: 'Friction Analysis',
+            heading: 'Transit failure happens during the 15-minute curbside pause.',
+            body: [
+              'In-depth interviews at tracker stands revealed that travel speed is rarely what breaks a commuter’s day. Friction lives entirely in the transfers: standing at dusty intersections for 10–15 minutes while informal drivers wait to pack vehicles past safe capacity.',
+              'Inspired by the universal accessibility of unreserved public transit networks, Bharat Mobility Pod pairs fixed-route affordability with advance seat assurance — eliminating the scramble to board overcrowded shared transit.',
+            ],
           },
         },
         {
