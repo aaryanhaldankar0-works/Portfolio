@@ -5,7 +5,6 @@ import Sketchbook from './Sketchbook.jsx';
 import EngineeringTable from './EngineeringTable.jsx';
 import WorkflowRoom from './WorkflowRoom.jsx';
 import PrototypeRoom from './PrototypeRoom.jsx';
-import ServiceOperationsRoom from './ServiceOperationsRoom.jsx';
 
 /** Zone rooms that have been built. Zones without one stay as stations only. */
 const ZONE_ROOMS = {
@@ -14,7 +13,6 @@ const ZONE_ROOMS = {
   table: EngineeringTable,
   workflow: WorkflowRoom,
   prototype: PrototypeRoom,
-  operations: ServiceOperationsRoom,
 };
 
 /**
@@ -85,19 +83,6 @@ function StationObject({ object }) {
           <span className="ws-proto__cover" />
           <span className="ws-proto__plinth" />
           <span className="ws-proto__shadow" />
-        </div>
-      );
-    case 'operations':
-      return (
-        <div className="ws-obj ws-obj--operations" aria-hidden="true">
-          <span className="ws-ops__board" />
-          <span className="ws-ops__marker" />
-          <svg className="ws-ops__route" viewBox="0 0 160 100" preserveAspectRatio="none">
-            <line x1="20" y1="50" x2="140" y2="50" stroke="currentColor" strokeWidth="2" />
-            <circle cx="35" cy="50" r="5" fill="#e2b13c" />
-            <circle cx="80" cy="50" r="5" fill="#e2b13c" />
-            <circle cx="125" cy="50" r="5" fill="#e2b13c" />
-          </svg>
         </div>
       );
     default:

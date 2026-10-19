@@ -33,7 +33,7 @@ export default function RabbitHole({ projectId, workshop = {}, onEnter }) {
         <div className="cs-rabbithole__content">
           <div className="cs-rabbithole__meta">
             <span className="cs-rabbithole__kicker">PROCESS ARCHIVE · DEEP DIVE</span>
-            <span className="cs-rabbithole__tag">6 Studio Zones</span>
+            <span className="cs-rabbithole__tag">5 Studio Zones</span>
           </div>
 
           <h3 className="cs-rabbithole__title">{line}</h3>
@@ -51,12 +51,12 @@ export default function RabbitHole({ projectId, workshop = {}, onEnter }) {
             {/* Narrow architectural doorway frame with amber studio light spill */}
             <div className="cs-rabbithole__aperture" aria-hidden="true">
               <span className="cs-rabbithole__beam" />
-              <span className="cs-rabbithole__plaque">06</span>
+              <span className="cs-rabbithole__plaque">05</span>
             </div>
 
             <div className="cs-rabbithole__action">
               <span className="cs-rabbithole__label">{label}</span>
-              <span className="cs-rabbithole__hint">Field Notebook · Sketchbook · Engineering · AI · Prototype · Service &amp; Ops</span>
+              <span className="cs-rabbithole__hint">Field Notebook · Sketchbook · Engineering · AI · Prototype</span>
             </div>
 
             <span className="cs-rabbithole__arrow" aria-hidden="true">

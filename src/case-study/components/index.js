@@ -43,14 +43,6 @@ export { default as DesignQuestion } from './DesignQuestion.jsx';
 export { default as DesignDecision } from './DesignDecision.jsx';
 export { default as ObservationDecisionList } from './ObservationDecisionList.jsx';
 export { default as LearnDecideBlock } from './LearnDecideBlock.jsx';
-export { default as FormDevelopment } from './FormDevelopment.jsx';
-export { default as BookingToBoarding } from './BookingToBoarding.jsx';
-export { default as AutonomousOperations } from './AutonomousOperations.jsx';
-export { default as FleetVariantsLogic } from './FleetVariantsLogic.jsx';
-export { default as DevelopmentRoadmap } from './DevelopmentRoadmap.jsx';
-export { default as TwoUpMedia } from './TwoUpMedia.jsx';
-export { default as SeatAssuranceToDestination } from './SeatAssuranceToDestination.jsx';
-export { default as ServiceOperationsRoom } from './ServiceOperationsRoom.jsx';
 
 // Shared primitives
 export { default as CaseSection } from './CaseSection.jsx';
