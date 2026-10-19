@@ -28,6 +28,13 @@ import {
   DesignDecision,
   ObservationDecisionList,
   LearnDecideBlock,
+  FormDevelopment,
+  BookingToBoarding,
+  AutonomousOperations,
+  FleetVariantsLogic,
+  DevelopmentRoadmap,
+  TwoUpMedia,
+  SeatAssuranceToDestination,
 } from './components/index.js';
 
 /**
@@ -64,6 +71,13 @@ export const BLOCKS = {
   designDecision: DesignDecision,
   observationDecisions: ObservationDecisionList,
   learnDecide: LearnDecideBlock,
+  formDevelopment: FormDevelopment,
+  bookingToBoarding: BookingToBoarding,
+  autonomousOperations: AutonomousOperations,
+  fleetVariantsLogic: FleetVariantsLogic,
+  developmentRoadmap: DevelopmentRoadmap,
+  twoUp: TwoUpMedia,
+  seatAssuranceToDestination: SeatAssuranceToDestination,
 };
 
 

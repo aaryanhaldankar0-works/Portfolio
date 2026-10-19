@@ -15,3 +15,7 @@ tmp/
 # Vite / Node
 node_modules/
 dist/
+
+# Local media / feedback recordings (large files)
+Testing/
+Feedback/

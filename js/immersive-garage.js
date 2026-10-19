@@ -29,6 +29,8 @@ window.THREE = THREE;
       title: 'BHARAT MOBILITY POD',
       discipline: 'Transportation Design · Public Mobility',
       subtitle: 'Autonomous Last-Mile Transit Pod for Tier 2 & 3 Indian Corridors',
+      assetType: 'ORIGINAL CAD MODEL',
+      assetNote: 'Parametric 3D NURBS dataset (Detailed Sharp V2)',
       modelUrl: 'assets/Project_1/3D Models/Detailed Sharp V2 · Highest 3D model.glb',
       targetScale: 3.6,
       cameraOffset: new THREE.Vector3(0, 1.7, 5.6),
@@ -40,7 +42,9 @@ window.THREE = THREE;
       title: 'EMERGENCY COMMUNICATION SYSTEMS',
       discipline: 'Disaster Resilience & Hardware Design',
       subtitle: 'Decentralized Kinetic Mesh Hardware for Extreme Himalayan Terrain',
-      modelUrl: 'assets/Project_2/3D Models/Segmented 3D model_ Max · Balanced 3D model.glb',
+      assetType: 'ORIGINAL CAD MODEL',
+      assetNote: 'Production-ready hardware assembly (Max · Highest)',
+      modelUrl: 'assets/Project_2/3D Models/Max · Highest 3D model.glb',
       targetScale: 1.8,
       cameraOffset: new THREE.Vector3(0, 1.6, 5.2),
       footprint: { w: 1.1, l: 1.8, h: 1.4 }
@@ -1003,19 +1007,21 @@ window.THREE = THREE;
       </div>
 
       <div class="datum-coords" style="flex-direction: column; align-items: center; gap: 0.35rem;">
-        <div style="display: flex; align-items: center; gap: 0.65rem;">
+        <div style="display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap; justify-content: center;">
           <span class="datum-tag">BAY ${currentBay.bayNumber}</span>
           <span class="datum-sep">—</span>
           <span class="datum-vehicle">${currentBay.title}</span>
+          <span class="datum-asset-pill" style="font-family: var(--font-mono, monospace); font-size: 0.65rem; padding: 2px 7px; background: rgba(90, 160, 240, 0.15); border: 1px solid rgba(90, 160, 240, 0.4); color: #82baff; letter-spacing: 0.08em; text-transform: uppercase;">${currentBay.assetType}</span>
         </div>
+        <span style="font-family: var(--font-mono, monospace); font-size: 0.65rem; color: var(--text-tertiary, #9c968d);">${currentBay.assetNote}</span>
 
         <div class="colonnade-ledger">
           ${STUDIO_BAYS.map((b, idx) => `
-            <button class="colonnade-bay-pill ${idx === activeBayIndex ? 'active' : ''}" data-bay-idx="${idx}" title="${b.bayNumber}: ${b.title}">
+            <button class="colonnade-bay-pill ${idx === activeBayIndex ? 'active' : ''}" data-bay-idx="${idx}" title="${b.bayNumber}: ${b.title} [${b.assetType}]">
               ${b.bayNumber}
             </button>
           `).join('')}
-          <span class="colonnade-bay-pill future-expansion" title="Colonnade Horizon: Continuous Expansion across 10 Years">+</span>
+          <span class="colonnade-bay-pill future-expansion" title="Colonnade Horizon: Future Model (In CAD Development)">+</span>
         </div>
       </div>
 

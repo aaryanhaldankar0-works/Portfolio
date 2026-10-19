@@ -233,7 +233,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
         x: 0.0,
         accent: 0x38bdf8,
         category: 'Autonomous Micro-Mobility Pod',
-        modelUrl: 'assets/Project_2/3D Models/Segmented 3D model_ Max · Balanced 3D model.glb'
+        modelUrl: 'assets/Project_2/3D Models/Max · Highest 3D model.glb'
       }
     ];
 
@@ -404,8 +404,9 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
   function tryLoadCustomGLB(productCfg, parentAnchor, placeholderBuck, pObj) {
     const rawPaths = [
       productCfg.modelUrl,
+      'assets/Project_2/3D Models/Max · Highest 3D model.glb',
+      'assets/Project_2/3D%20Models/Max%20%C2%B7%20Highest%203D%20model.glb',
       'assets/Project_2/3D Models/Segmented 3D model_ Max · Balanced 3D model.glb',
-      'assets/Project_2/3D%20Models/Segmented%203D%20model_%20Max%20%C2%B7%20Balanced%203D%20model.glb',
       `assets/workshop/${productCfg.id}.glb`,
       `assets/Project_2/${productCfg.id}.glb`
     ].filter(Boolean);

@@ -48,7 +48,7 @@ const PORTFOLIO_DATA = {
       featured: true,
       route: '/work/ebs-guardian',
       garageBay: 1,
-      garageModel: 'assets/Project_2/3D Models/Segmented 3D model_ Max · Balanced 3D model.glb',
+      garageModel: 'assets/Project_2/3D Models/Max · Highest 3D model.glb',
       accentColor: '#f97316',
       tagline: 'Emergency Communication Systems (EBS) · Low-Tech Solution for High-Stakes Environments',
       specs: {
@@ -127,7 +127,7 @@ const PORTFOLIO_DATA = {
       category: 'Disaster Resilience & Emergency Hardware',
       accentColor: '#f97316',
       heroImage: 'assets/Project_2/Renders/Render_1.png',
-      modelUrl: 'assets/Project_2/3D Models/Segmented 3D model_ Max · Balanced 3D model.glb',
+      modelUrl: 'assets/Project_2/3D Models/Max · Highest 3D model.glb',
       specs: {
         'System Type': 'Off-Grid LoRaWAN Mesh Device',
         'Power Source': 'Manual Kinetic Hand-Crank Dynamo',
